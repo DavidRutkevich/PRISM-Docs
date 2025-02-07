@@ -1,10 +1,10 @@
-[[menu.main]]
+[[main]]
     identifier = "github"
     name = "GitHub"
     url = "https://github.com/DavidRutkevich"
     pre = "github"
     
-[[menu.main]]
+[[main]]
     identifier = "linkedin"
     name = "LinkedIn"
     url = "https://www.linkedin.com/in/davidrutkevich/"
