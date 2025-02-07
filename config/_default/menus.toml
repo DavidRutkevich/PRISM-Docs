@@ -1,11 +1,11 @@
-[[more]]
-  name       = 'Resources'
-  identifier = 'resources'
-  pageRef    = '/'
-  weight     = 3
-
-[[more]]
-  name       = 'About'
-  identifier = 'about'
-  pageRef    = '/'
-  weight     = 5
+[[menu.main]]
+    identifier = "github"
+    name = "GitHub"
+    url = "https://github.com/DavidRutkevich"
+    pre = "github"
+    
+[[menu.main]]
+    identifier = "linkedin"
+    name = "LinkedIn"
+    url = "https://www.linkedin.com/in/davidrutkevich/"
+    pre = "linkedin"
