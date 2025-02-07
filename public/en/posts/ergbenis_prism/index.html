@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><script src="/hugo-brewm/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=hugo-brewm/livereload" data-no-instant defer></script>
+    <!-- head.html -->
+    <!-- meta.html -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRISM - Evaluierung |  PRISM</title>
+    <meta name="author" content="David Rutkevich">
+    <meta name="description" content="Eine Analyse der Segmentierungsergebnisse bei unvollständigen multimodalen MRT-Daten unter Verwendung der PRISM-Methodik." >
+    <meta name="keywords" content="PRISM,Evaluierung" >
+    <link rel="canonical" href="http://localhost:1313/hugo-brewm/en/posts/ergbenis_prism/" >
+    
+    
+        <!-- _meta.html -->
+
+<meta property="og:url" content="http://localhost:1313/hugo-brewm/en/posts/ergbenis_prism/">
+    <meta property="og:site_name" content=" PRISM">
+    <meta property="og:title" content="PRISM - Evaluierung |  PRISM">
+    <meta name="twitter:title" content="PRISM - Evaluierung |  PRISM">
+    <meta property="og:description" content="Eine Analyse der Segmentierungsergebnisse bei unvollständigen multimodalen MRT-Daten unter Verwendung der PRISM-Methodik.">
+    <meta name="twitter:description" content="Eine Analyse der Segmentierungsergebnisse bei unvollständigen multimodalen MRT-Daten unter Verwendung der PRISM-Methodik.">
+    <meta property="og:locale" content="en">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-01-26T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-01-26T00:00:00+00:00">
+    <meta property="article:tag" content="PRISM,Evaluierung">
+  <meta name="twitter:card" content="summary">
+
+
+
+
+    <!-- js.html -->
+    <script src="http://localhost:1313/hugo-brewm/js/hugo-brewm.min.js" defer></script><!-- css.html -->
+    <link rel="stylesheet" href="http://localhost:1313/hugo-brewm/css/hugo-brewm.min.css">
+    <style>body {max-width: 786px; margin: auto; padding: 2rem;}img {max-width: 86vw;}</style>
+    
+    
+    
+    <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+</head>
+<body  id="post" >
+    <!-- header.html -->
+<header class="pagewidth">
+    <div id="background-header" class="background" aria-hidden="true"></div>
+    
+    <nav aria-label="Bypass Navigation">
+        <a id="to-content" class="underline" href="#content" aria-label="Skip to Main Content">
+            <span>Skip to Main Content</span>
+            <kbd class="key" aria-hidden="true">c</kbd>
+            <span class="screening" aria-hidden="true"></span>
+        </a>
+    </nav>
+    
+        <a id="logo" href="http://localhost:1313/hugo-brewm/en/" aria-label=" PRISM">
+                <!-- logotype.html --><svg id="logotype" xmlns="http://www.w3.org/2000/svg" version="1.1" width="168pt">
+            <text id="logotype__text" y="19.5pt" x="0"> PRISM</text>
+        </svg>
+        </a>
+    
+    <details class="presentation" id="top-nav">
+        <summary class="on-deck">
+            <span class="t t2">Navigation</span>
+            <span class="menu-icon" role="presentation"></span>
+        </summary>
+        <nav tabindex="-1" aria-label="Top Nav">
+            <!-- menu.html -->
+            
+            <!-- menu.html -->
+            <!-- i18n.html -->
+
+
+        </nav>
+        <div id="top-nav-screen" class="screening js-cpn" role="presentation" aria-hidden="true"></div>
+    </details>
+</header>
+    
+    <!-- [main] baseof.html -->
+    <main id="page">
+        <!-- main/header.html -->
+        <header class="pagewidth">
+            
+            <!-- menu.html -->
+    <menu role="presentation">
+        <li>
+            <a id="print-button" class="hide" href="javascript:window.print()" title="Print" role="button" aria-label="Print">
+                <span class="t" role="tooltip">Print</span>
+            </a>
+        </li>
+        <li>
+            <a id="navigatorShare" href="#share" title="Share" role="button" aria-label="Share">
+                <span class="t" role="tooltip">Share</span>
+            </a>
+        </li>
+        <li>
+            <a id="copyPermalink" class="hide" href="javascript:navigator.clipboard.writeText(window.location.href)" title="Copy Url" role="button" aria-label="Copy Url">
+                <span class="t" role="tooltip">Copy Url</span>
+            </a>
+        </li>
+    </menu>
+    <button id="back" class="hide" type="button" onclick="history.back();" aria-label="Zurück">
+        <span class="t" role="tooltip">Zurück</span>
+    </button>
+            
+                <!-- nav.html -->
+<details class="presentation" aria-expanded="true" id="has-breadcrumb" open>
+    <summary id="breadcrumb" tabindex="-1">
+        <span>Breadcrumb</span>
+    </summary>
+        <nav aria-labelledby="breadcrumb">
+            <ul role="presentation" class="breadcrumb">
+                    <!-- breadcrumb.html -->
+        <li>
+            <a href="http://localhost:1313/hugo-brewm/en/posts/" aria-current="true">Posts
+            </a>
+        </li>
+    <li>
+        <a href="" aria-current="page" tabindex="-1">PRISM - Evaluierung
+        </a>
+    </li>
+            </ul>
+        </nav>
+</details>
+        </header>
+        <div id="top" role="presentation">
+            
+        </div>
+        
+    <article id="main-article" class="pagewidth"
+        role="document" aria-labelledby="title"
+            data-pagefind-body>
+        
+        <header class="textwidth" aria-labelledby="title">
+            <!-- title.html -->
+        <hgroup data-bionRead-safe>
+            <h1 id="title"
+                    data-pagefind-meta="title"
+                >PRISM - Evaluierung</h1>
+            <p  class="subtitle"
+                role="doc-subtitle">Eine Analyse der Segmentierungsergebnisse bei unvollständigen multimodalen MRT-Daten unter Verwendung der PRISM-Methodik.</p>
+        </hgroup>
+            <div id="doc-author" class="textsw author">
+                
+                    <span>David Rutkevich</span>
+            </div>
+            <!-- timestamp.html-->
+    <div >
+        <time class="doc-publish-date" datetime="2025-01-26T00:00:00&#43;00:00" data-time-label="Published on">January 26, 2025</time>
+    </div>
+        </header>
+        <!-- audio.html -->
+        <section aria-labelledby="Title" id="content" data-bionRead-safe>
+                <hr>
+<h2 id="ergebnisse-für-brats2020"><strong>Ergebnisse für BraTS2020</strong></h2>
+<p>Die folgenden Abbildungen zeigen qualitative Ergebnisse auf dem <strong>BraTS2020-Datensatz</strong>, wobei unterschiedliche Modalitätskombinationen betrachtet wurden. Die Reihenfolge der Spalten zeigt die verschiedenen Ansätze: <strong>Baseline, ModDrop, PMR und PRISM</strong>. PRISM nutzt dabei ein selbstdistillierendes Netzwerk, um robuste Segmentierungsergebnisse zu erzielen.</p>
+<h3 id="qualitative-ergebnisse-brats2020"><strong>Qualitative Ergebnisse (BraTS2020)</strong></h3>
+<p><img src="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/e090271a8e24c9725f1692590e3c487a2ae84cc0/qual_brats.svg" alt="Qualitative Ergebnisse BraTS2020"></p>
+<h4 id="analyse-der-ergebnisse"><strong>Analyse der Ergebnisse:</strong></h4>
+<ul>
+<li><strong>Baseline</strong>: Die Segmentierung weist zahlreiche Fehlklassifikationen auf. Sowohl falsch positive als auch falsch negative Bereiche sind erkennbar. Besonders problematisch ist die inkonsistente Abgrenzung der Tumorregionen bei unvollständigen Modalitäten.</li>
+<li><strong>ModDrop</strong>: Reduziert die falsch positiven Bereiche leicht, führt jedoch zu fragmentierten Segmentierungen. Einige Tumorregionen erscheinen unvollständig oder verzerrt.</li>
+<li><strong>PMR</strong>: Die Methode priorisiert bestimmte Modalitäten, was zu einer besseren Abdeckung der Tumorkerne führt. Allerdings treten weiterhin größere falsch negative Bereiche auf, insbesondere wenn essentielle Modalitäten fehlen.</li>
+<li><strong>PRISM</strong>: Die Segmentierungen zeigen die beste Balance zwischen Sensitivität und Spezifität. Die Tumorregionen sind klar abgegrenzt, falsch positive Bereiche sind minimiert und selbst bei reduzierten Modalitäten bleibt die Tumorkontur erhalten.</li>
+</ul>
+<p><strong>Einfluss der Modalitätskombinationen:</strong></p>
+<ul>
+<li><strong>T1 allein</strong> zeigt eine inkonsistente Erkennung der Tumorkontur.</li>
+<li><strong>T1ce und Flair</strong> führen zu besseren Ergebnissen, da sie die Enhancing-Region besser erfassen.</li>
+<li><strong>T2 allein liefert schlechte Ergebnisse</strong>, da wichtige Informationen zu Enhancement-Regionen fehlen.</li>
+<li><strong>Die Kombination aus T1ce und Flair bietet eine der besten Alternativen</strong>, wenn nicht alle Modalitäten verfügbar sind.</li>
+</ul>
+<h4 id="quantitative-auswertung-brats2020"><strong>Quantitative Auswertung (BraTS2020)</strong></h4>
+<table>
+  <thead>
+      <tr>
+          <th>Methode</th>
+          <th>WT Dice (%) ↑</th>
+          <th>TC Dice (%) ↑</th>
+          <th>ET Dice (%) ↑</th>
+          <th>Avg Dice (%) ↑</th>
+          <th>HD Avg (mm) ↓</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Baseline</td>
+          <td>76.89</td>
+          <td>64.36</td>
+          <td>51.72</td>
+          <td>64.32</td>
+          <td>19.35</td>
+      </tr>
+      <tr>
+          <td>ModDrop</td>
+          <td>76.31</td>
+          <td>63.75</td>
+          <td>50.53</td>
+          <td>63.53</td>
+          <td>21.03</td>
+      </tr>
+      <tr>
+          <td>PMR</td>
+          <td>77.59</td>
+          <td>65.44</td>
+          <td><strong>52.86</strong></td>
+          <td>65.30</td>
+          <td>20.58</td>
+      </tr>
+      <tr>
+          <td><strong>PRISM</strong></td>
+          <td><strong>83.42</strong></td>
+          <td><strong>71.74</strong></td>
+          <td>52.78</td>
+          <td><strong>69.31</strong></td>
+          <td><strong>10.52</strong></td>
+      </tr>
+  </tbody>
+</table>
+<p>PRISM zeigt signifikante Verbesserungen in allen Metriken, insbesondere bei der Gesamt-Dice-Score und der Hausdorff-Distanz (HD), was auf eine präzisere Segmentierung hindeutet.</p>
+<hr>
+<h2 id="ergebnisse-für-myops2020"><strong>Ergebnisse für MyoPS2020</strong></h2>
+<p>Für den <strong>MyoPS2020-Datensatz</strong> betrachten wir eine ähnliche Auswertung. Die folgende Abbildung zeigt Segmentierungsergebnisse für verschiedene Modalitätskombinationen.</p>
+<h3 id="qualitative-ergebnisse-myops2020"><strong>Qualitative Ergebnisse (MyoPS2020)</strong></h3>
+<p><img src="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/e090271a8e24c9725f1692590e3c487a2ae84cc0/qual_myops.svg" alt="Qualitative Ergebnisse MyoPS2020"></p>
+<h4 id="analyse-der-ergebnisse-1"><strong>Analyse der Ergebnisse:</strong></h4>
+<ul>
+<li><strong>Baseline</strong>: Schwierigkeiten bei der Abgrenzung der Herzmuskelregion. Falsch positive Bereiche treten insbesondere in den Randbereichen der Struktur auf.</li>
+<li><strong>ModDrop</strong>: Verbessert die Gesamtform der Segmentierung, führt jedoch zu Fragmentierung in einigen Bereichen.</li>
+<li><strong>PMR</strong>: Liefert bessere Umrisse, neigt jedoch dazu, einige relevante Strukturen nicht zu erfassen.</li>
+<li><strong>PRISM</strong>: Zeigt die höchste Präzision und reduziert sowohl falsch positive als auch falsch negative Bereiche erheblich.</li>
+</ul>
+<p><strong>Einfluss der Modalitätskombinationen:</strong></p>
+<ul>
+<li><strong>bSSFP allein liefert eine schwache Abgrenzung der Myokardstruktur</strong>.</li>
+<li><strong>LGE verbessert die Identifikation von Infarktregionen</strong>, jedoch mit hohem Risiko für falsch positive Ergebnisse.</li>
+<li><strong>T2 liefert zusätzliche Kontraste</strong>, ist aber allein unzureichend für eine präzise Segmentierung.</li>
+<li><strong>Die Kombination aus LGE und bSSFP bietet eine der stabilsten Segmentierungslösungen</strong>.</li>
+</ul>
+<h4 id="quantitative-auswertung-myops2020"><strong>Quantitative Auswertung (MyoPS2020)</strong></h4>
+<table>
+  <thead>
+      <tr>
+          <th>Methode</th>
+          <th>LVBP Dice (%) ↑</th>
+          <th>RVBP Dice (%) ↑</th>
+          <th>MYO Dice (%) ↑</th>
+          <th>Avg Dice (%) ↑</th>
+          <th>HD Avg (mm) ↓</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Baseline</td>
+          <td>72.69</td>
+          <td>51.94</td>
+          <td>66.81</td>
+          <td>63.81</td>
+          <td>22.11</td>
+      </tr>
+      <tr>
+          <td>ModDrop</td>
+          <td>75.63</td>
+          <td>46.42</td>
+          <td>70.70</td>
+          <td>64.25</td>
+          <td>23.46</td>
+      </tr>
+      <tr>
+          <td>PMR</td>
+          <td>73.05</td>
+          <td>52.61</td>
+          <td>69.32</td>
+          <td>64.99</td>
+          <td>20.54</td>
+      </tr>
+      <tr>
+          <td><strong>PRISM</strong></td>
+          <td><strong>81.44</strong></td>
+          <td><strong>60.97</strong></td>
+          <td><strong>77.44</strong></td>
+          <td><strong>73.28</strong></td>
+          <td><strong>14.50</strong></td>
+      </tr>
+  </tbody>
+</table>
+<p>Auch hier übertrifft PRISM alle anderen Methoden in allen Metriken und reduziert die Hausdorff-Distanz erheblich, was auf eine genauere Segmentierung hinweist.</p>
+<hr>
+<h2 id="fazit"><strong>Fazit</strong></h2>
+<p>Die PRISM-Methodik ermöglicht eine signifikante Verbesserung der Segmentierungsqualität und reduziert Fehler, die bei unvollständigen Modalitätsdaten auftreten. Besonders in klinischen Anwendungen, in denen Modalitäten variabel oder unvollständig sind, zeigt PRISM eine hohe Robustheit.</p>
+
+        </section>
+        <footer>
+            
+    <div id="keywords">
+        <span>Tags:&nbsp;</span>
+        
+        <!-- terms.html -->
+    <ul class="delimiter" role="presentation">
+            <li><a href="http://localhost:1313/hugo-brewm/en/tags/prism/">Prism</a></li>
+            <li><a href="http://localhost:1313/hugo-brewm/en/tags/evaluierung/">Evaluierung</a></li>
+    </ul>
+    </div>
+        </footer>
+    </article>
+    <hr class="hide" style="margin: 1in 0;">
+    <div id="contentinfo" class="pagewidth" role="contentinfo" data-pagefind-ignore="all">
+        <!-- related.html -->
+        <!-- history.html -->
+        <!-- colophon.html -->
+    <div id="colophon" style="display: none;" aria-live="polite">
+        <strong class="section-title">Kolophon</strong>
+        <div class="f">
+            <div id="qr" role="img" aria-label="QR code"></div>
+            <div class="verbose">
+                <div class="has-aria-label-top" aria-label="PRISM - Evaluierung"><span>http://localhost:1313/hugo-brewm/en/posts/ergbenis_prism/</span></div>
+                <div><span>This page is accessed on: </span><time id="time-stamp"></time></div>
+                <div><span>Diese Seite wurde zuletzt aktualisiert am: </span><time datetime="2025-02-07T16:50:56&#43;01:00">2025-02-07T16:50:56&#43;01:00</time></div>
+                
+            </div>
+        </div>
+    </div>
+        
+        <!-- nav.html -->
+<details class="presentation" aria-expanded="true" id="has-share" open>
+    <summary id="share" tabindex="-1">
+        <span>Share</span>
+    </summary>
+        <nav aria-labelledby="share">
+            <ul role="presentation" class="share">
+                    <!-- share.html -->
+    <li id="has-mastodon">
+        <!-- mastodon.html -->
+    <form class="form" id="mastodon" action="//sharetomastodon.github.io/" target="_blank" rel="noopener noreferrer">
+        <input id="mastodonTitle" type="hidden" name="title" value="PRISM - Evaluierung">
+        <input id="mastodonPermalink" type="hidden" name="url" value="http://localhost:1313/hugo-brewm/en/posts/ergbenis_prism/">
+        <input id="mastodonText" type="hidden" name="text" value="PRISM - Evaluierung http://localhost:1313/hugo-brewm/en/posts/ergbenis_prism/" disabled>
+        <input id="mastodonInstance" type="url" class="ldots form__input" placeholder="Enter Mastodon instance (https://www.example.com)" aria-label="Mastodon instance URL">
+        <button class="form__button" type="submit" aria-label="Share on Mastodon">
+            <i class="icon mastodon" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Mastodon</span>
+        </button>
+    </form>
+    </li>
+    <li>
+        <a href="mailto:?subject=PRISM%20-%20Evaluierung&body=http%3a%2f%2flocalhost%3a1313%2fhugo-brewm%2fen%2fposts%2fergbenis_prism%2f" title="Email" role="button" aria-label="Email">
+            <i class="email" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Email</span>
+        </a>
+    </li>
+    <li>
+        <a href="whatsapp://send?text=PRISM%20-%20Evaluierung%20http%3a%2f%2flocalhost%3a1313%2fhugo-brewm%2fen%2fposts%2fergbenis_prism%2f" title="[i18n] whatsapp" role="button" aria-label="[i18n] whatsapp">
+            <i class="whatsapp" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Whatsapp</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://telegram.me/share/url?text=PRISM%20-%20Evaluierung&amp;url=http://localhost:1313/hugo-brewm/en/posts/ergbenis_prism/" role="button"
+            aria-label="Share on Telegram in new tab">
+            <i class="telegram" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Telegram</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://bsky.app/intent/compose?text=PRISM%20-%20Evaluierung&amp;url=http://localhost:1313/hugo-brewm/en/posts/ergbenis_prism/" role="button"
+            aria-label="Share on Bluesky in new tab">
+            <i class="bluesky" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Bluesky</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://facebook.com/sharer/sharer.php?u=http://localhost:1313/hugo-brewm/en/posts/ergbenis_prism/" role="button"
+            aria-label="Share on Facebook in new tab">
+            <i class="facebook" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Facebook</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://news.ycombinator.com/submitlink?u=http://localhost:1313/hugo-brewm/en/posts/ergbenis_prism/&amp;t=PRISM%20-%20Evaluierung" role="button"
+            aria-label="Share on Hackernews in new tab">
+            <i class="hackernews" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Hackernews</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/hugo-brewm/en/posts/ergbenis_prism/&amp;title=PRISM%20-%20Evaluierung&amp;summary=PRISM%20-%20Evaluierung&amp;source=http://localhost:1313/hugo-brewm/en/posts/ergbenis_prism/" role="button"
+            aria-label="Share on Linkedin in new tab">
+            <i class="linkedin" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Linkedin</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://pinterest.com/pin/create/button/?url=http://localhost:1313/hugo-brewm/en/posts/ergbenis_prism/&amp;media=http://localhost:1313/hugo-brewm/en/posts/ergbenis_prism/&amp;description=PRISM%20-%20Evaluierung" role="button"
+            aria-label="Share on Pinterest in new tab">
+            <i class="pinterest" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Pinterest</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://reddit.com/submit/?url=http://localhost:1313/hugo-brewm/en/posts/ergbenis_prism/&amp;resubmit=true&amp;title=PRISM%20-%20Evaluierung" role="button"
+            aria-label="Share on Reddit in new tab">
+            <i class="reddit" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Reddit</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=PRISM%20-%20Evaluierung&amp;caption=PRISM%20-%20Evaluierung&amp;content=http://localhost:1313/hugo-brewm/en/posts/ergbenis_prism/&amp;canonicalUrl=http://localhost:1313/hugo-brewm/en/posts/ergbenis_prism/" role="button"
+            aria-label="Share on Tumblr in new tab">
+            <i class="tumblr" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Tumblr</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="http://vk.com/share.php?title=PRISM%20-%20Evaluierung&amp;url=http://localhost:1313/hugo-brewm/en/posts/ergbenis_prism/" role="button"
+            aria-label="Share on Vk in new tab">
+            <i class="vk" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Vk</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://twitter.com/intent/tweet/?text=PRISM%20-%20Evaluierung&amp;url=http://localhost:1313/hugo-brewm/en/posts/ergbenis_prism/" role="button"
+            aria-label="Share on Twitter in new tab">
+            <i class="twitter" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Twitter</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://www.xing.com/app/user?op=share;url=http://localhost:1313/hugo-brewm/en/posts/ergbenis_prism/;title=PRISM%20-%20Evaluierung" role="button"
+            aria-label="Share on Xing in new tab">
+            <i class="xing" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Xing</span>
+        </a>
+    </li>
+            </ul>
+        </nav>
+</details>
+        <!-- fediverse.html -->
+    </div>
+        <!-- main/footer.html -->
+    
+    </main>
+    <!-- footer.html -->
+<footer id="body-footer" class="pagewidth" style="display: none;">
+    <div id="background-footer" class="background" role="presentation"></div>
+    <!-- a11y.html --><details id="has-a11y" class="presentation js-details" name="on-deck" aria-haspopup="true" aria-labelledby="has-a11y-summary">
+    <summary id="has-a11y-summary" accesskey="a" aria-keyshortcuts="a">
+        <span>&nbsp;Accessibility</span>
+        <kbd class="key">a</kbd>
+    </summary>
+    <!-- a11y console -->
+    <fieldset id="a11y" role="region" disabled>
+        <!-- brightness & contrast -->
+        <div id="setColorScheme" role="group" aria-label="Color Settings">
+            <!-- darkMode.html -->
+    <input
+        id="lightSwitch"
+        type="checkbox"
+        onclick="setColor()"
+        aria-label="Dark Mode"
+        checked>
+        <label for="lightSwitch">
+            <div class="has-aria-label on" role="status" aria-label="Light"></div>
+            <div class="has-aria-label off" role="status" aria-label="Dark"></div>
+            <div id="lightSwitchIndicator" aria-hidden="true"></div>
+        </label>
+            <!-- contrast.html -->
+    <fieldset id="setContrast">
+        <legend>Contrast</legend>
+        <input
+            id="lessContrast"
+            type="radio" name="setContrast" value="less"
+            onclick="setColor()"
+            >
+            <label for="lessContrast">
+                <span>Low</span>
+            </label>
+        <input
+            id="defaultContrast"
+            type="radio" name="setContrast" value="default"
+            onclick="setColor()"
+            >
+            <label for="defaultContrast">
+                <span>Default</span>
+            </label>
+        <input
+            id="moreContrast"
+            type="radio" name="setContrast" value="more"
+            onclick="setColor()"
+            >
+            <label for="moreContrast">
+                <span>High</span>
+            </label>
+    </fieldset>
+        </div>
+        <!-- colorPalette.html -->
+    <div id="setColorPalette" style="display:none;">
+        <label for="colorPalette">Color Palette</label>
+        <select id="colorPalette" name="colorPalette" oninput="setColorPalette()">
+            <option value="defaultColor">Default</option>
+            <option value="deuteranopia">Deuteranopia</option>
+            <option value="protanopia">Protanopia</option>
+            <option value="tritanopia">Tritanopia</option>
+            <option value="monochrome">Monochrome</option>
+        </select>
+    </div>
+        <!-- fontsize.html -->
+    <div class="has-aria-label-top" aria-label="Font Size">
+        <label class="range" for="fontSize" aria-label="Font Size">
+            <input
+                id="fontSize"
+                type="range" min="8" max="12" step="0.5"
+                oninput="setFontSize()">
+            <output
+                id="fontSizeState"
+                onclick="resetFontSize()"
+                aria-live="polite"
+                >10</output>
+        </label>
+    </div>
+        <!-- baselineStretch.html -->
+    <div id="setBaselineStretch" class="has-aria-label-top" aria-label="Baseline Stretch">
+        <label class="range" for="baselineStretch">
+            <input
+                id="baselineStretch"
+                type="range" min="0.8" max="1.2" step="0.05"
+                oninput="setStretch()"
+                >
+            <output
+                id="baselineStretchState"
+                onclick="resetStretch()"
+                aria-live="polite"
+                >1</output>
+        </label>
+    </div>
+        <!-- OpenDyslexic.html -->
+    <div id="setOpenDyslexic">
+        <input
+            id="OpenDyslexic"
+            type="checkbox"
+            onclick="useOpenDyslexic()"
+            aria-label="Use OpenDyslexic Font"
+            >
+            <label
+                class="has-aria-label-top"
+                for="OpenDyslexic"
+                aria-label="Use OpenDyslexic Font"
+                >
+                <span id="OpenDyslexicState" aria-hidden="true">
+                    <span id="OpenDyslexicIndicator"></span>
+                </span>
+            </label>
+    </div>
+        <!-- menu.html -->
+    <menu
+        id="a11y-menu"
+        class="hide"
+        role="toolbar"
+        aria-label="Accessibility Menu Controls"
+        >
+        <button
+            id="saveButton" class="reverse"
+            onclick="saveA11y()"
+            disabled>Save
+        </button>
+        <button
+            id="resetButton" class="has-aria-label"
+            onclick="resetA11y()"
+            aria-label="Reset"
+            disabled>
+        </button>
+        <button
+            id="closeButton" class="has-aria-label"
+            onclick="closeA11yConsole()"
+            aria-label="Close"
+            >
+        </button>
+    </menu>
+        <noscript>
+            <center id="noScript" role="alert">Uh-oh... Javascript is disabled!</center>
+        </noscript>
+        <center id="noLocalStorage" class="hide" role="alert">LocalStorage is not available in your browser. Settings won&#39;t be saved.</center>
+    </fieldset>
+    <div class="screening js-cpn" role="presentation" aria-hidden="true"></div>
+</details>
+
+
+    <!-- bionread.html -->
+    <div id="useBionRead" class="hide">
+        <input
+            id="bionReadSwitch"
+            accesskey="b" type="checkbox"
+            onclick="bionRead()"
+            aria-keyshortcuts="b"
+            aria-label="BionRead Mode"
+            >
+            <label id="bionReadButton" for="bionReadSwitch">
+                <span><strong>Bion</strong>Read</span>
+                <kbd class="key">b</kbd>
+            </label>
+    </div>
+    <!-- [top] bypass block -->
+    <nav aria-label="[i18n] bypassNavigation">
+        <a id="to-top" href="#top" title="To Content Top" accesskey="c" aria-keyshortcuts="c" aria-label="To Content Top">
+            <kbd class="key">c</kbd>
+        </a>
+    </nav>
+</footer>
+
+    
+    <!-- [post] single.html -->
+    <div id="bionReadSnapshot" hidden></div>
+    <!-- [background] baseof.html -->
+    <div id="background-body"
+        role="presentation">
+        <div id="grain" hidden></div>
+        <div id="dwclock" hidden>
+            <div id="min">
+                <div class="hand"></div>
+            </div>
+            <div id="hour">
+                <div class="hand"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

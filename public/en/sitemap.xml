@@ -1,0 +1,84 @@
+
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://localhost:1313/hugo-brewm/en/slide1/</loc>
+    
+    </url>
+  <url>
+    <loc>http://localhost:1313/hugo-brewm/en/slide2/</loc>
+    
+    </url>
+  <url>
+    <loc>http://localhost:1313/hugo-brewm/en/slide3/</loc>
+    
+    </url>
+  <url>
+    <loc>http://localhost:1313/hugo-brewm/en/</loc>
+    <lastmod>2025-02-05T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/hugo-brewm/en/categories/</loc>
+    <lastmod>2025-02-05T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/hugo-brewm/en/categories/dokumentation/</loc>
+    <lastmod>2025-02-05T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/hugo-brewm/en/tags/methodik/</loc>
+    <lastmod>2025-02-05T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/hugo-brewm/en/tags/modell/</loc>
+    <lastmod>2025-02-05T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/hugo-brewm/en/tags/multimodal/</loc>
+    <lastmod>2025-02-05T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/hugo-brewm/en/posts/</loc>
+    <lastmod>2025-02-05T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/hugo-brewm/en/tags/prism/</loc>
+    <lastmod>2025-02-05T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/hugo-brewm/en/posts/ablation/</loc>
+    <lastmod>2025-02-05T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/hugo-brewm/en/posts/method/</loc>
+    <lastmod>2025-02-05T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/hugo-brewm/en/posts/modell/</loc>
+    <lastmod>2025-02-05T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/hugo-brewm/en/tags/</loc>
+    <lastmod>2025-02-05T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/hugo-brewm/en/tags/evaluierung/</loc>
+    <lastmod>2025-01-26T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/hugo-brewm/en/posts/ergbenis_prism/</loc>
+    <lastmod>2025-01-26T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/hugo-brewm/en/tags/trainingsszenario/</loc>
+    <lastmod>2025-01-26T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/hugo-brewm/en/posts/szenarien/</loc>
+    <lastmod>2025-01-26T00:00:00+00:00</lastmod>
+    </url>
+  <url>
+    <loc>http://localhost:1313/hugo-brewm/en/tags/utd/</loc>
+    <lastmod>2025-01-26T00:00:00+00:00</lastmod>
+    </url>
+</urlset>

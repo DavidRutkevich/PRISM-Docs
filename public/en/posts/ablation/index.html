@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><script src="/hugo-brewm/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=hugo-brewm/livereload" data-no-instant defer></script>
+    <!-- head.html -->
+    <!-- meta.html -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRISM – Ablation |  PRISM</title>
+    <meta name="author" content="David Rutkevich">
+    <meta name="description" content="Eine Ablation der PRISM Methode und kurze Kommentare und Anmerkungen." >
+    <meta name="keywords" content="Modell,PRISM" >
+    <link rel="canonical" href="http://localhost:1313/hugo-brewm/en/posts/ablation/" >
+    
+    
+        <!-- _meta.html -->
+
+<meta property="og:url" content="http://localhost:1313/hugo-brewm/en/posts/ablation/">
+    <meta property="og:site_name" content=" PRISM">
+    <meta property="og:title" content="PRISM – Ablation |  PRISM">
+    <meta name="twitter:title" content="PRISM – Ablation |  PRISM">
+    <meta property="og:description" content="Eine Ablation der PRISM Methode und kurze Kommentare und Anmerkungen.">
+    <meta name="twitter:description" content="Eine Ablation der PRISM Methode und kurze Kommentare und Anmerkungen.">
+    <meta property="og:locale" content="en">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-02-05T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-02-05T00:00:00+00:00">
+    <meta property="article:tag" content="Modell,PRISM">
+  <meta name="twitter:card" content="summary">
+
+
+
+
+    <!-- js.html -->
+    <script src="http://localhost:1313/hugo-brewm/js/hugo-brewm.min.js" defer></script><!-- css.html -->
+    <link rel="stylesheet" href="http://localhost:1313/hugo-brewm/css/hugo-brewm.min.css">
+    <style>body {max-width: 786px; margin: auto; padding: 2rem;}img {max-width: 86vw;}</style>
+    
+    
+    
+    <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+</head>
+<body  id="post" >
+    <!-- header.html -->
+<header class="pagewidth">
+    <div id="background-header" class="background" aria-hidden="true"></div>
+    
+    <nav aria-label="Bypass Navigation">
+        <a id="to-content" class="underline" href="#content" aria-label="Skip to Main Content">
+            <span>Skip to Main Content</span>
+            <kbd class="key" aria-hidden="true">c</kbd>
+            <span class="screening" aria-hidden="true"></span>
+        </a>
+    </nav>
+    
+        <a id="logo" href="http://localhost:1313/hugo-brewm/en/" aria-label=" PRISM">
+                <!-- logotype.html --><svg id="logotype" xmlns="http://www.w3.org/2000/svg" version="1.1" width="168pt">
+            <text id="logotype__text" y="19.5pt" x="0"> PRISM</text>
+        </svg>
+        </a>
+    
+    <details class="presentation" id="top-nav">
+        <summary class="on-deck">
+            <span class="t t2">Navigation</span>
+            <span class="menu-icon" role="presentation"></span>
+        </summary>
+        <nav tabindex="-1" aria-label="Top Nav">
+            <!-- menu.html -->
+            
+            <!-- menu.html -->
+            <!-- i18n.html -->
+
+
+        </nav>
+        <div id="top-nav-screen" class="screening js-cpn" role="presentation" aria-hidden="true"></div>
+    </details>
+</header>
+    
+    <!-- [main] baseof.html -->
+    <main id="page">
+        <!-- main/header.html -->
+        <header class="pagewidth">
+            
+            <!-- menu.html -->
+    <menu role="presentation">
+        <li>
+            <a id="print-button" class="hide" href="javascript:window.print()" title="Print" role="button" aria-label="Print">
+                <span class="t" role="tooltip">Print</span>
+            </a>
+        </li>
+        <li>
+            <a id="navigatorShare" href="#share" title="Share" role="button" aria-label="Share">
+                <span class="t" role="tooltip">Share</span>
+            </a>
+        </li>
+        <li>
+            <a id="copyPermalink" class="hide" href="javascript:navigator.clipboard.writeText(window.location.href)" title="Copy Url" role="button" aria-label="Copy Url">
+                <span class="t" role="tooltip">Copy Url</span>
+            </a>
+        </li>
+    </menu>
+    <button id="back" class="hide" type="button" onclick="history.back();" aria-label="Zurück">
+        <span class="t" role="tooltip">Zurück</span>
+    </button>
+            
+                <!-- nav.html -->
+<details class="presentation" aria-expanded="true" id="has-breadcrumb" open>
+    <summary id="breadcrumb" tabindex="-1">
+        <span>Breadcrumb</span>
+    </summary>
+        <nav aria-labelledby="breadcrumb">
+            <ul role="presentation" class="breadcrumb">
+                    <!-- breadcrumb.html -->
+        <li>
+            <a href="http://localhost:1313/hugo-brewm/en/posts/" aria-current="true">Posts
+            </a>
+        </li>
+    <li>
+        <a href="" aria-current="page" tabindex="-1">PRISM – Ablation
+        </a>
+    </li>
+            </ul>
+        </nav>
+</details>
+        </header>
+        <div id="top" role="presentation">
+            
+        </div>
+        
+    <article id="main-article" class="pagewidth"
+        role="document" aria-labelledby="title"
+            data-pagefind-body>
+        
+        <header class="textwidth" aria-labelledby="title">
+            <!-- title.html -->
+        <hgroup data-bionRead-safe>
+            <h1 id="title"
+                    data-pagefind-meta="title"
+                >PRISM – Ablation</h1>
+            <p  class="subtitle"
+                role="doc-subtitle">Eine Ablation der PRISM Methode und kurze Kommentare und Anmerkungen.</p>
+        </hgroup>
+            <div id="doc-author" class="textsw author">
+                
+                    <span>David Rutkevich</span>
+            </div>
+            <!-- timestamp.html-->
+    <div >
+        <time class="doc-publish-date" datetime="2025-02-05T00:00:00&#43;00:00" data-time-label="Published on">February 5, 2025</time>
+    </div>
+        </header>
+        <!-- audio.html -->
+        <section aria-labelledby="Title" id="content" data-bionRead-safe>
+                <h1 id="ablationsstudie-zu-prism">Ablationsstudie zu PRISM</h1>
+<p>In diesem Abschnitt betrachten wir die Ablationsstudie, um die Wirkung einzelner Komponenten sowie verschiedener Distanz- und Hyperparameter-Einstellungen von PRISM genauer zu untersuchen. Die Ablation ist entscheidend, um nachvollziehen zu können, welche Teilschritte in der <strong>Methodik</strong> den stärksten Einfluss auf das Endergebnis haben und wie sich das Zusammenspiel einzelner Module auswirkt.</p>
+<hr>
+<h2 id="1-komponenten-ablation">1. Komponenten-Ablation</h2>
+<p>Im Folgenden betrachten wir zunächst die einzelnen Bausteine von PRISM. Dazu dient die Tabelle <strong>Komponenten Ablation auf BraTS2020 und MyoPS2020</strong>. Die Zeilen unterscheiden sich darin, ob sie den <strong>pixelweisen Distillation-Term</strong> $\ell_{\text{pixel}}$, den <strong>Prototyp-basierten Term</strong> $\ell_{\text{proto}}$, die <strong>Rebalancierungsmaske</strong> $\omega$ und/oder den <strong>gradientengewichteten Koeffizienten</strong> $E$ aktivieren. Aus der Tabelle geht hervor, wie jeder dieser Bausteine die Ergebnisse jeweils verbessert.</p>
+<table>
+  <caption>Komponenten Ablation auf BraTS2020 und MyoPS2020.</caption>
+  <thead>
+    <tr>
+      <th colspan="4" rowspan="2">Komponenten</th>
+      <th colspan="8">BraTS2020 FR=(0.2, 0.4, 0.6, 0.8)</th>
+      <th colspan="8">MyoPS2020 FR=(0.3,0.5,0.7)</th>
+    </tr>
+    <tr>
+      <th colspan="4">DICE [%] ↑</th>
+      <th colspan="4">HD [mm] ↓</th>
+      <th colspan="4">DICE [%] ↑</th>
+      <th colspan="4">HD [mm] ↓</th>
+    </tr>
+    <tr>
+      <th>L<sub>pixel</sub></th>
+      <th>L<sub>proto</sub></th>
+      <th>ω</th>
+      <th>E</th>
+      <th>WT</th>
+      <th>TC</th>
+      <th>ET</th>
+      <th>Avg.</th>
+      <th>WT</th>
+      <th>TC</th>
+      <th>ET</th>
+      <th>Avg.</th>
+      <th>LVB</th>
+      <th>RVB</th>
+      <th>MYO</th>
+      <th>Avg.</th>
+      <th>LVB</th>
+      <th>RVB</th>
+      <th>MYO</th>
+      <th>Avg.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>○</td>
+      <td>○</td>
+      <td>○</td>
+      <td>○</td>
+      <td>80.03</td>
+      <td>68.26</td>
+      <td>50.29</td>
+      <td>66.19</td>
+      <td>27.06</td>
+      <td>22.30</td>
+      <td>13.09</td>
+      <td>20.82</td>
+      <td>77.69</td>
+      <td>56.94</td>
+      <td>71.81</td>
+      <td>68.81</td>
+      <td>19.38</td>
+      <td>22.62</td>
+      <td>21.32</td>
+      <td>21.11</td>
+    </tr>
+    <tr>
+      <td>●</td>
+      <td>○</td>
+      <td>○</td>
+      <td>○</td>
+      <td>83.67</td>
+      <td>70.47</td>
+      <td>51.67</td>
+      <td>68.60</td>
+      <td>12.61</td>
+      <td>12.62</td>
+      <td>9.40</td>
+      <td>11.54</td>
+      <td>80.72</td>
+      <td>53.60</td>
+      <td>77.02</td>
+      <td>70.45</td>
+      <td>14.29</td>
+      <td>28.73</td>
+      <td>18.52</td>
+      <td>20.51</td>
+    </tr>
+    <tr>
+      <td>○</td>
+      <td>●</td>
+      <td>○</td>
+      <td>○</td>
+      <td>82.30</td>
+      <td>69.96</td>
+      <td>52.19</td>
+      <td>68.15</td>
+      <td>19.11</td>
+      <td>18.22</td>
+      <td>10.99</td>
+      <td>16.11</td>
+      <td>78.75</td>
+      <td>57.25</td>
+      <td>74.13</td>
+      <td>70.04</td>
+      <td>15.43</td>
+      <td>26.79</td>
+      <td>16.25</td>
+      <td>19.49</td>
+    </tr>
+    <tr>
+      <td>●</td>
+      <td>●</td>
+      <td>○</td>
+      <td>○</td>
+      <td>83.39</td>
+      <td>70.37</td>
+      <td>52.15</td>
+      <td>68.64</td>
+      <td>12.59</td>
+      <td>13.85</td>
+      <td>9.25</td>
+      <td>11.90</td>
+      <td>80.89</td>
+      <td>57.69</td>
+      <td>76.99</td>
+      <td>71.86</td>
+      <td>12.79</td>
+      <td>25.64</td>
+      <td>13.10</td>
+      <td>17.18</td>
+    </tr>
+    <tr>
+      <td>●</td>
+      <td>●</td>
+      <td>●</td>
+      <td>○</td>
+      <td>83.73</td>
+      <td>71.10</td>
+      <td>52.03</td>
+      <td>68.95</td>
+      <td>12.48</td>
+      <td>12.80</td>
+      <td>9.35</td>
+      <td>11.54</td>
+      <td>80.52</td>
+      <td>59.61</td>
+      <td>76.36</td>
+      <td>72.16</td>
+      <td>13.25</td>
+      <td>21.55</td>
+      <td>13.22</td>
+      <td>16.01</td>
+    </tr>
+    <tr>
+      <td>●</td>
+      <td>●</td>
+      <td>●</td>
+      <td>●</td>
+      <td><strong>83.91</strong></td>
+      <td><strong>71.15</strong></td>
+      <td><strong>52.77</strong></td>
+      <td><strong>69.28</strong></td>
+      <td><strong>11.92</strong></td>
+      <td><strong>11.78</strong></td>
+      <td><strong>8.42</strong></td>
+      <td><strong>10.71</strong></td>
+      <td><strong>81.44</strong></td>
+      <td><strong>60.97</strong></td>
+      <td><strong>77.44</strong></td>
+      <td><strong>73.28</strong></td>
+      <td><strong>11.36</strong></td>
+      <td><strong>20.49</strong></td>
+      <td><strong>11.64</strong></td>
+      <td><strong>14.50</strong></td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="11-pixel--vs-prototyp-basierte-distillation">1.1 Pixel- vs. Prototyp-basierte Distillation</h3>
+<ul>
+<li><strong>Pixelweise Selbstdistillation</strong> ($\ell_{\text{pixel}}$):<br>
+Hier werden die <strong>Logits</strong> des <strong>multimodalen Modells</strong> und des <strong>unimodalen</strong> Teilmodells verglichen. Dies glättet die lokalen Klassifikationsgrenzen und verbessert die Dice-Werte merklich (vgl. Zeile „●○○○“ gegenüber „○○○○“).</li>
+<li><strong>Prototyp-basierte Selbstdistillation</strong> ($\ell_{\text{proto}}$):<br>
+Mit Hilfe prototypischer Klassenrepräsentationen werden <strong>globale</strong> semantische Informationen zwischen multi- und unimodalen Pfaden ausgetauscht. Dies steigert unter anderem die Genauigkeit der Segmentierungsgrenzen und reduziert die HD (Hausdorff-Distanz).</li>
+</ul>
+<h3 id="12-präferenzbasierte-rebalancierung">1.2 Präferenzbasierte Rebalancierung</h3>
+<ul>
+<li><strong>Maske</strong> $\omega$ (Spalte &ldquo;ω&rdquo;):<br>
+Entscheidet, ob eine Modalität bei negativer relativer Präferenz ($RP^m_n$) zusätzlich verstärkt wird. Das heißt: <strong>vernachlässigte</strong> Modalitäten werden gezielt gefördert.</li>
+<li><strong>Gradientengewichteter Koeffizient</strong> $E$ (Spalte &ldquo;E&rdquo;):<br>
+Dieser wird dynamisch an den Mittelwert der relativen Präferenzen angepasst. Modalitäten mit besonders hoher Fehlrate oder geringem Lerneffekt erhalten dadurch eine höhere Gewichtung im Training.</li>
+</ul>
+<p>In der Tabelle erkennen wir, dass erst <strong>mit allen Komponenten</strong> (Zeile „●●●●“) die besten Ergebnisse für alle Metriken (DICE und HD) erzielt werden. Insbesondere steigern sich die <strong>durchschnittlichen Dice-Werte</strong> im Vergleich zur Baseline (erster Eintrag, „○○○○“) deutlich, und die Hausdorff-Distanz sinkt spürbar.</p>
+<hr>
+<h2 id="2-vergleich-verschiedener-distanzmethoden">2. Vergleich verschiedener Distanzmethoden</h2>
+<p>Als Nächstes untersuchen wir in einer separaten Ablation, wie sich unterschiedliche Distanzbegriffe oder Loss-Funktionen auf die <strong>Distillation</strong> auswirken. Dafür liegen folgende Einträge vor:</p>
+<ul>
+<li><strong>Keine</strong>: Keine zusätzliche Distanzbestrafung (nur Baseline).</li>
+<li><strong>Dice Loss</strong>: Statt prototypischer Abgleichung wird ein Würfelkoeffizient-basiertes Matching genutzt.</li>
+<li><strong>KL Loss</strong>: Kullback-Leibler-Divergenz zwischen Lehrer- und Schülerlogits.</li>
+<li><strong>Proto Loss</strong>: Prototyp-basierte Distanz ohne explizite L2-Strafterm-Variante.</li>
+<li><strong>L2-Proto-Distance</strong>: Unsere finale Implementierung der <strong>L2-basierten Prototyp-Distanz</strong>.</li>
+</ul>
+<table>
+  <caption>Vergleich der Distanzmethoden</caption>
+  <thead>
+    <tr>
+      <th rowspan="2">Distanz</th>
+      <th colspan="4">Dice [%]</th>
+      <th colspan="4">HD [mm]</th>
+    </tr>
+    <tr>
+      <th>WT</th>
+      <th>TC</th>
+      <th>ET</th>
+      <th>Avg.</th>
+      <th>WT</th>
+      <th>TC</th>
+      <th>ET</th>
+      <th>Avg.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Keine</td>
+      <td>83.39</td>
+      <td>70.37</td>
+      <td>52.15</td>
+      <td>68.64</td>
+      <td>12.59</td>
+      <td>13.85</td>
+      <td>9.25</td>
+      <td>11.90</td>
+    </tr>
+    <tr>
+      <td>Dice Loss</td>
+      <td>83.37</td>
+      <td>70.53</td>
+      <td>52.12</td>
+      <td>68.67</td>
+      <td>13.22</td>
+      <td>12.42</td>
+      <td>8.72</td>
+      <td>11.45</td>
+    </tr>
+    <tr>
+      <td>KL Loss</td>
+      <td>83.56</td>
+      <td>70.58</td>
+      <td>51.89</td>
+      <td>68.68</td>
+      <td>12.97</td>
+      <td>12.21</td>
+      <td>8.85</td>
+      <td>11.34</td>
+    </tr>
+    <tr>
+      <td>Proto Loss</td>
+      <td>83.55</td>
+      <td>71.31</td>
+      <td>52.44</td>
+      <td>69.10</td>
+      <td>13.69</td>
+      <td>12.78</td>
+      <td>8.14</td>
+      <td>11.54</td>
+    </tr>
+    <tr>
+      <td>L2-Proto-Distance</td>
+      <td>83.91</td>
+      <td>71.15</td>
+      <td>52.77</td>
+      <td>69.28</td>
+      <td>11.92</td>
+      <td>11.78</td>
+      <td>8.42</td>
+      <td>10.71</td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="21-analyse">2.1 Analyse</h3>
+<ul>
+<li><strong>„Keine“</strong> (Baseline):<br>
+Liefert bereits solide Dice-Werte, zeigt jedoch eine <strong>höhere</strong> mittlere HD (11.90).</li>
+<li><strong>Dice Loss</strong> oder <strong>KL Loss</strong>:<br>
+Beide erreichen ähnliche Werte, wobei der Dice Loss hier (68.67 avg. Dice) minimal besser abschneidet als KL bei ET, aber die HD ist schwankend.</li>
+<li><strong>Proto Loss</strong>:<br>
+Zeigt eine Steigerung der Dice-Werte (besonders in TC: 71.31). Allerdings bleibt die <strong>HD</strong> in WT und TC etwas höher.</li>
+<li><strong>L2-Proto-Distance</strong>:<br>
+Dieses Verfahren erzielt den besten Gesamtwert (69.28 avg. Dice und 10.71 avg. HD). Die Kombination aus lokalem und globalem Matching (Prototypen + L2) führt also zu einer stabileren Repräsentation.</li>
+</ul>
+<p>Mit anderen Worten: Die prototypische Repräsentation vergleicht Klassenmittelwerte und Pixel-Features im <strong>Feature-Raum</strong> und nutzt hierbei eine L2-Norm, um Abweichungen zu minimieren. So werden <strong>inter-</strong> und <strong>intra-klassenbezogene</strong> Unterschiede deutlicher regularisiert.</p>
+<hr>
+<h2 id="3-einfluss-des-hyperparameters-λ">3. Einfluss des Hyperparameters λ</h2>
+<p>In einer weiteren Ablation betrachten wir den Einfluss von $\lambda$ (Lambda). Dieser Parameter steuert, <strong>wie stark</strong> sich die präferenzbasierte Rebalancierung (insbesondere beim Gradientenabstieg) auswirkt.</p>
+<table>
+  <caption>Hyperparameter λ – Auswirkung auf DICE und HD</caption>
+  <thead>
+    <tr>
+      <th rowspan="2">λ</th>
+      <th colspan="4">DICE [%]</th>
+      <th colspan="4">HD [mm]</th>
+    </tr>
+    <tr>
+      <th>WT</th>
+      <th>TC</th>
+      <th>ET</th>
+      <th>Avg.</th>
+      <th>WT</th>
+      <th>TC</th>
+      <th>ET</th>
+      <th>Avg.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>83.01</td>
+      <td>69.12</td>
+      <td>51.82</td>
+      <td>67.98</td>
+      <td>14.5</td>
+      <td>13.03</td>
+      <td>8.73</td>
+      <td>12.09</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>83.51</td>
+      <td>70.63</td>
+      <td>51.91</td>
+      <td>68.68</td>
+      <td>12.22</td>
+      <td>12.17</td>
+      <td>8.07</td>
+      <td>10.82</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>83.66</td>
+      <td>70.99</td>
+      <td>52.46</td>
+      <td>69.04</td>
+      <td>11.8</td>
+      <td>10.87</td>
+      <td>8.01</td>
+      <td>10.23</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>83.91</td>
+      <td>71.15</td>
+      <td>52.77</td>
+      <td>69.28</td>
+      <td>12.59</td>
+      <td>13.85</td>
+      <td>8.42</td>
+      <td>11.62</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>82.73</td>
+      <td>69.8</td>
+      <td>52.43</td>
+      <td>68.32</td>
+      <td>14.06</td>
+      <td>12.95</td>
+      <td>9</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="31-interpretation">3.1 Interpretation</h3>
+<ul>
+<li><strong>Geringe Werte (λ = 1, 2)</strong>:<br>
+Man erkennt, dass bei zu kleinem $\lambda$ die Rebalancierung eher schwach ausfällt, wodurch besonders seltene Modalitäten nicht genügend verstärkt werden. Dies zeigt sich in leicht schlechteren Dice-Werten (67.98 bis 68.68) und höheren HDs (zwischen 10.82 und 12.09).</li>
+<li><strong>Optimale Werte (λ = 3, 4)</strong>:<br>
+Hier sieht man <strong>Steigerungen</strong> im Dice (bis zu 69.28) bei akzeptabler HD. Besonders $\lambda=4$ liefert einen guten Kompromiss zwischen DICE und HD.</li>
+<li><strong>Hohe Werte (λ = 5)</strong>:<br>
+Die Lernraten-Anpassung kann zu stark werden, was Overcompensation bewirkt. Die Dice-Werte fallen wieder (68.32), und die HD steigt.</li>
+</ul>
+<p>Daraus lässt sich schlussfolgern, dass $\lambda$ – abhängig vom Datensatz, der Modalitätsverteilung und weiteren Hyperparametern – gut <strong>abgestimmt</strong> werden muss, um die <strong>Effekte der Rebalancierung</strong> weder zu unterschätzen noch zu übersteuern.</p>
+<hr>
+<h2 id="4-fazit-der-ablationen">4. Fazit der Ablationen</h2>
+<ol>
+<li>
+<p><strong>Komponenten-Betrachtung:</strong></p>
+<ul>
+<li>Die Kombination aus pixelweiser und prototypbasierter Distillation führt zu einer deutlich verbesserten Segmentierung.</li>
+<li>Die Einführung der präferenzbasierten Rebalancierung ($\omega$ &amp; $E$) ist besonders relevant, wenn einige Modalitäten hohe Fehlraten aufweisen oder seltener verfügbar sind.</li>
+</ul>
+</li>
+<li>
+<p><strong>Distanzmethoden:</strong></p>
+<ul>
+<li>Ein prototypbasierter Abgleich (L2-Proto) schlägt herkömmliche Verfahren wie Dice- oder KL-basiertes Matching in den meisten Metriken.</li>
+<li>Global-semantische Informationen (Prototypen) ergänzen lokale Pixelinformationen ideal, was in einer höheren Robustheit gegenüber unbalancierten Szenarien resultiert.</li>
+</ul>
+</li>
+<li>
+<p><strong>Hyperparameter λ:</strong></p>
+<ul>
+<li>Die Rebalancierungsintensität muss <strong>weder zu schwach noch zu stark</strong> ausfallen. Im Bereich von $\lambda = 3$ oder 4 erzielen wir typischerweise die besten Ergebnisse.</li>
+<li>Eine zu starke Gewichtung kann zu Overcompensation führen, während eine zu geringe Gewichtung kaum etwas an der Modalitätsimbalance ändert.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Gesamtfazit:</strong><br>
+Die Ablationen demonstrieren die Wirksamkeit der in der <strong>Methodik</strong> (PRISM) eingeführten Module: Die Multi-Uni Selbstdistillation bringt eine engere Kopplung zwischen mono- und multimodalen Repräsentationen, während das präferenzbasierte Lernraten-Management sicherstellt, dass alle Modalitäten – auch seltene oder schwache – angemessen in das Endmodell einfließen. Die passenden Distanzfunktionen und Hyperparameter sind dabei entscheidend, um ein <strong>ausgewogenes</strong> und zugleich <strong>leistungsstarkes</strong> Training zu erreichen.</p>
+<pre tabindex="0"><code></code></pre>
+        </section>
+        <footer>
+            
+    <div id="keywords">
+        <span>Tags:&nbsp;</span>
+        
+        <!-- terms.html -->
+    <ul class="delimiter" role="presentation">
+            <li><a href="http://localhost:1313/hugo-brewm/en/tags/modell/">Modell</a></li>
+            <li><a href="http://localhost:1313/hugo-brewm/en/tags/prism/">Prism</a></li>
+    </ul>
+    </div>
+        </footer>
+    </article>
+    <hr class="hide" style="margin: 1in 0;">
+    <div id="contentinfo" class="pagewidth" role="contentinfo" data-pagefind-ignore="all">
+        <!-- related.html -->
+    <nav id="related">
+        <strong class="section-title">You might also like</strong><ol>
+                    <li><a href="http://localhost:1313/hugo-brewm/en/posts/modell/">PRISM – Modellübersicht</a></li>
+                    <li><a href="http://localhost:1313/hugo-brewm/en/posts/method/">PRISM – Einfach erklärt</a></li>
+                    <li><a href="http://localhost:1313/hugo-brewm/en/posts/ergbenis_prism/">PRISM - Evaluierung</a></li>
+                </ol>
+    </nav>
+        <!-- history.html -->
+        <!-- colophon.html -->
+    <div id="colophon" style="display: none;" aria-live="polite">
+        <strong class="section-title">Kolophon</strong>
+        <div class="f">
+            <div id="qr" role="img" aria-label="QR code"></div>
+            <div class="verbose">
+                <div class="has-aria-label-top" aria-label="PRISM – Ablation"><span>http://localhost:1313/hugo-brewm/en/posts/ablation/</span></div>
+                <div><span>This page is accessed on: </span><time id="time-stamp"></time></div>
+                <div><span>Diese Seite wurde zuletzt aktualisiert am: </span><time datetime="2025-02-07T16:50:56&#43;01:00">2025-02-07T16:50:56&#43;01:00</time></div>
+                
+            </div>
+        </div>
+    </div>
+        
+        <!-- nav.html -->
+<details class="presentation" aria-expanded="true" id="has-share" open>
+    <summary id="share" tabindex="-1">
+        <span>Share</span>
+    </summary>
+        <nav aria-labelledby="share">
+            <ul role="presentation" class="share">
+                    <!-- share.html -->
+    <li id="has-mastodon">
+        <!-- mastodon.html -->
+    <form class="form" id="mastodon" action="//sharetomastodon.github.io/" target="_blank" rel="noopener noreferrer">
+        <input id="mastodonTitle" type="hidden" name="title" value="PRISM – Ablation">
+        <input id="mastodonPermalink" type="hidden" name="url" value="http://localhost:1313/hugo-brewm/en/posts/ablation/">
+        <input id="mastodonText" type="hidden" name="text" value="PRISM – Ablation http://localhost:1313/hugo-brewm/en/posts/ablation/" disabled>
+        <input id="mastodonInstance" type="url" class="ldots form__input" placeholder="Enter Mastodon instance (https://www.example.com)" aria-label="Mastodon instance URL">
+        <button class="form__button" type="submit" aria-label="Share on Mastodon">
+            <i class="icon mastodon" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Mastodon</span>
+        </button>
+    </form>
+    </li>
+    <li>
+        <a href="mailto:?subject=PRISM%20%e2%80%93%20Ablation&body=http%3a%2f%2flocalhost%3a1313%2fhugo-brewm%2fen%2fposts%2fablation%2f" title="Email" role="button" aria-label="Email">
+            <i class="email" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Email</span>
+        </a>
+    </li>
+    <li>
+        <a href="whatsapp://send?text=PRISM%20%e2%80%93%20Ablation%20http%3a%2f%2flocalhost%3a1313%2fhugo-brewm%2fen%2fposts%2fablation%2f" title="[i18n] whatsapp" role="button" aria-label="[i18n] whatsapp">
+            <i class="whatsapp" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Whatsapp</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://telegram.me/share/url?text=PRISM%20%e2%80%93%20Ablation&amp;url=http://localhost:1313/hugo-brewm/en/posts/ablation/" role="button"
+            aria-label="Share on Telegram in new tab">
+            <i class="telegram" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Telegram</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://bsky.app/intent/compose?text=PRISM%20%e2%80%93%20Ablation&amp;url=http://localhost:1313/hugo-brewm/en/posts/ablation/" role="button"
+            aria-label="Share on Bluesky in new tab">
+            <i class="bluesky" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Bluesky</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://facebook.com/sharer/sharer.php?u=http://localhost:1313/hugo-brewm/en/posts/ablation/" role="button"
+            aria-label="Share on Facebook in new tab">
+            <i class="facebook" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Facebook</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://news.ycombinator.com/submitlink?u=http://localhost:1313/hugo-brewm/en/posts/ablation/&amp;t=PRISM%20%e2%80%93%20Ablation" role="button"
+            aria-label="Share on Hackernews in new tab">
+            <i class="hackernews" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Hackernews</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/hugo-brewm/en/posts/ablation/&amp;title=PRISM%20%e2%80%93%20Ablation&amp;summary=PRISM%20%e2%80%93%20Ablation&amp;source=http://localhost:1313/hugo-brewm/en/posts/ablation/" role="button"
+            aria-label="Share on Linkedin in new tab">
+            <i class="linkedin" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Linkedin</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://pinterest.com/pin/create/button/?url=http://localhost:1313/hugo-brewm/en/posts/ablation/&amp;media=http://localhost:1313/hugo-brewm/en/posts/ablation/&amp;description=PRISM%20%e2%80%93%20Ablation" role="button"
+            aria-label="Share on Pinterest in new tab">
+            <i class="pinterest" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Pinterest</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://reddit.com/submit/?url=http://localhost:1313/hugo-brewm/en/posts/ablation/&amp;resubmit=true&amp;title=PRISM%20%e2%80%93%20Ablation" role="button"
+            aria-label="Share on Reddit in new tab">
+            <i class="reddit" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Reddit</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=PRISM%20%e2%80%93%20Ablation&amp;caption=PRISM%20%e2%80%93%20Ablation&amp;content=http://localhost:1313/hugo-brewm/en/posts/ablation/&amp;canonicalUrl=http://localhost:1313/hugo-brewm/en/posts/ablation/" role="button"
+            aria-label="Share on Tumblr in new tab">
+            <i class="tumblr" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Tumblr</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="http://vk.com/share.php?title=PRISM%20%e2%80%93%20Ablation&amp;url=http://localhost:1313/hugo-brewm/en/posts/ablation/" role="button"
+            aria-label="Share on Vk in new tab">
+            <i class="vk" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Vk</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://twitter.com/intent/tweet/?text=PRISM%20%e2%80%93%20Ablation&amp;url=http://localhost:1313/hugo-brewm/en/posts/ablation/" role="button"
+            aria-label="Share on Twitter in new tab">
+            <i class="twitter" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Twitter</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://www.xing.com/app/user?op=share;url=http://localhost:1313/hugo-brewm/en/posts/ablation/;title=PRISM%20%e2%80%93%20Ablation" role="button"
+            aria-label="Share on Xing in new tab">
+            <i class="xing" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Xing</span>
+        </a>
+    </li>
+            </ul>
+        </nav>
+</details>
+        <!-- fediverse.html -->
+    </div>
+        <!-- main/footer.html -->
+    
+    </main>
+    <!-- footer.html -->
+<footer id="body-footer" class="pagewidth" style="display: none;">
+    <div id="background-footer" class="background" role="presentation"></div>
+    <!-- a11y.html --><details id="has-a11y" class="presentation js-details" name="on-deck" aria-haspopup="true" aria-labelledby="has-a11y-summary">
+    <summary id="has-a11y-summary" accesskey="a" aria-keyshortcuts="a">
+        <span>&nbsp;Accessibility</span>
+        <kbd class="key">a</kbd>
+    </summary>
+    <!-- a11y console -->
+    <fieldset id="a11y" role="region" disabled>
+        <!-- brightness & contrast -->
+        <div id="setColorScheme" role="group" aria-label="Color Settings">
+            <!-- darkMode.html -->
+    <input
+        id="lightSwitch"
+        type="checkbox"
+        onclick="setColor()"
+        aria-label="Dark Mode"
+        checked>
+        <label for="lightSwitch">
+            <div class="has-aria-label on" role="status" aria-label="Light"></div>
+            <div class="has-aria-label off" role="status" aria-label="Dark"></div>
+            <div id="lightSwitchIndicator" aria-hidden="true"></div>
+        </label>
+            <!-- contrast.html -->
+    <fieldset id="setContrast">
+        <legend>Contrast</legend>
+        <input
+            id="lessContrast"
+            type="radio" name="setContrast" value="less"
+            onclick="setColor()"
+            >
+            <label for="lessContrast">
+                <span>Low</span>
+            </label>
+        <input
+            id="defaultContrast"
+            type="radio" name="setContrast" value="default"
+            onclick="setColor()"
+            >
+            <label for="defaultContrast">
+                <span>Default</span>
+            </label>
+        <input
+            id="moreContrast"
+            type="radio" name="setContrast" value="more"
+            onclick="setColor()"
+            >
+            <label for="moreContrast">
+                <span>High</span>
+            </label>
+    </fieldset>
+        </div>
+        <!-- colorPalette.html -->
+    <div id="setColorPalette" style="display:none;">
+        <label for="colorPalette">Color Palette</label>
+        <select id="colorPalette" name="colorPalette" oninput="setColorPalette()">
+            <option value="defaultColor">Default</option>
+            <option value="deuteranopia">Deuteranopia</option>
+            <option value="protanopia">Protanopia</option>
+            <option value="tritanopia">Tritanopia</option>
+            <option value="monochrome">Monochrome</option>
+        </select>
+    </div>
+        <!-- fontsize.html -->
+    <div class="has-aria-label-top" aria-label="Font Size">
+        <label class="range" for="fontSize" aria-label="Font Size">
+            <input
+                id="fontSize"
+                type="range" min="8" max="12" step="0.5"
+                oninput="setFontSize()">
+            <output
+                id="fontSizeState"
+                onclick="resetFontSize()"
+                aria-live="polite"
+                >10</output>
+        </label>
+    </div>
+        <!-- baselineStretch.html -->
+    <div id="setBaselineStretch" class="has-aria-label-top" aria-label="Baseline Stretch">
+        <label class="range" for="baselineStretch">
+            <input
+                id="baselineStretch"
+                type="range" min="0.8" max="1.2" step="0.05"
+                oninput="setStretch()"
+                >
+            <output
+                id="baselineStretchState"
+                onclick="resetStretch()"
+                aria-live="polite"
+                >1</output>
+        </label>
+    </div>
+        <!-- OpenDyslexic.html -->
+    <div id="setOpenDyslexic">
+        <input
+            id="OpenDyslexic"
+            type="checkbox"
+            onclick="useOpenDyslexic()"
+            aria-label="Use OpenDyslexic Font"
+            >
+            <label
+                class="has-aria-label-top"
+                for="OpenDyslexic"
+                aria-label="Use OpenDyslexic Font"
+                >
+                <span id="OpenDyslexicState" aria-hidden="true">
+                    <span id="OpenDyslexicIndicator"></span>
+                </span>
+            </label>
+    </div>
+        <!-- menu.html -->
+    <menu
+        id="a11y-menu"
+        class="hide"
+        role="toolbar"
+        aria-label="Accessibility Menu Controls"
+        >
+        <button
+            id="saveButton" class="reverse"
+            onclick="saveA11y()"
+            disabled>Save
+        </button>
+        <button
+            id="resetButton" class="has-aria-label"
+            onclick="resetA11y()"
+            aria-label="Reset"
+            disabled>
+        </button>
+        <button
+            id="closeButton" class="has-aria-label"
+            onclick="closeA11yConsole()"
+            aria-label="Close"
+            >
+        </button>
+    </menu>
+        <noscript>
+            <center id="noScript" role="alert">Uh-oh... Javascript is disabled!</center>
+        </noscript>
+        <center id="noLocalStorage" class="hide" role="alert">LocalStorage is not available in your browser. Settings won&#39;t be saved.</center>
+    </fieldset>
+    <div class="screening js-cpn" role="presentation" aria-hidden="true"></div>
+</details>
+
+
+    <!-- bionread.html -->
+    <div id="useBionRead" class="hide">
+        <input
+            id="bionReadSwitch"
+            accesskey="b" type="checkbox"
+            onclick="bionRead()"
+            aria-keyshortcuts="b"
+            aria-label="BionRead Mode"
+            >
+            <label id="bionReadButton" for="bionReadSwitch">
+                <span><strong>Bion</strong>Read</span>
+                <kbd class="key">b</kbd>
+            </label>
+    </div>
+    <!-- [top] bypass block -->
+    <nav aria-label="[i18n] bypassNavigation">
+        <a id="to-top" href="#top" title="To Content Top" accesskey="c" aria-keyshortcuts="c" aria-label="To Content Top">
+            <kbd class="key">c</kbd>
+        </a>
+    </nav>
+</footer>
+
+    
+    <!-- [post] single.html -->
+    <div id="bionReadSnapshot" hidden></div>
+    <!-- [background] baseof.html -->
+    <div id="background-body"
+        role="presentation">
+        <div id="grain" hidden></div>
+        <div id="dwclock" hidden>
+            <div id="min">
+                <div class="hand"></div>
+            </div>
+            <div id="hour">
+                <div class="hand"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Example</title>
+    <link>http://localhost:1313/hugo-brewm/it/tags/</link>
+    <description>Recent Posts in Tags on Example</description>
+    <generator>Hugo 0.143.0</generator>
+    <language>it-IT</language>
+    <managingEditor>email@example.com (Author Name)</managingEditor>
+    <webMaster>email@example.com (Author Name)</webMaster>
+    <copyright>Copyright (c) Foxxi</copyright>
+    <lastBuildDate>Wed, 05 Feb 2025 16:09:48 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/hugo-brewm/it/tags/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

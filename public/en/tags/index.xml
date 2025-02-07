@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on  PRISM</title>
+    <link>http://localhost:1313/hugo-brewm/en/tags/</link>
+    <description>Recent Posts in Tags on  PRISM</description>
+    <generator>Hugo 0.143.0</generator>
+    <language>en</language>
+    <managingEditor>rutkevich.david@gmail.com (David Rutkevich)</managingEditor>
+    <webMaster>rutkevich.david@gmail.com (David Rutkevich)</webMaster>
+    <copyright>Copyright (c) David Rutkevich</copyright>
+    <lastBuildDate>Fri, 07 Feb 2025 16:50:56 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/hugo-brewm/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Methodik</title>
+      <link>http://localhost:1313/hugo-brewm/en/tags/methodik/</link>
+      <pubDate>Wed, 05 Feb 2025 00:00:00 +0000</pubDate>
+      <author>rutkevich.david@gmail.com (David Rutkevich)</author>
+      <guid>http://localhost:1313/hugo-brewm/en/tags/methodik/</guid>
+      <description></description>
+      
+    </item>
+    <item>
+      <title>Modell</title>
+      <link>http://localhost:1313/hugo-brewm/en/tags/modell/</link>
+      <pubDate>Wed, 05 Feb 2025 00:00:00 +0000</pubDate>
+      <author>rutkevich.david@gmail.com (David Rutkevich)</author>
+      <guid>http://localhost:1313/hugo-brewm/en/tags/modell/</guid>
+      <description></description>
+      
+    </item>
+    <item>
+      <title>Multimodal</title>
+      <link>http://localhost:1313/hugo-brewm/en/tags/multimodal/</link>
+      <pubDate>Wed, 05 Feb 2025 00:00:00 +0000</pubDate>
+      <author>rutkevich.david@gmail.com (David Rutkevich)</author>
+      <guid>http://localhost:1313/hugo-brewm/en/tags/multimodal/</guid>
+      <description></description>
+      
+    </item>
+    <item>
+      <title>PRISM</title>
+      <link>http://localhost:1313/hugo-brewm/en/tags/prism/</link>
+      <pubDate>Wed, 05 Feb 2025 00:00:00 +0000</pubDate>
+      <author>rutkevich.david@gmail.com (David Rutkevich)</author>
+      <guid>http://localhost:1313/hugo-brewm/en/tags/prism/</guid>
+      <description></description>
+      
+    </item>
+    <item>
+      <title>Evaluierung</title>
+      <link>http://localhost:1313/hugo-brewm/en/tags/evaluierung/</link>
+      <pubDate>Sun, 26 Jan 2025 00:00:00 +0000</pubDate>
+      <author>rutkevich.david@gmail.com (David Rutkevich)</author>
+      <guid>http://localhost:1313/hugo-brewm/en/tags/evaluierung/</guid>
+      <description></description>
+      
+    </item>
+    <item>
+      <title>Trainingsszenario</title>
+      <link>http://localhost:1313/hugo-brewm/en/tags/trainingsszenario/</link>
+      <pubDate>Sun, 26 Jan 2025 00:00:00 +0000</pubDate>
+      <author>rutkevich.david@gmail.com (David Rutkevich)</author>
+      <guid>http://localhost:1313/hugo-brewm/en/tags/trainingsszenario/</guid>
+      <description></description>
+      
+    </item>
+    <item>
+      <title>UTD</title>
+      <link>http://localhost:1313/hugo-brewm/en/tags/utd/</link>
+      <pubDate>Sun, 26 Jan 2025 00:00:00 +0000</pubDate>
+      <author>rutkevich.david@gmail.com (David Rutkevich)</author>
+      <guid>http://localhost:1313/hugo-brewm/en/tags/utd/</guid>
+      <description></description>
+      
+    </item>
+  </channel>
+</rss>

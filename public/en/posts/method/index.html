@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><script src="/hugo-brewm/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=hugo-brewm/livereload" data-no-instant defer></script>
+    <!-- head.html -->
+    <!-- meta.html -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRISM – Einfach erklärt |  PRISM</title>
+    <meta name="author" content="David Rutkevich">
+    <meta name="description" content="Übersichtliche Erläuterung zur Problemdefinition, Multi-Uni-Selbstdistillation und präferenzbasierten Regulierung in PRISM." >
+    <meta name="keywords" content="PRISM,Methodik" >
+    <link rel="canonical" href="http://localhost:1313/hugo-brewm/en/posts/method/" >
+    
+    
+        <!-- _meta.html -->
+
+<meta property="og:url" content="http://localhost:1313/hugo-brewm/en/posts/method/">
+    <meta property="og:site_name" content=" PRISM">
+    <meta property="og:title" content="PRISM – Einfach erklärt |  PRISM">
+    <meta name="twitter:title" content="PRISM – Einfach erklärt |  PRISM">
+    <meta property="og:description" content="Übersichtliche Erläuterung zur Problemdefinition, Multi-Uni-Selbstdistillation und präferenzbasierten Regulierung in PRISM.">
+    <meta name="twitter:description" content="Übersichtliche Erläuterung zur Problemdefinition, Multi-Uni-Selbstdistillation und präferenzbasierten Regulierung in PRISM.">
+    <meta property="og:locale" content="en">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-02-05T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-02-05T00:00:00+00:00">
+    <meta property="article:tag" content="PRISM,Methodik">
+  <meta name="twitter:card" content="summary">
+
+
+
+
+    <!-- js.html -->
+    <script src="http://localhost:1313/hugo-brewm/js/hugo-brewm.min.js" defer></script><!-- css.html -->
+    <link rel="stylesheet" href="http://localhost:1313/hugo-brewm/css/hugo-brewm.min.css">
+    <style>body {max-width: 786px; margin: auto; padding: 2rem;}img {max-width: 86vw;}</style>
+    
+    
+    
+    <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+</head>
+<body  id="post" >
+    <!-- header.html -->
+<header class="pagewidth">
+    <div id="background-header" class="background" aria-hidden="true"></div>
+    
+    <nav aria-label="Bypass Navigation">
+        <a id="to-content" class="underline" href="#content" aria-label="Skip to Main Content">
+            <span>Skip to Main Content</span>
+            <kbd class="key" aria-hidden="true">c</kbd>
+            <span class="screening" aria-hidden="true"></span>
+        </a>
+    </nav>
+    
+        <a id="logo" href="http://localhost:1313/hugo-brewm/en/" aria-label=" PRISM">
+                <!-- logotype.html --><svg id="logotype" xmlns="http://www.w3.org/2000/svg" version="1.1" width="168pt">
+            <text id="logotype__text" y="19.5pt" x="0"> PRISM</text>
+        </svg>
+        </a>
+    
+    <details class="presentation" id="top-nav">
+        <summary class="on-deck">
+            <span class="t t2">Navigation</span>
+            <span class="menu-icon" role="presentation"></span>
+        </summary>
+        <nav tabindex="-1" aria-label="Top Nav">
+            <!-- menu.html -->
+            
+            <!-- menu.html -->
+            <!-- i18n.html -->
+
+
+        </nav>
+        <div id="top-nav-screen" class="screening js-cpn" role="presentation" aria-hidden="true"></div>
+    </details>
+</header>
+    
+    <!-- [main] baseof.html -->
+    <main id="page">
+        <!-- main/header.html -->
+        <header class="pagewidth">
+            
+            <!-- menu.html -->
+    <menu role="presentation">
+        <li>
+            <a id="print-button" class="hide" href="javascript:window.print()" title="Print" role="button" aria-label="Print">
+                <span class="t" role="tooltip">Print</span>
+            </a>
+        </li>
+        <li>
+            <a id="navigatorShare" href="#share" title="Share" role="button" aria-label="Share">
+                <span class="t" role="tooltip">Share</span>
+            </a>
+        </li>
+        <li>
+            <a id="copyPermalink" class="hide" href="javascript:navigator.clipboard.writeText(window.location.href)" title="Copy Url" role="button" aria-label="Copy Url">
+                <span class="t" role="tooltip">Copy Url</span>
+            </a>
+        </li>
+    </menu>
+    <button id="back" class="hide" type="button" onclick="history.back();" aria-label="Zurück">
+        <span class="t" role="tooltip">Zurück</span>
+    </button>
+            
+                <!-- nav.html -->
+<details class="presentation" aria-expanded="true" id="has-breadcrumb" open>
+    <summary id="breadcrumb" tabindex="-1">
+        <span>Breadcrumb</span>
+    </summary>
+        <nav aria-labelledby="breadcrumb">
+            <ul role="presentation" class="breadcrumb">
+                    <!-- breadcrumb.html -->
+        <li>
+            <a href="http://localhost:1313/hugo-brewm/en/posts/" aria-current="true">Posts
+            </a>
+        </li>
+    <li>
+        <a href="" aria-current="page" tabindex="-1">PRISM – Einfach erklärt
+        </a>
+    </li>
+            </ul>
+        </nav>
+</details>
+        </header>
+        <div id="top" role="presentation">
+            
+        </div>
+        
+    <article id="main-article" class="pagewidth"
+        role="document" aria-labelledby="title"
+            data-pagefind-body>
+        
+        <header class="textwidth" aria-labelledby="title">
+            <!-- title.html -->
+        <hgroup data-bionRead-safe>
+            <h1 id="title"
+                    data-pagefind-meta="title"
+                >PRISM – Einfach erklärt</h1>
+            <p  class="subtitle"
+                role="doc-subtitle">Übersichtliche Erläuterung zur Problemdefinition, Multi-Uni-Selbstdistillation und präferenzbasierten Regulierung in PRISM.</p>
+        </hgroup>
+            <div id="doc-author" class="textsw author">
+                
+                    <span>David Rutkevich</span>
+            </div>
+            <!-- timestamp.html-->
+    <div >
+        <time class="doc-publish-date" datetime="2025-02-05T00:00:00&#43;00:00" data-time-label="Published on">February 5, 2025</time>
+    </div>
+        </header>
+        <!-- audio.html -->
+        <section aria-labelledby="Title" id="content" data-bionRead-safe>
+                <h3 id="1-problemdefinition">1. Problemdefinition</h3>
+<p>Stellen wir uns vor, wir haben einen <strong>multimodalen Datensatz</strong> mit $N$ Beispielen (z. B. Patienten). Für jedes Beispiel gibt es bis zu $M$ verschiedene <strong>Modalitäten</strong> (etwa unterschiedliche MRT-Sequenzen). Formal schreiben wir:</p>
+<ul>
+<li><strong>Eingabedaten</strong>: ${x^m_n}_{m=1,\dots,M}$</li>
+<li><strong>Labels</strong>: ${y^m_n}_{m=1,\dots,M}$</li>
+</ul>
+<p>Bei einer <em>Segmentierungsaufgabe</em> möchte man jedem Pixel im Bild (bzw. Volumen) eine Klasse (z. B. „Tumor“ oder „Gesund“) zuordnen. Häufig existiert <strong>eine gemeinsame</strong> Label-Annotierung, d. h. alle Modalitäten eines Patienten teilen sich die gleichen Pixel-Labels. Oder mathematisch:</p>
+<div>
+    
+$$
+y_{n,i} = y^1_{n,i} = y^2_{n,i} = \dots = y^M_{n,i}.
+$$
+
+  </div>
+  
+<p>Doch in der Praxis <strong>fehlen</strong> oft Modalitäten. Um das erfassbar zu machen, definieren wir eine <strong>Indikationsmatrix</strong> $C$ mit den Einträgen:</p>
+<div>
+    
+$$
+C_{nm} =
+\begin{cases}
+1, & \text{wenn Modalität $m$ für Beispiel $n$ vorliegt},\\
+0, & \text{wenn Modalität $m$ fehlt}.
+\end{cases}
+$$
+
+  </div>
+  
+<p>Die <em>Fehlrate</em> einer Modalität $m$ sagt dann aus, wie oft diese im Datensatz fehlt. Wir nennen sie $ \textit{FR}^m $:</p>
+<div>
+    
+$$
+\textit{FR}^m = \frac{N - \sum_{n=1}^N C_{nm}}{N}.
+$$
+
+  </div>
+  
+<p>Wenn $\textit{FR}^m$ nahe 1 ist, dann ist diese Modalität fast immer abwesend.</p>
+<hr>
+<h3 id="2-unvollständige-multimodale-segmentierungs-baseline">2. Unvollständige Multimodale Segmentierungs-Baseline</h3>
+<p>Viele aktuelle Forschungsarbeiten (z. B. \cite{dingDyh127RFNet2024}) verwenden ein Schema, bei dem <strong>jeder Modalität</strong> ein eigener Encoder $E_m$ zugeordnet wird. Anschließend werden die Feature-Karten in einem <strong>gemeinsamen Decoder</strong> $D_f$ zusammengeführt. Damit kann das Modell alle verfügbaren Informationen fusionieren.</p>
+<ul>
+<li><strong>Notation</strong>:<br>
+$ z^l_n = D_f^l(x_n) $ bezeichnet die zusammengeführten Merkmale aus \emph{allen} Modalitäten (falls vorhanden).<br>
+$ z^{m,l}_n = D_f^l(x^m_n) $ bezeichnet die Merkmale nur der Modalität $m$.</li>
+</ul>
+<p>Für die Segmentierung nutzt man häufig eine Kombination aus <strong>Dice</strong>- und <strong>Cross-Entropy</strong>-Verlust. Man kann es sich vereinfacht so vorstellen:</p>
+<div>
+    
+$$
+L_{\text{Obj.}} 
+= 
+\sum_{l=0}^{L}
+  \ell_{\mathit{dice+ce}}(\text{Up}_{2^l}(z^l_n),\,y_n)
++
+\sum_{m=1}^{M}
+  \ell_{\mathit{dice+ce}}(z^{m,0}_n,\,y_n).
+$$
+
+  </div>
+  
+<ul>
+<li>Erster Teil (links): <strong>Segmentierung</strong> selbst (ggf. mit „Deep Supervision“).</li>
+<li>Zweiter Teil (rechts): <strong>Regulierung</strong> jedes Encoders, damit jeder Modalitätspfad solide trainiert wird.</li>
+</ul>
+<p><strong>UTD-Problem</strong>: Fehlt eine Modalität ($C_{nm}=0$), erhält diese beim Training kein Update. Modalitäten mit hoher Fehlrate ($\textit{FR}^m \approx 1$) werden somit kaum berücksichtigt, was zu einer <em>Ungleichverteilung</em> führt.</p>
+<hr>
+<h3 id="3-multi-uni-selbstdistillierung">3. Multi-Uni Selbstdistillierung</h3>
+<p>Um <strong>alle</strong> Modalitäten einzubeziehen, selbst wenn manche selten oder gar nicht da sind, setzt <strong>PRISM</strong> auf <em>Selbstdistillation</em>. Das heißt:</p>
+<ol>
+<li><strong>Multimodaler Pfad</strong> (Decoder) = „Lehrer“</li>
+<li><strong>Unimodale Pfade</strong> (einzelne Encoder-Ausgänge) = „Schüler“</li>
+</ol>
+<p>Damit kann das Modell sein eigenes Lehrer-Schüler-System in sich tragen, ohne dass wir ein zweites „Lehrer-Netz“ brauchen.</p>
+<h4 id="a-pixel-ebene">(a) Pixel-Ebene</h4>
+<p>Wir schauen uns die <em>Logits</em> der unimodalen Ausgänge $z_n^{m,l}$ an und vergleichen sie mit den Logits der multimodalen Fusion $z_n^l$. Das geschieht mittels Kullback-Leibler-Divergenz und einer Temperatur $\mu$. Einfach gesagt: Wir bringen die Vorhersage der Einzelfeeds (unimodale „Schüler“) näher an die Vorhersage des gemeinsamen „Lehrers“.</p>
+<div>
+    
+$$
+L_{\text{pixel}}^m 
+= 
+\sum_{l=0}^{L}
+  KL\Bigl[
+    \sigma\bigl(z_n^{m,l}/\mu\bigr)
+    \,\big\|\,
+    \sigma\bigl(z_n^l/\mu\bigr)
+  \Bigr].
+$$
+
+  </div>
+  
+<h4 id="b-semantik-ebene-prototypen">(b) Semantik-Ebene (Prototypen)</h4>
+<p>Neben Pixel-Logits können „globale“ Klassenzentren (Prototypen) helfen. Für jede Klasse $k$ mitteln wir die Features aller zugehörigen Pixel. So entsteht ein Lehrer-Prototyp $c^t_{n,k}$ und ein Schüler-Prototyp $c^{m,s}_{n,k}$. Je nachdem, wie sehr diese Prototypen abweichen, gibt es einen Distillations-Verlust:</p>
+<div>
+    
+$$
+L_{\text{proto}}^m
+=
+\sum_i \sum_{k=1}^K
+\Bigl\|
+  S_{n,k}^{m,s}(i)
+  -
+  S_{n,k}^t(i)
+\Bigr\|_2^2.
+$$
+
+  </div>
+  
+<p>Wenn ein unimodaler Pfad weit weg von der „multimodalen Sicht“ ist, wird er im Training stärker angepasst.</p>
+<hr>
+<h3 id="4-präferenzbewusste-regularisierung">4. Präferenzbewusste Regularisierung</h3>
+<p>Leider kann es passieren, dass Modalitäten mit wenigen Daten trotz Distillation untergehen. Deshalb braucht es noch eine „Präferenz“:</p>
+<ul>
+<li>Wir messen, wie gut oder schlecht eine Modalität $m$ im Vergleich zu den anderen abschneidet.</li>
+<li><em>Vernachlässigte</em> Modalitäten werden gezielt gestärkt.</li>
+<li><em>Dominante</em> Modalitäten werden eher gedrosselt, damit sie nicht alle anderen überstimmen.</li>
+</ul>
+<p>Dazu definiert PRISM eine <strong>relative Präferenz</strong> $RP_n^m$. Die Idee: Wenn Modalität $m$ bei Beispiel $n$ eine große Abweichung zum Lehrer hat, deutet das auf Vernachlässigung hin. Das wird mathematisch so ausgedrückt:</p>
+<div>
+    
+$$
+RP_n^m 
+= 
+1 
+- 
+\frac{D_n^m}{\bar{D}_n}.
+$$
+
+  </div>
+  
+<ul>
+<li>$D_n^m$ = semantische Distanz der Modalität $m$ zum Lehrer</li>
+<li>$\bar{D}_n$ = Durchschnitt dieser Distanzen über alle verfügbaren Modalitäten</li>
+</ul>
+<p>Liegt $RP_n^m &lt; 0$, bekommt Modalität $m$ im Distillationsterm mehr Gewicht. Liegt $RP_n^m &gt; 0$, wird sie etwas „gebremst“.</p>
+<hr>
+<h3 id="5-gesamter-prism-loss">5. Gesamter PRISM-Loss</h3>
+<p>Kombiniert man <strong>Selbstdistillation</strong> (Pixel + Prototyp) mit <strong>Präferenzregulierung</strong>, erhält man den finalen Trainings-Loss:</p>
+<div>
+    
+$$
+L 
+= 
+L_{\text{seg}}
++
+\sum_{\substack{m=1,\dots,M \\ C_{nm}=1}}
+\Bigl(
+  \gamma_1 \,E^m\, L_{\text{pixel}}^m
+  +
+  \gamma_2 \,\omega_n^m\, L_{\text{proto}}^m
+\Bigr),
+$$
+
+  </div>
+  
+<ul>
+<li>$L_{\text{seg}}$: Standard-Segmentierung (Dice+CE).</li>
+<li>$L_{\text{pixel}}^m$, $L_{\text{proto}}^m$: Distillation-Verluste (lokal + semantisch).</li>
+<li>$E^m, \omega_n^m$: Dynamische Faktoren, die die Lernrate für Modalität $m$ anpassen.</li>
+<li>$\gamma_1, \gamma_2$: Gewichtungen.</li>
+</ul>
+<hr>
+<h3 id="6-plug-and-play-charakter">6. Plug-and-Play-Charakter</h3>
+<p><strong>PRISM</strong> ist so entwickelt, dass man es leicht zu bestehenden Segmentierungsnetzwerken (z. B. U-Net, Transformers) hinzufügen kann. Das Grundprinzip:</p>
+<ol>
+<li><strong>Encoder</strong> pro Modalität (ggf. wegfallen, wenn Modalität nicht vorhanden).</li>
+<li><strong>Ein gemeinsamer Decoder</strong> als Lehrer-Pfad.</li>
+<li><strong>Unimodale Ausgänge</strong> als Schüler-Pfade.</li>
+<li><strong>Distillation</strong> (Pixel &amp; Prototyp) + <strong>Präferenz</strong> (dynamische Rebalancierung).</li>
+</ol>
+<p>Dadurch kann PRISM auch bei vielen fehlenden Modalitäten stabil bleiben.</p>
+<hr>
+<h3 id="7-relevanz-in-der-praxis">7. Relevanz in der Praxis</h3>
+<p>In der realen Welt – sei es Medizin, Industrie oder IoT – liegen oft <strong>nicht</strong> immer alle Datentypen komplett vor. Dies nennt man „unvollständige Multimodalität“. Hier glänzt PRISM:</p>
+<ul>
+<li>Es <strong>muss</strong> keine Vollständigkeit annehmen (kein externes Lehrer-Netz).</li>
+<li>Die <strong>lernratebasierte</strong> Präferenzsteuerung verhindert, dass seltene Modalitäten ignoriert werden.</li>
+<li>Das Verfahren ist <strong>modular</strong> und simpel in bestehende Prozesse integrierbar.</li>
+</ul>
+<hr>
+<h3 id="8-fazit">8. Fazit</h3>
+<p><strong>PRISM</strong> liefert eine clevere Kombination aus <em>Selbstdistillation</em> und <em>Präferenzregulierung</em>, um unvollständige Datenquellen bestmöglich zu nutzen. So kann jedes Teilmodell (jede Modalität) das globale Wissen erwerben, ohne dass man teure vollmodale Datensätze oder extra Lehrernetze braucht.</p>
+<p>Kurz: <strong>Ein praktischer Ansatz, um trotz fehlender Daten zuverlässige Segmentierungen zu ermöglichen.</strong></p>
+
+        </section>
+        <footer>
+            
+    <div id="keywords">
+        <span>Tags:&nbsp;</span>
+        
+        <!-- terms.html -->
+    <ul class="delimiter" role="presentation">
+            <li><a href="http://localhost:1313/hugo-brewm/en/tags/prism/">Prism</a></li>
+            <li><a href="http://localhost:1313/hugo-brewm/en/tags/methodik/">Methodik</a></li>
+    </ul>
+    </div>
+        </footer>
+    </article>
+    <hr class="hide" style="margin: 1in 0;">
+    <div id="contentinfo" class="pagewidth" role="contentinfo" data-pagefind-ignore="all">
+        <!-- related.html -->
+    <nav id="related">
+        <strong class="section-title">You might also like</strong><ol>
+                    <li><a href="http://localhost:1313/hugo-brewm/en/posts/ablation/">PRISM – Ablation</a></li>
+                    <li><a href="http://localhost:1313/hugo-brewm/en/posts/modell/">PRISM – Modellübersicht</a></li>
+                    <li><a href="http://localhost:1313/hugo-brewm/en/posts/ergbenis_prism/">PRISM - Evaluierung</a></li>
+                </ol>
+    </nav>
+        <!-- history.html -->
+        <!-- colophon.html -->
+    <div id="colophon" style="display: none;" aria-live="polite">
+        <strong class="section-title">Kolophon</strong>
+        <div class="f">
+            <div id="qr" role="img" aria-label="QR code"></div>
+            <div class="verbose">
+                <div class="has-aria-label-top" aria-label="PRISM – Einfach erklärt"><span>http://localhost:1313/hugo-brewm/en/posts/method/</span></div>
+                <div><span>This page is accessed on: </span><time id="time-stamp"></time></div>
+                <div><span>Diese Seite wurde zuletzt aktualisiert am: </span><time datetime="2025-02-07T16:50:56&#43;01:00">2025-02-07T16:50:56&#43;01:00</time></div>
+                
+            </div>
+        </div>
+    </div>
+        
+        <!-- nav.html -->
+<details class="presentation" aria-expanded="true" id="has-share" open>
+    <summary id="share" tabindex="-1">
+        <span>Share</span>
+    </summary>
+        <nav aria-labelledby="share">
+            <ul role="presentation" class="share">
+                    <!-- share.html -->
+    <li id="has-mastodon">
+        <!-- mastodon.html -->
+    <form class="form" id="mastodon" action="//sharetomastodon.github.io/" target="_blank" rel="noopener noreferrer">
+        <input id="mastodonTitle" type="hidden" name="title" value="PRISM – Einfach erklärt">
+        <input id="mastodonPermalink" type="hidden" name="url" value="http://localhost:1313/hugo-brewm/en/posts/method/">
+        <input id="mastodonText" type="hidden" name="text" value="PRISM – Einfach erklärt http://localhost:1313/hugo-brewm/en/posts/method/" disabled>
+        <input id="mastodonInstance" type="url" class="ldots form__input" placeholder="Enter Mastodon instance (https://www.example.com)" aria-label="Mastodon instance URL">
+        <button class="form__button" type="submit" aria-label="Share on Mastodon">
+            <i class="icon mastodon" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Mastodon</span>
+        </button>
+    </form>
+    </li>
+    <li>
+        <a href="mailto:?subject=PRISM%20%e2%80%93%20Einfach%20erkl%c3%a4rt&body=http%3a%2f%2flocalhost%3a1313%2fhugo-brewm%2fen%2fposts%2fmethod%2f" title="Email" role="button" aria-label="Email">
+            <i class="email" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Email</span>
+        </a>
+    </li>
+    <li>
+        <a href="whatsapp://send?text=PRISM%20%e2%80%93%20Einfach%20erkl%c3%a4rt%20http%3a%2f%2flocalhost%3a1313%2fhugo-brewm%2fen%2fposts%2fmethod%2f" title="[i18n] whatsapp" role="button" aria-label="[i18n] whatsapp">
+            <i class="whatsapp" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Whatsapp</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://telegram.me/share/url?text=PRISM%20%e2%80%93%20Einfach%20erkl%c3%a4rt&amp;url=http://localhost:1313/hugo-brewm/en/posts/method/" role="button"
+            aria-label="Share on Telegram in new tab">
+            <i class="telegram" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Telegram</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://bsky.app/intent/compose?text=PRISM%20%e2%80%93%20Einfach%20erkl%c3%a4rt&amp;url=http://localhost:1313/hugo-brewm/en/posts/method/" role="button"
+            aria-label="Share on Bluesky in new tab">
+            <i class="bluesky" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Bluesky</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://facebook.com/sharer/sharer.php?u=http://localhost:1313/hugo-brewm/en/posts/method/" role="button"
+            aria-label="Share on Facebook in new tab">
+            <i class="facebook" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Facebook</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://news.ycombinator.com/submitlink?u=http://localhost:1313/hugo-brewm/en/posts/method/&amp;t=PRISM%20%e2%80%93%20Einfach%20erkl%c3%a4rt" role="button"
+            aria-label="Share on Hackernews in new tab">
+            <i class="hackernews" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Hackernews</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/hugo-brewm/en/posts/method/&amp;title=PRISM%20%e2%80%93%20Einfach%20erkl%c3%a4rt&amp;summary=PRISM%20%e2%80%93%20Einfach%20erkl%c3%a4rt&amp;source=http://localhost:1313/hugo-brewm/en/posts/method/" role="button"
+            aria-label="Share on Linkedin in new tab">
+            <i class="linkedin" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Linkedin</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://pinterest.com/pin/create/button/?url=http://localhost:1313/hugo-brewm/en/posts/method/&amp;media=http://localhost:1313/hugo-brewm/en/posts/method/&amp;description=PRISM%20%e2%80%93%20Einfach%20erkl%c3%a4rt" role="button"
+            aria-label="Share on Pinterest in new tab">
+            <i class="pinterest" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Pinterest</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://reddit.com/submit/?url=http://localhost:1313/hugo-brewm/en/posts/method/&amp;resubmit=true&amp;title=PRISM%20%e2%80%93%20Einfach%20erkl%c3%a4rt" role="button"
+            aria-label="Share on Reddit in new tab">
+            <i class="reddit" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Reddit</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=PRISM%20%e2%80%93%20Einfach%20erkl%c3%a4rt&amp;caption=PRISM%20%e2%80%93%20Einfach%20erkl%c3%a4rt&amp;content=http://localhost:1313/hugo-brewm/en/posts/method/&amp;canonicalUrl=http://localhost:1313/hugo-brewm/en/posts/method/" role="button"
+            aria-label="Share on Tumblr in new tab">
+            <i class="tumblr" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Tumblr</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="http://vk.com/share.php?title=PRISM%20%e2%80%93%20Einfach%20erkl%c3%a4rt&amp;url=http://localhost:1313/hugo-brewm/en/posts/method/" role="button"
+            aria-label="Share on Vk in new tab">
+            <i class="vk" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Vk</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://twitter.com/intent/tweet/?text=PRISM%20%e2%80%93%20Einfach%20erkl%c3%a4rt&amp;url=http://localhost:1313/hugo-brewm/en/posts/method/" role="button"
+            aria-label="Share on Twitter in new tab">
+            <i class="twitter" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Twitter</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://www.xing.com/app/user?op=share;url=http://localhost:1313/hugo-brewm/en/posts/method/;title=PRISM%20%e2%80%93%20Einfach%20erkl%c3%a4rt" role="button"
+            aria-label="Share on Xing in new tab">
+            <i class="xing" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Xing</span>
+        </a>
+    </li>
+            </ul>
+        </nav>
+</details>
+        <!-- fediverse.html -->
+    </div>
+        <!-- main/footer.html -->
+    
+    </main>
+    <!-- footer.html -->
+<footer id="body-footer" class="pagewidth" style="display: none;">
+    <div id="background-footer" class="background" role="presentation"></div>
+    <!-- a11y.html --><details id="has-a11y" class="presentation js-details" name="on-deck" aria-haspopup="true" aria-labelledby="has-a11y-summary">
+    <summary id="has-a11y-summary" accesskey="a" aria-keyshortcuts="a">
+        <span>&nbsp;Accessibility</span>
+        <kbd class="key">a</kbd>
+    </summary>
+    <!-- a11y console -->
+    <fieldset id="a11y" role="region" disabled>
+        <!-- brightness & contrast -->
+        <div id="setColorScheme" role="group" aria-label="Color Settings">
+            <!-- darkMode.html -->
+    <input
+        id="lightSwitch"
+        type="checkbox"
+        onclick="setColor()"
+        aria-label="Dark Mode"
+        checked>
+        <label for="lightSwitch">
+            <div class="has-aria-label on" role="status" aria-label="Light"></div>
+            <div class="has-aria-label off" role="status" aria-label="Dark"></div>
+            <div id="lightSwitchIndicator" aria-hidden="true"></div>
+        </label>
+            <!-- contrast.html -->
+    <fieldset id="setContrast">
+        <legend>Contrast</legend>
+        <input
+            id="lessContrast"
+            type="radio" name="setContrast" value="less"
+            onclick="setColor()"
+            >
+            <label for="lessContrast">
+                <span>Low</span>
+            </label>
+        <input
+            id="defaultContrast"
+            type="radio" name="setContrast" value="default"
+            onclick="setColor()"
+            >
+            <label for="defaultContrast">
+                <span>Default</span>
+            </label>
+        <input
+            id="moreContrast"
+            type="radio" name="setContrast" value="more"
+            onclick="setColor()"
+            >
+            <label for="moreContrast">
+                <span>High</span>
+            </label>
+    </fieldset>
+        </div>
+        <!-- colorPalette.html -->
+    <div id="setColorPalette" style="display:none;">
+        <label for="colorPalette">Color Palette</label>
+        <select id="colorPalette" name="colorPalette" oninput="setColorPalette()">
+            <option value="defaultColor">Default</option>
+            <option value="deuteranopia">Deuteranopia</option>
+            <option value="protanopia">Protanopia</option>
+            <option value="tritanopia">Tritanopia</option>
+            <option value="monochrome">Monochrome</option>
+        </select>
+    </div>
+        <!-- fontsize.html -->
+    <div class="has-aria-label-top" aria-label="Font Size">
+        <label class="range" for="fontSize" aria-label="Font Size">
+            <input
+                id="fontSize"
+                type="range" min="8" max="12" step="0.5"
+                oninput="setFontSize()">
+            <output
+                id="fontSizeState"
+                onclick="resetFontSize()"
+                aria-live="polite"
+                >10</output>
+        </label>
+    </div>
+        <!-- baselineStretch.html -->
+    <div id="setBaselineStretch" class="has-aria-label-top" aria-label="Baseline Stretch">
+        <label class="range" for="baselineStretch">
+            <input
+                id="baselineStretch"
+                type="range" min="0.8" max="1.2" step="0.05"
+                oninput="setStretch()"
+                >
+            <output
+                id="baselineStretchState"
+                onclick="resetStretch()"
+                aria-live="polite"
+                >1</output>
+        </label>
+    </div>
+        <!-- OpenDyslexic.html -->
+    <div id="setOpenDyslexic">
+        <input
+            id="OpenDyslexic"
+            type="checkbox"
+            onclick="useOpenDyslexic()"
+            aria-label="Use OpenDyslexic Font"
+            >
+            <label
+                class="has-aria-label-top"
+                for="OpenDyslexic"
+                aria-label="Use OpenDyslexic Font"
+                >
+                <span id="OpenDyslexicState" aria-hidden="true">
+                    <span id="OpenDyslexicIndicator"></span>
+                </span>
+            </label>
+    </div>
+        <!-- menu.html -->
+    <menu
+        id="a11y-menu"
+        class="hide"
+        role="toolbar"
+        aria-label="Accessibility Menu Controls"
+        >
+        <button
+            id="saveButton" class="reverse"
+            onclick="saveA11y()"
+            disabled>Save
+        </button>
+        <button
+            id="resetButton" class="has-aria-label"
+            onclick="resetA11y()"
+            aria-label="Reset"
+            disabled>
+        </button>
+        <button
+            id="closeButton" class="has-aria-label"
+            onclick="closeA11yConsole()"
+            aria-label="Close"
+            >
+        </button>
+    </menu>
+        <noscript>
+            <center id="noScript" role="alert">Uh-oh... Javascript is disabled!</center>
+        </noscript>
+        <center id="noLocalStorage" class="hide" role="alert">LocalStorage is not available in your browser. Settings won&#39;t be saved.</center>
+    </fieldset>
+    <div class="screening js-cpn" role="presentation" aria-hidden="true"></div>
+</details>
+
+
+    <!-- bionread.html -->
+    <div id="useBionRead" class="hide">
+        <input
+            id="bionReadSwitch"
+            accesskey="b" type="checkbox"
+            onclick="bionRead()"
+            aria-keyshortcuts="b"
+            aria-label="BionRead Mode"
+            >
+            <label id="bionReadButton" for="bionReadSwitch">
+                <span><strong>Bion</strong>Read</span>
+                <kbd class="key">b</kbd>
+            </label>
+    </div>
+    <!-- [top] bypass block -->
+    <nav aria-label="[i18n] bypassNavigation">
+        <a id="to-top" href="#top" title="To Content Top" accesskey="c" aria-keyshortcuts="c" aria-label="To Content Top">
+            <kbd class="key">c</kbd>
+        </a>
+    </nav>
+</footer>
+
+    
+    <!-- [post] single.html -->
+    <div id="bionReadSnapshot" hidden></div>
+    <!-- [background] baseof.html -->
+    <div id="background-body"
+        role="presentation">
+        <div id="grain" hidden></div>
+        <div id="dwclock" hidden>
+            <div id="min">
+                <div class="hand"></div>
+            </div>
+            <div id="hour">
+                <div class="hand"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

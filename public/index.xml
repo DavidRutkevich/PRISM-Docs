@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <link>//localhost:1313/</link>
+    <description>Recent content on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 03 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>UTD Szenario</title>
+      <link>//localhost:1313/slide1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/slide1/</guid>
+      <description>&lt;p&gt;Im UTD-Szenario (Unvollständige Trainingsdaten) fehlen von vornherein bestimmte Modalitäten und weisen stark unterschiedliche Fehlraten auf. Dieses Setting spiegelt reale Herausforderungen wider, in denen nicht alle Datenquellen vollständig oder in gleicher Qualität vorhanden sind.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Methode</title>
+      <link>//localhost:1313/slide2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/slide2/</guid>
+      <description>&lt;p&gt;PRISM nutzt eine Kombination aus Multi-Uni Selbstdistillierung und präferenzbasierter Regularisierung, um sowohl lokale als auch globale Wissensrepräsentationen zu integrieren. Diese Methode sorgt dafür, dass schwache Modalitäten durch dynamische Lernratenanpassung gestärkt und somit gleichmäßig berücksichtigt werden.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Framework</title>
+      <link>//localhost:1313/slide3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/slide3/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Unvollständige Trainingsdaten-Szenario</title>
+      <link>//localhost:1313/posts/t/</link>
+      <pubDate>Sun, 26 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/t/</guid>
+      <description>&lt;h1 id=&#34;das-utd-szenario--ein-einblick-in-unvollständige-trainingsdaten&#34;&gt;Das UTD-Szenario – Ein Einblick in unvollständige Trainingsdaten&lt;/h1&gt;&#xA;&lt;p&gt;Das UTD-Szenario (Unvollständige Trainingsdaten) spielt eine zentrale Rolle in der modernen Bild- und Datenverarbeitung. In diesem Artikel erklären wir allgemein verständlich, was das UTD-Szenario bedeutet, warum es relevant ist, was daran anders ist, wie es funktioniert und welche Herausforderungen es mit sich bringt.&lt;/p&gt;&#xA;&lt;h2 id=&#34;was-ist-das-utd-szenario&#34;&gt;Was ist das UTD-Szenario?&lt;/h2&gt;&#xA;&lt;p&gt;Im UTD-Szenario fehlen von vornherein bestimmte Datenmodalitäten im Trainingsdatensatz. Das bedeutet, dass nicht alle Informationsquellen – wie zum Beispiel verschiedene Bildsequenzen in der medizinischen Bildgebung – immer verfügbar sind. Ein Beispiel: Während ein vollständiger Datensatz alle MRT-Sequenzen (z. B. FLAIR, T1, T1ce, T2) enthalten würde, fehlen im UTD-Szenario einige dieser Sequenzen systematisch oder treten nur unregelmäßig auf.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

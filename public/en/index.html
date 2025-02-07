@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+	<meta name="generator" content="Hugo 0.143.0"><script src="/hugo-brewm/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=hugo-brewm/livereload" data-no-instant defer></script>
+    <!-- head.html -->
+    <!-- meta.html -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> PRISM</title>
+    <meta name="author" content="David Rutkevich">
+    <meta name="description" content="PRISM Documentation Robust. Adaptive. Plug-and-Play.
+Willkommen zur offiziellen Dokumentation von PRISM – Ihrem innovativen Ansatz zur robusten Segmentierung unvollständiger und unbalancierter multimodaler Daten.
+Was ist PRISM? PRISM kombiniert Multi-Uni Selbstdistillierung mit präferenzbasierter Regularisierung, um sowohl lokale als auch globale Wissensrepräsentationen effektiv zu integrieren. Dabei gleicht es die Dominanz starker Modalitäten aus und stärkt schwächere, seltene Datenquellen – alles in einem modularen, Plug-and-Play-Framework.
+Erleben Sie den Unterschied Robuste Segmentierung: Selbst in Szenarien mit hohem Modalitätsverlust. Dynamische Lernratenanpassung: Ausbalanciert den Einfluss unterschiedlicher Modalitäten. Nahtlose Integration: Einfach in bestehende Architekturen integrierbar, ohne große Änderungen am Framework. Über mich | Dokumentation starten" >
+    <meta name="keywords" content="home" >
+    <link rel="canonical" href="http://localhost:1313/hugo-brewm/en/" >
+    
+    
+        <!-- _meta.html -->
+
+<meta property="og:url" content="http://localhost:1313/hugo-brewm/en/">
+    <meta property="og:site_name" content=" PRISM">
+    <meta property="og:title" content=" PRISM">
+    <meta name="twitter:title" content=" PRISM">
+    <meta property="og:description" content="PRISM Documentation Robust. Adaptive. Plug-and-Play.
+Willkommen zur offiziellen Dokumentation von PRISM – Ihrem innovativen Ansatz zur robusten Segmentierung unvollständiger und unbalancierter multimodaler Daten.
+Was ist PRISM? PRISM kombiniert Multi-Uni Selbstdistillierung mit präferenzbasierter Regularisierung, um sowohl lokale als auch globale Wissensrepräsentationen effektiv zu integrieren. Dabei gleicht es die Dominanz starker Modalitäten aus und stärkt schwächere, seltene Datenquellen – alles in einem modularen, Plug-and-Play-Framework.
+Erleben Sie den Unterschied Robuste Segmentierung: Selbst in Szenarien mit hohem Modalitätsverlust. Dynamische Lernratenanpassung: Ausbalanciert den Einfluss unterschiedlicher Modalitäten. Nahtlose Integration: Einfach in bestehende Architekturen integrierbar, ohne große Änderungen am Framework. Über mich | Dokumentation starten">
+    <meta name="twitter:description" content="PRISM Documentation Robust. Adaptive. Plug-and-Play.
+Willkommen zur offiziellen Dokumentation von PRISM – Ihrem innovativen Ansatz zur robusten Segmentierung unvollständiger und unbalancierter multimodaler Daten.
+Was ist PRISM? PRISM kombiniert Multi-Uni Selbstdistillierung mit präferenzbasierter Regularisierung, um sowohl lokale als auch globale Wissensrepräsentationen effektiv zu integrieren. Dabei gleicht es die Dominanz starker Modalitäten aus und stärkt schwächere, seltene Datenquellen – alles in einem modularen, Plug-and-Play-Framework.
+Erleben Sie den Unterschied Robuste Segmentierung: Selbst in Szenarien mit hohem Modalitätsverlust. Dynamische Lernratenanpassung: Ausbalanciert den Einfluss unterschiedlicher Modalitäten. Nahtlose Integration: Einfach in bestehende Architekturen integrierbar, ohne große Änderungen am Framework. Über mich | Dokumentation starten">
+    <meta property="og:locale" content="en">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/22.svg">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/22.svg">
+
+
+
+
+    <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/hugo-brewm/en/index.xml" title=" PRISM" />
+    <!-- js.html -->
+    <script src="http://localhost:1313/hugo-brewm/js/hugo-brewm.min.js" defer></script><!-- css.html -->
+    <link rel="stylesheet" href="http://localhost:1313/hugo-brewm/css/hugo-brewm.min.css">
+    <style>body {max-width: 786px; margin: auto; padding: 2rem;}img {max-width: 86vw;}</style>
+    <!-- list.html [head] -->
+        <style>
+            body{margin: auto !important;max-width: 2560px !important}body > footer.pagewidth,body > header.pagewidth{padding: 0 calc(1.5rem + 1ex)}body > aside.carousel{position: sticky;position: -webkit-sticky;left: 0;float: left; padding: 1rem;width: 38vw;height: var(--vbody)}body > main#home {height: var(--vbody);overflow-y: auto}body > main#home > aside#list-tags{top: 0;right:0;margin: 1rem auto;width: calc(100% - var(--golden-ratio));}#home #top{padding: 0 1rem}#home #list-posts{padding: 1rem;width: var(--golden-ratio)}div[role="feed"]{padding: 1ex;}.carousel .feed-item,#home .feed-item,hr.ldots{width: unset}#main-footer > .pagewidth {padding: 0 1ex}#duckduckgo,#i18n-menu > .on-plank,#more-menu > .on-plank,.pagefind-ui{margin-right: 1rem}#hasDuckDuckGo.pagewidth{padding-right: 1rem}#grain{display: none;}@media only screen and (max-width: 960px){body > footer,body > header{background: var(--bg)}body > aside.carousel{float: unset;margin: 0 1rem;padding: 1rem 0;width: unset}body > main#home{height: unset;overflow-y: unset}body > main#home > aside#list-tags{top: var(--vhead)}}@media only screen and (max-width: 640px){#main-footer > .pagewidth{padding: 0 calc(var(--void) / 2)}body > main#home > aside#list-tags{padding: unset;width: var(--canonic)}aside #list-posts .feed-item > section{flex-direction: row-reverse;aspect-ratio: 10/3}#home #list-posts{margin: var(--bigskip) auto;padding: unset;width: var(--canonic)}#list-posts .section-title{padding-left: unset}#duckduckgo,.pagefind-ui{margin-right: 1ex}}@media only screen and (max-width: 480px){aside #list-posts .feed-item > section{flex-direction: column;aspect-ratio: unset}}
+        </style>
+    <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+</head>
+<body >
+    <!-- header.html -->
+<header class="pagewidth">
+    <div id="background-header" class="background" aria-hidden="true"></div>
+    
+    <nav aria-label="Bypass Navigation">
+        <a id="to-content" class="underline" href="#list-posts" aria-label="Skip to Main Content">
+            <span>Skip to Main Content</span>
+            <kbd class="key" aria-hidden="true">c</kbd>
+            <span class="screening" aria-hidden="true"></span>
+        </a>
+    </nav>
+    
+        <a id="logo" href="http://localhost:1313/hugo-brewm/en/" aria-label=" PRISM">
+                <!-- logotype.html --><svg id="logotype" xmlns="http://www.w3.org/2000/svg" version="1.1" width="168pt">
+            <text id="logotype__text" y="19.5pt" x="0"> PRISM</text>
+        </svg>
+        </a>
+    
+    <details class="presentation" id="top-nav">
+        <summary class="on-deck">
+            <span class="t t2">Navigation</span>
+            <span class="menu-icon" role="presentation"></span>
+        </summary>
+        <nav tabindex="-1" aria-label="Top Nav">
+            <!-- menu.html -->
+            
+            <!-- menu.html -->
+            <!-- i18n.html -->
+
+
+        </nav>
+        <div id="top-nav-screen" class="screening js-cpn" role="presentation" aria-hidden="true"></div>
+    </details>
+</header>
+    
+        <!-- carousel.html -->
+        <aside class="carousel">
+                <nav class="carousel__nav">
+                    <ul class="rounded invert" role="presentation">
+                            <li>
+                                <a href="#slide-1" role="button" aria-controls="slide-1">
+                                    <span>UTD Szenario</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#slide-2" role="button" aria-controls="slide-2">
+                                    <span>Methode</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#slide-3" role="button" aria-controls="slide-3">
+                                    <span>Framework</span>
+                                </a>
+                            </li>
+                    </ul>
+                </nav>
+
+            <div class="carousel__viewport">
+                    <section id="slide-1" class="carousel__viewport__slide"
+                        aria-labelledby="slide-1__heading">
+                        <div class="carousel__viewport__slide__cover">
+                            <img src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/28.svg"
+                                alt="" >
+                        </div>
+                        <div class="carousel__viewport__slide__content">
+                                <h1 id="slide-1__heading" class="section-title">UTD Szenario</h1>
+                            <div>
+                                    <p>Im UTD-Szenario (Unvollständige Trainingsdaten) fehlen von vornherein bestimmte Modalitäten und weisen stark unterschiedliche Fehlraten auf. Dieses Setting spiegelt reale Herausforderungen wider, in denen nicht alle Datenquellen vollständig oder in gleicher Qualität vorhanden sind.</p>
+
+                            </div>
+                        </div>
+                    </section>
+                    <section id="slide-2" class="carousel__viewport__slide"
+                        aria-labelledby="slide-2__heading">
+                        <div class="carousel__viewport__slide__cover">
+                            <img src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/29.svg"
+                                alt="" loading="lazy">
+                        </div>
+                        <div class="carousel__viewport__slide__content">
+                                <h1 id="slide-2__heading" class="section-title">Methode</h1>
+                            <div>
+                                    <p>PRISM nutzt eine Kombination aus Multi-Uni Selbstdistillierung und präferenzbasierter Regularisierung, um sowohl lokale als auch globale Wissensrepräsentationen zu integrieren. Diese Methode sorgt dafür, dass schwache Modalitäten durch dynamische Lernratenanpassung gestärkt und somit gleichmäßig berücksichtigt werden.</p>
+
+                            </div>
+                        </div>
+                    </section>
+                    <section id="slide-3" class="carousel__viewport__slide"
+                        aria-labelledby="slide-3__heading">
+                        <div class="carousel__viewport__slide__cover">
+                            <img src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/30.svg"
+                                alt="" loading="lazy">
+                        </div>
+                        <div class="carousel__viewport__slide__content">
+                                <h1 id="slide-3__heading" class="section-title">Framework</h1>
+                            <div>
+                                    <!-- Framework-Inhalte werden in Kürze ergänzt -->
+                            </div>
+                        </div>
+                    </section>
+            </div>
+        </aside>
+    <!-- [main] baseof.html -->
+    <main id="home">
+        <!-- main/header.html -->
+        <div id="top" role="presentation">
+            
+                <!-- listing.html -->
+                <!-- listing.html -->
+        <div id="list-categories" class="carousel">
+            <header class="section-title">Kategorien</header>
+            <!-- taxonomies.html -->
+        <ul class="carousel__viewport" role="presentation">
+            
+                    <li  style="background-image:url(https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/39.svg);">
+                        <a href="http://localhost:1313/hugo-brewm/en/categories/dokumentation/"
+                            aria-label="Kategorien:Dokumentation"
+                            data-post-counter="5"
+                            >
+                            <span>Dokumentation</span>
+                        </a>
+                    </li>
+        </ul>
+        </div>
+                
+    <!-- hero.html -->
+    <div class="hero">
+        <div class="hero__image">
+            <img
+                src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/22.svg"
+                alt="Featured image :"
+                role="doc-cover"
+                />
+        </div>
+        <div class="hero__content"><h1 id="prism-documentation">PRISM Documentation</h1>
+<p><strong>Robust. Adaptive. Plug-and-Play.</strong></p>
+<p>Willkommen zur offiziellen Dokumentation von <strong>PRISM</strong> – Ihrem innovativen Ansatz zur robusten Segmentierung unvollständiger und unbalancierter multimodaler Daten.</p>
+<hr>
+<h3 id="was-ist-prism">Was ist PRISM?</h3>
+<p>PRISM kombiniert <strong>Multi-Uni Selbstdistillierung</strong> mit <strong>präferenzbasierter Regularisierung</strong>, um sowohl lokale als auch globale Wissensrepräsentationen effektiv zu integrieren. Dabei gleicht es die Dominanz starker Modalitäten aus und stärkt schwächere, seltene Datenquellen – alles in einem modularen, Plug-and-Play-Framework.</p>
+<hr>
+<h3 id="erleben-sie-den-unterschied">Erleben Sie den Unterschied</h3>
+<ul>
+<li><strong>Robuste Segmentierung:</strong> Selbst in Szenarien mit hohem Modalitätsverlust.</li>
+<li><strong>Dynamische Lernratenanpassung:</strong> Ausbalanciert den Einfluss unterschiedlicher Modalitäten.</li>
+<li><strong>Nahtlose Integration:</strong> Einfach in bestehende Architekturen integrierbar, ohne große Änderungen am Framework.</li>
+</ul>
+<p><a href="https://david-rutkevich.com/">Über mich</a>  |  <a href="categories/dokumentation/">Dokumentation starten</a></p>
+
+        </div>
+    </div>
+
+        </div>
+        
+            <aside id="list-tags">
+                <header class="section-title">
+                    <strong>Schlagwörter</strong>
+                </header>
+                <!-- taxonomies.html -->
+        <ul class="rounded has-hash" role="presentation">
+            
+                    <li  >
+                        <a href="http://localhost:1313/hugo-brewm/en/tags/evaluierung/"
+                            aria-label="Tag:Evaluierung"
+                            data-post-counter="1"
+                            >
+                            <span>Evaluierung</span>
+                        </a>
+                    </li>
+                    <li  >
+                        <a href="http://localhost:1313/hugo-brewm/en/tags/methodik/"
+                            aria-label="Tag:Methodik"
+                            data-post-counter="1"
+                            >
+                            <span>Methodik</span>
+                        </a>
+                    </li>
+                    <li  >
+                        <a href="http://localhost:1313/hugo-brewm/en/tags/modell/"
+                            aria-label="Tag:Modell"
+                            data-post-counter="2"
+                            >
+                            <span>Modell</span>
+                        </a>
+                    </li>
+                    <li  >
+                        <a href="http://localhost:1313/hugo-brewm/en/tags/multimodal/"
+                            aria-label="Tag:Multimodal"
+                            data-post-counter="1"
+                            >
+                            <span>Multimodal</span>
+                        </a>
+                    </li>
+                    <li  >
+                        <a href="http://localhost:1313/hugo-brewm/en/tags/prism/"
+                            aria-label="Tag:PRISM"
+                            data-post-counter="4"
+                            >
+                            <span>Prism</span>
+                        </a>
+                    </li>
+                    <li  >
+                        <a href="http://localhost:1313/hugo-brewm/en/tags/trainingsszenario/"
+                            aria-label="Tag:Trainingsszenario"
+                            data-post-counter="1"
+                            >
+                            <span>Trainingsszenario</span>
+                        </a>
+                    </li>
+                    <li  >
+                        <a href="http://localhost:1313/hugo-brewm/en/tags/utd/"
+                            aria-label="Tag:UTD"
+                            data-post-counter="1"
+                            >
+                            <span>Utd</span>
+                        </a>
+                    </li>
+        </ul>
+                <nav>
+                    <a class="underline" href="http://localhost:1313/hugo-brewm/en/tags/">Explore more topics</a>
+                </nav>
+            </aside>
+    
+        
+            <section id="list-posts" class="pagewidth">
+                <header  class="section-title">
+                    <strong>
+                                Recent Posts
+                    </strong>
+                </header>
+                    <div role="feed" aria-busy="false">
+                        <article class="feed-item"
+        aria-posinset="1"
+        aria-setsize="5"
+        aria-labelledby="title-1"
+        aria-describedby="desc-1">
+        <hgroup>
+            <div>
+                <span><span>David Rutkevich</span>
+                        <span>in</span>
+                            <!-- terms.html -->
+    <ul class="inline" role="presentation">
+            <li><a href="http://localhost:1313/hugo-brewm/en/categories/dokumentation/">Dokumentation</a></li>
+    </ul>
+                        
+                </span>
+                
+                <!-- timestamp.html-->
+    <div >
+        <time class="doc-publish-date" datetime="2025-02-05T00:00:00&#43;00:00" data-time-label="Published on">February 5, 2025</time>
+    </div>
+            </div>
+            <h1 id="title-1">PRISM – Ablation</h1>
+        </hgroup>
+        <a class="underline" href="http://localhost:1313/hugo-brewm/en/posts/ablation/" aria-label="PRISM – Ablation"></a>
+        
+        <section class="has-cover">
+                <img class="flowlines" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/19.svg" alt="" style="object-position: 3% 61%" loading="lazy">
+            <div class="par" id="desc-1">Eine Ablation der PRISM Methode und kurze Kommentare und Anmerkungen.
+            </div>
+        </section>
+        <footer>
+            <span class="readingTime">6 min read
+            </span>
+            
+                <!-- terms.html -->
+    <ul class="rounded invert ldots" role="presentation">
+            <li><a href="http://localhost:1313/hugo-brewm/en/tags/modell/">Modell</a></li>
+            <li><a href="http://localhost:1313/hugo-brewm/en/tags/prism/">Prism</a></li>
+    </ul>
+        </footer>
+    </article><hr class="ldots" role="presentation" aria-hidden="true">
+                        <article class="feed-item"
+        aria-posinset="2"
+        aria-setsize="5"
+        aria-labelledby="title-2"
+        aria-describedby="desc-2">
+        <hgroup>
+            <div>
+                <span><span>David Rutkevich</span>
+                        <span>in</span>
+                            <!-- terms.html -->
+    <ul class="inline" role="presentation">
+            <li><a href="http://localhost:1313/hugo-brewm/en/categories/dokumentation/">Dokumentation</a></li>
+    </ul>
+                        
+                </span>
+                
+                <!-- timestamp.html-->
+    <div >
+        <time class="doc-publish-date" datetime="2025-02-05T00:00:00&#43;00:00" data-time-label="Published on">February 5, 2025</time>
+    </div>
+            </div>
+            <h1 id="title-2">PRISM – Einfach erklärt</h1>
+        </hgroup>
+        <a class="underline" href="http://localhost:1313/hugo-brewm/en/posts/method/" aria-label="PRISM – Einfach erklärt"></a>
+        
+        <section class="has-cover">
+                <img class="flowlines" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/17.svg" alt="" style="object-position: 25% 76%" loading="lazy">
+            <div class="par" id="desc-2">Übersichtliche Erläuterung zur Problemdefinition, Multi-Uni-Selbstdistillation und präferenzbasierten Regulierung in PRISM.
+            </div>
+        </section>
+        <footer>
+            <span class="readingTime">4 min read
+            </span>
+            
+                <!-- terms.html -->
+    <ul class="rounded invert ldots" role="presentation">
+            <li><a href="http://localhost:1313/hugo-brewm/en/tags/prism/">Prism</a></li>
+            <li><a href="http://localhost:1313/hugo-brewm/en/tags/methodik/">Methodik</a></li>
+    </ul>
+        </footer>
+    </article><hr class="ldots" role="presentation" aria-hidden="true">
+                        <article class="feed-item"
+        aria-posinset="3"
+        aria-setsize="5"
+        aria-labelledby="title-3"
+        aria-describedby="desc-3">
+        <hgroup>
+            <div>
+                <span><span>David Rutkevich</span>
+                        <span>in</span>
+                            <!-- terms.html -->
+    <ul class="inline" role="presentation">
+            <li><a href="http://localhost:1313/hugo-brewm/en/categories/dokumentation/">Dokumentation</a></li>
+    </ul>
+                        
+                </span>
+                
+                <!-- timestamp.html-->
+    <div >
+        <time class="doc-publish-date" datetime="2025-02-05T00:00:00&#43;00:00" data-time-label="Published on">February 5, 2025</time>
+    </div>
+            </div>
+            <h1 id="title-3">PRISM – Modellübersicht</h1>
+        </hgroup>
+        <a class="underline" href="http://localhost:1313/hugo-brewm/en/posts/modell/" aria-label="PRISM – Modellübersicht"></a>
+        
+        <section class="has-cover">
+                <img class="flowlines" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/13.svg" alt="" style="object-position: 18% 74%" loading="lazy">
+            <div class="par" id="desc-3">Wie das mehrstufiges Modell aufgebaut ist und wie die einzelnen Teile ineinandergreifen.
+            </div>
+        </section>
+        <footer>
+            <span class="readingTime">4 min read
+            </span>
+            
+                <!-- terms.html -->
+    <ul class="rounded invert ldots" role="presentation">
+            <li><a href="http://localhost:1313/hugo-brewm/en/tags/modell/">Modell</a></li>
+            <li><a href="http://localhost:1313/hugo-brewm/en/tags/multimodal/">Multimodal</a></li>
+            <li><a href="http://localhost:1313/hugo-brewm/en/tags/prism/">Prism</a></li>
+    </ul>
+        </footer>
+    </article><hr class="ldots" role="presentation" aria-hidden="true">
+                        <article class="feed-item"
+        aria-posinset="4"
+        aria-setsize="5"
+        aria-labelledby="title-4"
+        aria-describedby="desc-4">
+        <hgroup>
+            <div>
+                <span><span>David Rutkevich</span>
+                        <span>in</span>
+                            <!-- terms.html -->
+    <ul class="inline" role="presentation">
+            <li><a href="http://localhost:1313/hugo-brewm/en/categories/dokumentation/">Dokumentation</a></li>
+    </ul>
+                        
+                </span>
+                
+                <!-- timestamp.html-->
+    <div >
+        <time class="doc-publish-date" datetime="2025-01-26T00:00:00&#43;00:00" data-time-label="Published on">January 26, 2025</time>
+    </div>
+            </div>
+            <h1 id="title-4">PRISM - Evaluierung</h1>
+        </hgroup>
+        <a class="underline" href="http://localhost:1313/hugo-brewm/en/posts/ergbenis_prism/" aria-label="PRISM - Evaluierung"></a>
+        
+        <section class="has-cover">
+                <img class="flowlines" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/14.svg" alt="" style="object-position: 42% 55%" loading="lazy">
+            <div class="par" id="desc-4">Eine Analyse der Segmentierungsergebnisse bei unvollständigen multimodalen MRT-Daten unter Verwendung der PRISM-Methodik.
+            </div>
+        </section>
+        <footer>
+            <span class="readingTime">3 min read
+            </span>
+            
+                <!-- terms.html -->
+    <ul class="rounded invert ldots" role="presentation">
+            <li><a href="http://localhost:1313/hugo-brewm/en/tags/prism/">Prism</a></li>
+            <li><a href="http://localhost:1313/hugo-brewm/en/tags/evaluierung/">Evaluierung</a></li>
+    </ul>
+        </footer>
+    </article><hr class="ldots" role="presentation" aria-hidden="true">
+                        <article class="feed-item"
+        aria-posinset="5"
+        aria-setsize="5"
+        aria-labelledby="title-5"
+        aria-describedby="desc-5">
+        <hgroup>
+            <div>
+                <span><span>David Rutkevich</span>
+                        <span>in</span>
+                            <!-- terms.html -->
+    <ul class="inline" role="presentation">
+            <li><a href="http://localhost:1313/hugo-brewm/en/categories/dokumentation/">Dokumentation</a></li>
+    </ul>
+                        
+                </span>
+                
+                <!-- timestamp.html-->
+    <div >
+        <time class="doc-publish-date" datetime="2025-01-26T00:00:00&#43;00:00" data-time-label="Published on">January 26, 2025</time>
+    </div>
+            </div>
+            <h1 id="title-5">Unvollständige Trainingsdaten (UTD) in der Multimodalen Segmentierung</h1>
+        </hgroup>
+        <a class="underline" href="http://localhost:1313/hugo-brewm/en/posts/szenarien/" aria-label="Unvollständige Trainingsdaten (UTD) in der Multimodalen Segmentierung"></a>
+        
+        <section class="has-cover">
+                <img class="flowlines" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/11.svg" alt="" style="object-position: 42% 34%" loading="lazy">
+            <div class="par" id="desc-5">Ein Überblick darüber, was UTD ist, warum es wichtig ist, wie man damit umgeht und welche Herausforderungen zu beachten sind.
+            </div>
+        </section>
+        <footer>
+            <span class="readingTime">2 min read
+            </span>
+            
+                <!-- terms.html -->
+    <ul class="rounded invert ldots" role="presentation">
+            <li><a href="http://localhost:1313/hugo-brewm/en/tags/utd/">Utd</a></li>
+            <li><a href="http://localhost:1313/hugo-brewm/en/tags/trainingsszenario/">Trainingsszenario</a></li>
+    </ul>
+        </footer>
+    </article>
+                    </div>
+                    
+            </section>
+        <!-- main/footer.html -->
+    
+    </main>
+    <!-- footer.html -->
+<footer id="body-footer" class="pagewidth" style="display: none;">
+    <div id="background-footer" class="background" role="presentation"></div>
+    <!-- a11y.html --><details id="has-a11y" class="presentation js-details" name="on-deck" aria-haspopup="true" aria-labelledby="has-a11y-summary">
+    <summary id="has-a11y-summary" accesskey="a" aria-keyshortcuts="a">
+        <span>&nbsp;Accessibility</span>
+        <kbd class="key">a</kbd>
+    </summary>
+    <!-- a11y console -->
+    <fieldset id="a11y" role="region" disabled>
+        <!-- brightness & contrast -->
+        <div id="setColorScheme" role="group" aria-label="Color Settings">
+            <!-- darkMode.html -->
+    <input
+        id="lightSwitch"
+        type="checkbox"
+        onclick="setColor()"
+        aria-label="Dark Mode"
+        checked>
+        <label for="lightSwitch">
+            <div class="has-aria-label on" role="status" aria-label="Light"></div>
+            <div class="has-aria-label off" role="status" aria-label="Dark"></div>
+            <div id="lightSwitchIndicator" aria-hidden="true"></div>
+        </label>
+            <!-- contrast.html -->
+    <fieldset id="setContrast">
+        <legend>Contrast</legend>
+        <input
+            id="lessContrast"
+            type="radio" name="setContrast" value="less"
+            onclick="setColor()"
+            >
+            <label for="lessContrast">
+                <span>Low</span>
+            </label>
+        <input
+            id="defaultContrast"
+            type="radio" name="setContrast" value="default"
+            onclick="setColor()"
+            >
+            <label for="defaultContrast">
+                <span>Default</span>
+            </label>
+        <input
+            id="moreContrast"
+            type="radio" name="setContrast" value="more"
+            onclick="setColor()"
+            >
+            <label for="moreContrast">
+                <span>High</span>
+            </label>
+    </fieldset>
+        </div>
+        <!-- colorPalette.html -->
+    <div id="setColorPalette" style="display:none;">
+        <label for="colorPalette">Color Palette</label>
+        <select id="colorPalette" name="colorPalette" oninput="setColorPalette()">
+            <option value="defaultColor">Default</option>
+            <option value="deuteranopia">Deuteranopia</option>
+            <option value="protanopia">Protanopia</option>
+            <option value="tritanopia">Tritanopia</option>
+            <option value="monochrome">Monochrome</option>
+        </select>
+    </div>
+        <!-- fontsize.html -->
+    <div class="has-aria-label-top" aria-label="Font Size">
+        <label class="range" for="fontSize" aria-label="Font Size">
+            <input
+                id="fontSize"
+                type="range" min="8" max="12" step="0.5"
+                oninput="setFontSize()">
+            <output
+                id="fontSizeState"
+                onclick="resetFontSize()"
+                aria-live="polite"
+                >10</output>
+        </label>
+    </div>
+        <!-- baselineStretch.html -->
+    <div id="setBaselineStretch" class="has-aria-label-top" aria-label="Baseline Stretch">
+        <label class="range" for="baselineStretch">
+            <input
+                id="baselineStretch"
+                type="range" min="0.8" max="1.2" step="0.05"
+                oninput="setStretch()"
+                >
+            <output
+                id="baselineStretchState"
+                onclick="resetStretch()"
+                aria-live="polite"
+                >1</output>
+        </label>
+    </div>
+        <!-- OpenDyslexic.html -->
+    <div id="setOpenDyslexic">
+        <input
+            id="OpenDyslexic"
+            type="checkbox"
+            onclick="useOpenDyslexic()"
+            aria-label="Use OpenDyslexic Font"
+            >
+            <label
+                class="has-aria-label-top"
+                for="OpenDyslexic"
+                aria-label="Use OpenDyslexic Font"
+                >
+                <span id="OpenDyslexicState" aria-hidden="true">
+                    <span id="OpenDyslexicIndicator"></span>
+                </span>
+            </label>
+    </div>
+        <!-- menu.html -->
+    <menu
+        id="a11y-menu"
+        class="hide"
+        role="toolbar"
+        aria-label="Accessibility Menu Controls"
+        >
+        <button
+            id="saveButton" class="reverse"
+            onclick="saveA11y()"
+            disabled>Save
+        </button>
+        <button
+            id="resetButton" class="has-aria-label"
+            onclick="resetA11y()"
+            aria-label="Reset"
+            disabled>
+        </button>
+        <button
+            id="closeButton" class="has-aria-label"
+            onclick="closeA11yConsole()"
+            aria-label="Close"
+            >
+        </button>
+    </menu>
+        <noscript>
+            <center id="noScript" role="alert">Uh-oh... Javascript is disabled!</center>
+        </noscript>
+        <center id="noLocalStorage" class="hide" role="alert">LocalStorage is not available in your browser. Settings won&#39;t be saved.</center>
+    </fieldset>
+    <div class="screening js-cpn" role="presentation" aria-hidden="true"></div>
+</details>
+
+
+    <!-- bionread.html -->
+    <div id="useBionRead" class="hide">
+        <input
+            id="bionReadSwitch"
+            accesskey="b" type="checkbox"
+            onclick="bionRead()"
+            aria-keyshortcuts="b"
+            aria-label="BionRead Mode"
+            >
+            <label id="bionReadButton" for="bionReadSwitch">
+                <span><strong>Bion</strong>Read</span>
+                <kbd class="key">b</kbd>
+            </label>
+    </div>
+    <!-- [top] bypass block -->
+    <nav aria-label="[i18n] bypassNavigation">
+        <a id="to-top" href="#top" title="To Content Top" accesskey="c" aria-keyshortcuts="c" aria-label="To Content Top">
+            <kbd class="key">c</kbd>
+        </a>
+    </nav>
+</footer>
+
+    
+    <!-- [background] baseof.html -->
+    <div id="background-body"
+        role="presentation">
+        <div id="grain" hidden></div>
+        <div id="dwclock" hidden>
+            <div id="min">
+                <div class="hand"></div>
+            </div>
+            <div id="hour">
+                <div class="hand"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
