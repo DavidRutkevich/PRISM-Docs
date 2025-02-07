@@ -1,11 +1,15 @@
-[[main]]
-    identifier = "github"
-    name = "GitHub"
-    url = "https://github.com/DavidRutkevich"
-    pre = "github"
-    
-[[main]]
-    identifier = "linkedin"
-    name = "LinkedIn"
-    url = "https://www.linkedin.com/in/davidrutkevich/"
-    pre = "linkedin"
+[[menu.main]]
+    identifier = "about"
+    name = "Über mich"
+
+    [[main]]
+        identifier = "github"
+        name = "GitHub"
+        url = "https://github.com/DavidRutkevich"
+        pre = "github"
+        
+    [[main]]
+        identifier = "linkedin"
+        name = "LinkedIn"
+        url = "https://www.linkedin.com/in/davidrutkevich/"
+        pre = "linkedin"
