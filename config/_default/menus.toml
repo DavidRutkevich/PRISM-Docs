@@ -1,0 +1,11 @@
+[[more]]
+  name       = 'Resources'
+  identifier = 'resources'
+  pageRef    = '/'
+  weight     = 3
+
+[[more]]
+  name       = 'About'
+  identifier = 'about'
+  pageRef    = '/'
+  weight     = 5
