@@ -54,7 +54,7 @@ Wenn $\textit{FR}^m$ nahe 1 ist, dann ist diese Modalität fast immer abwesend.
 Viele aktuelle Forschungsarbeiten (z. B. \cite{dingDyh127RFNet2024}) verwenden ein Schema, bei dem **jeder Modalität** ein eigener Encoder $E_m$ zugeordnet wird. Anschließend werden die Feature-Karten in einem **gemeinsamen Decoder** $D_f$ zusammengeführt. Damit kann das Modell alle verfügbaren Informationen fusionieren.
 
 - **Notation**:  
-  $ z^l_n = D_f^l(x_n) $ bezeichnet die zusammengeführten Merkmale aus \emph{allen} Modalitäten (falls vorhanden).  
+  $ z^l_n = D_f^l(x_n) $ bezeichnet die zusammengeführten Merkmale aus **allen** Modalitäten (falls vorhanden).  
   $ z^{m,l}_n = D_f^l(x^m_n) $ bezeichnet die Merkmale nur der Modalität $m$.  
 
 Für die Segmentierung nutzt man häufig eine Kombination aus **Dice**- und **Cross-Entropy**-Verlust. Man kann es sich vereinfacht so vorstellen:

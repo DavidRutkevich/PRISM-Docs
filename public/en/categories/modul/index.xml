@@ -9,8 +9,17 @@
     <managingEditor>rutkevich.david@gmail.com (David Rutkevich)</managingEditor>
     <webMaster>rutkevich.david@gmail.com (David Rutkevich)</webMaster>
     <copyright>Copyright (c) David Rutkevich</copyright>
-    <lastBuildDate>Sat, 08 Feb 2025 02:27:28 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 08 Feb 2025 15:58:20 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/hugo-brewm/en/categories/modul/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PRISMS – Innovation und Methodik</title>
+      <link>http://localhost:1313/hugo-brewm/en/posts/framework_aufbau/</link>
+      <pubDate>Thu, 06 Feb 2025 00:00:00 +0000</pubDate>
+      <author>rutkevich.david@gmail.com (David Rutkevich)</author>
+      <guid>http://localhost:1313/hugo-brewm/en/posts/framework_aufbau/</guid>
+      <description></description>
+      
+    </item>
     <item>
       <title>PRISM – Ablation</title>
       <link>http://localhost:1313/hugo-brewm/en/posts/ablation/</link>
@@ -35,15 +44,6 @@
       <pubDate>Wed, 05 Feb 2025 00:00:00 +0000</pubDate>
       <author>rutkevich.david@gmail.com (David Rutkevich)</author>
       <guid>http://localhost:1313/hugo-brewm/en/posts/modell/</guid>
-      <description></description>
-      
-    </item>
-    <item>
-      <title>PRISMS - Das Framework</title>
-      <link>http://localhost:1313/hugo-brewm/en/posts/framework_intro/</link>
-      <pubDate>Wed, 05 Feb 2025 00:00:00 +0000</pubDate>
-      <author>rutkevich.david@gmail.com (David Rutkevich)</author>
-      <guid>http://localhost:1313/hugo-brewm/en/posts/framework_intro/</guid>
       <description></description>
       
     </item>

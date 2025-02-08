@@ -7,7 +7,7 @@ draft: false
 translationKey: "prisms_methodik_storytelling"
 coffee: 1
 tags: ['PRISMS','Innovation','Methodik']
-categories: ['Modul']
+categories: ['Framework']
 ---
 
 
@@ -41,7 +41,7 @@ Obwohl mehrere Sensoren gleichzeitig genutzt werden **könnten**, fehlen in der 
   z_i^l = \frac{1}{M_l} \sum_{m=1}^{M_l} h_{i,m}^l,
   ```
   
-  wobei \(h_{i,m}^l\) das Feature der Modalität \(m\) (von insgesamt \(M_l\) verfügbaren Modalitäten) im \(l\)-ten Block beschreibt. Das resultierende \(z_i^l\) spiegelt ein **multiskaliges** Merkmal wider, das – wenn verfügbar – Informationen aus allen Modalitäten enthält.
+  wobei $h_{i,m}^l$ das Feature der Modalität $m$ (von insgesamt $M_l$ verfügbaren Modalitäten) im $l$-ten Block beschreibt. Das resultierende $z_i^l$ spiegelt ein **multiskaliges** Merkmal wider, das – wenn verfügbar – Informationen aus allen Modalitäten enthält.
 
 - **Segmentierung**: Diese gemittelten Features werden anschließend an einen Segmentation-Head weitergegeben, der die semantische Klassifikation vornimmt (z. B. via Pixelwise Prediction).
 
@@ -76,17 +76,17 @@ L_{\text{MAD}}
 \Bigr),
 ```
 
-- \(P_{\text{stud}}^{i,k}\) und \(P_{\text{teach}}^{i,k}\) sind die Wahrscheinlichkeitsvorhersagen (Logits nach Softmax) für Klasse \(k\) an Pixel \(i\).  
+- $P_{\text{stud}}^{i,k}$ und $P_{\text{teach}}^{i,k}$ sind die Wahrscheinlichkeitsvorhersagen (Logits nach Softmax) für Klasse $k$ an Pixel $i$.  
 - Durch die **Kullback-Leibler-Divergenz** wird der Studierende dazu gebracht, die Lehrer-Verteilung nachzuahmen, ungeachtet der aktuell verfügbaren Modalitäten.
 
 ### 3.2 Weighted-Distribution (WD)
-Fehlen in vielen Trainingsiterationen bestimmte Modalitäten, können deren Gewichte leicht „untergehen“. Daher führt PRISMS häufig eine Gewichtung \(\omega_m\) ein:
+Fehlen in vielen Trainingsiterationen bestimmte Modalitäten, können deren Gewichte leicht „untergehen“. Daher führt PRISMS häufig eine Gewichtung $\omega_m$ ein:
 
 ```math
 \omega_m = \frac{1}{1 + \text{FR}^m},
 ```
 
-wobei \(\text{FR}^m\) die Fehlrate (Missing Rate) von Modalität \(m\) angibt. Eine seltene Modalität (\(\text{FR}^m\) nahe 1) erhält so eine **höhere** Lernrate, um in ihren wenigen Vorkommen besonders gut genutzt zu werden.
+wobei $\text{FR}^m$ die Fehlrate (Missing Rate) von Modalität $m$ angibt. Eine seltene Modalität ($\text{FR}^m$ nahe 1) erhält so eine **höhere** Lernrate, um in ihren wenigen Vorkommen besonders gut genutzt zu werden.
 
 ### 3.3 Cross-Modale PRISMS-Distillation
 Neben dem distanzbasierten Vergleich zwischen Lehrer und Student integriert PRISMS eine **cross-modale** Distillation innerhalb des Studentenmodells. Damit lernt jede Modalität, ähnliche Klassendiskriminierung zu liefern. Eine Beispiel-Formel könnte lauten:
@@ -98,9 +98,9 @@ L_{\text{cross}}
 \mathrm{dist}\Bigl(\phi(z^m), \phi(z^{m'})\Bigr),
 ```
 
-- \(z^m\) bezeichnet das Feature aus Modalität \(m\).  
-- \(\mathrm{dist}\) misst die Ähnlichkeit/Differenz (z. B. via Cosine Similarity, KL oder L2).  
-- \(\phi\) ist eine Projektionsebene, z. B. ein MLP oder eine Prototyp-Layer.
+- $z^m$ bezeichnet das Feature aus Modalität $m$.  
+- $\mathrm{dist}$ misst die Ähnlichkeit/Differenz (z. B. via Cosine Similarity, KL oder L2).  
+- $\phi$ ist eine Projektionsebene, z. B. ein MLP oder eine Prototyp-Layer.
 
 Die cross-modale Distillation sorgt dafür, dass alle Modalitäten **konsistent** werden und sich gegenseitig ergänzen können, statt dass eine Modalität das System dominiert.
 
@@ -119,10 +119,10 @@ L_{\text{seg}}
 \lambda_{\text{reg}}\,L_{\text{reg}},
 ```
 
-- \(L_{\text{seg}}\): klassischer Segmentierungsverlust (z. B. Dice + CE).  
-- \(L_{\text{MAD}}\): modalitätsagnostische Distillation vom Lehrer.  
-- \(L_{\text{cross}}\): cross-modale Abstimmung zwischen den Modalitäten des Studenten.  
-- \(L_{\text{reg}}\): optionale Regulierungen (z. B. Weighted-Distribution).
+- $L_{\text{seg}}$: klassischer Segmentierungsverlust (z. B. Dice + CE).  
+- $L_{\text{MAD}}$: modalitätsagnostische Distillation vom Lehrer.  
+- $L_{\text{cross}}$: cross-modale Abstimmung zwischen den Modalitäten des Studenten.  
+- $L_{\text{reg}}$: optionale Regulierungen (z. B. Weighted-Distribution).
 
 ---
 

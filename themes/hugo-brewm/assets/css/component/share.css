@@ -55,12 +55,12 @@
 }
 
 #has-share ul {
+    margin: 0;
+    padding: 0;
     display: flex;
-    position: relative;
-    flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    gap: 6px; /* Adjust as needed */
+    justify-content: flex-start; /* Prevent unnecessary spacing */
 }
 
 #has-share a {
@@ -129,14 +129,19 @@
 #has-share .xing:hover {background: #114C4C}
 
 @media only screen and (max-width: 844px) {
-
     #share {
-        float: unset;
+        float: none;
+        margin: 0;
+        display: inline-block;
     }
+    
 
-    #has-share[open] #share {
-        padding-left: 16.18pt;
+    #has-share[open] {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px; /* Adjust the spacing */
     }
+    
 
     #has-mastodon.active {
         flex: 0 0 100%;
