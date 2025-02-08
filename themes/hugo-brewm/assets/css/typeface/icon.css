@@ -60,6 +60,8 @@
 .icon.circle-checked:before {content: '\e903';}
 .icon.circle-unchecked:before {content: '\e904';}
 .icon.copyleft:before {content: '\e906';}
+.icon.custom-icon:before { content: '\e980'; } /* Use an available Unicode */
+
 #has-share .email:before,
 .icon.email:before {content: '\e907';}
 a.favourites::before,
@@ -182,6 +184,7 @@ a.replies::before,
 .icon.xing:before {content: '\e96e';}
 .icon.xmpp:before {content: '\e96f';}
 .icon.youtube:before {content: '\e970';}
+
 
 .emoji {
     font-family: 'Apple Color Emoji', 'Segoe UI Emoji', NotoColorEmoji, 'Segoe UI Symbol', 'Android Emoji', EmojiSymbols;

@@ -7,7 +7,7 @@ draft: false
 translationKey: "methodik_prism_katex_storytelling"
 coffee: 1
 tags: ['PRISM','Methodik',]
-categories: ['Dokumentation']
+categories: ['Modul']
 ---
 
 ### 1. Problemdefinition

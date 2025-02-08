@@ -30,11 +30,11 @@
 [close]
     other = "Close"
 [coffeeStat]
-    other = "Coffee Stat"
+    other = "Kaffee-Statistik"
 [coffeeCount]
-    other = "Die Ersellung dieser Website kostete mir "
+    other = "Die Erstellung dieser Website hat mich mindestens  "
 [coffeeCountPost]
-    other = ", if not more."
+    other = "– wenn nicht sogar mehr."
 [colophon]
     other = "Kolophon"
 [colorPalette]
@@ -62,8 +62,8 @@
 [ctaComments]
     other = "Join Discussion"
 [cup]
-    one = "Cup of coffee"
-    other = "Cups of coffee"
+    one = "Tassen Kaffee"
+    other = "Tassen Kaffee"
 [dark]
     other = "Dark"
 [darkMode]

@@ -8,7 +8,7 @@ draft: false
 translationKey: prism_eval
 coffee: 1
 tags: ['PRISM', 'Evaluierung']
-categories: ['Dokumentation']
+categories: ['Modul']
 -----------------------------
 ## **Ergebnisse für BraTS2020**
 

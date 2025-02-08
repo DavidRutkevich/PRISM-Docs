@@ -7,7 +7,7 @@ draft: false
 translationKey: utd_article
 coffee: 1
 tags: ['UTD', 'Trainingsszenario']
-categories: ['Dokumentation']
+categories: ['Modul']
 ---
 
 <span class="letterine"><i>U</i>nvollständige Trainingsdaten</span> (kurz: UTD) sind in vielen realen Anwendungsfällen die Regel und nicht die Ausnahme. Man spricht von UTD, wenn in einem Datensatz **nicht** alle Modalitäten (oder Merkmale) vorhanden sind, die ursprünglich vorgesehen waren. Im medizinischen Umfeld kann dies beispielsweise bedeuten, dass für einige Patienten bestimmte MRT-Sequenzen nicht erfasst wurden.

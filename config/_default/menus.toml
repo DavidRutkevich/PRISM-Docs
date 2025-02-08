@@ -1,15 +1,63 @@
-[[menu.main]]
-    identifier = "about"
-    name = "Über mich"
+[[main]]
+  name       = 'Github'
+  identifier = 'github'
+  weight     = 3
+  url        = 'https://github.com/DavidRutkevich'
+  pre        = 'github'
 
-    [[main]]
-        identifier = "github"
-        name = "GitHub"
-        url = "https://github.com/DavidRutkevich"
-        pre = "github"
-        
-    [[main]]
-        identifier = "linkedin"
-        name = "LinkedIn"
-        url = "https://www.linkedin.com/in/davidrutkevich/"
-        pre = "linkedin"
+[[main]]
+  name       = 'Arbeiten'
+  identifier = 'works'
+  pageRef    = '/'
+  weight     = 2
+
+  [[main]]
+    name       = 'SeesDisease'
+    identifier = 'commission'
+    url        = 'https://seesdisease.com/'
+    parent     = 'works'
+    Post       = 'Zellsegmentierung'
+    weight     = 1
+
+  [[main]]
+    name       = 'CellAlyse'
+    identifier = 'project'
+    url        = 'https://www.jugend-forscht.de/projektdatenbank/cellalyse-eine-effiziente-automatisierung-der-zaehlung-und-klassifizierung-von-blutzellen.html'
+    parent     = 'works'
+    Post       = 'Blutzellsegmentierung'
+    weight     = 2
+
+[[more]]
+  name       = 'Über mich'
+  identifier = 'about'
+  weight     = 1
+  url        = 'https://www.linkedin.com/in/davidrutkevich/'
+
+  [[more]]
+  name       = 'Website'
+  identifier = 'sustainability'
+  url        = 'https://david-rutkevich.com/'
+  parent     = 'about'
+  weight     = 1
+  pre       = 'internationalization'
+
+  [[more]]
+  name       = 'E-Mail'
+  identifier = 'email'
+  url    = 'mailto:rutkevich.david@gmail.com'
+  parent     = 'about'
+  weight     = 2
+  pre      = 'email'
+
+[[footer]]
+  identifier = 'email'
+url    = 'mailto:rutkevich.david@gmail.com'
+  weight     = 3
+  pre      = 'email'
+
+[[footer]]
+  identifier = 'linkedin'
+  url    = 'https://www.linkedin.com/in/davidrutkevich/'
+  weight     = 4
+  name        = 'linkedin'
+  pre        = 'linkedin'

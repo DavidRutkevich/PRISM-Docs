@@ -7,7 +7,7 @@ draft: false
 translationKey: prism_ablation
 coffee: 1
 tags: ["Modell","PRISM"]
-categories: ["Dokumentation"]
+categories: ["Modul"]
 ---
 
 # Ablationsstudie zu PRISM

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Innovation on  PRISM</title>
+    <link>http://localhost:1313/hugo-brewm/en/tags/innovation/</link>
+    <description>Recent Posts in Innovation on  PRISM</description>
+    <generator>Hugo 0.143.0</generator>
+    <language>en</language>
+    <managingEditor>rutkevich.david@gmail.com (David Rutkevich)</managingEditor>
+    <webMaster>rutkevich.david@gmail.com (David Rutkevich)</webMaster>
+    <copyright>Copyright (c) David Rutkevich</copyright>
+    <lastBuildDate>Sat, 08 Feb 2025 03:16:18 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/hugo-brewm/en/tags/innovation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PRISMS – Innovation und Methodik</title>
+      <link>http://localhost:1313/hugo-brewm/en/posts/framework_aufbau/</link>
+      <pubDate>Thu, 06 Feb 2025 00:00:00 +0000</pubDate>
+      <author>rutkevich.david@gmail.com (David Rutkevich)</author>
+      <guid>http://localhost:1313/hugo-brewm/en/posts/framework_aufbau/</guid>
+      <description></description>
+      
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><script src="/hugo-brewm/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=hugo-brewm/livereload" data-no-instant defer></script>
+    <!-- head.html -->
+    <!-- meta.html -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRISMS – Innovation und Methodik |  PRISM</title>
+    <meta name="author" content="David Rutkevich">
+    <meta name="description" content="Detaillierte Erklärung zur mathematischen Herangehensweise und Architektur hinter PRISMS (ehemals AnySeg)." >
+    <meta name="keywords" content="PRISMS,Innovation,Methodik" >
+    <link rel="canonical" href="http://localhost:1313/hugo-brewm/en/posts/framework_aufbau/" >
+    
+    
+        <!-- _meta.html -->
+
+<meta property="og:url" content="http://localhost:1313/hugo-brewm/en/posts/framework_aufbau/">
+    <meta property="og:site_name" content=" PRISM">
+    <meta property="og:title" content="PRISMS – Innovation und Methodik |  PRISM">
+    <meta name="twitter:title" content="PRISMS – Innovation und Methodik |  PRISM">
+    <meta property="og:description" content="Detaillierte Erklärung zur mathematischen Herangehensweise und Architektur hinter PRISMS (ehemals AnySeg).">
+    <meta name="twitter:description" content="Detaillierte Erklärung zur mathematischen Herangehensweise und Architektur hinter PRISMS (ehemals AnySeg).">
+    <meta property="og:locale" content="en">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-02-06T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-02-06T00:00:00+00:00">
+    <meta property="article:tag" content="PRISMS,Innovation,Methodik">
+  <meta name="twitter:card" content="summary">
+
+
+
+
+    <!-- js.html -->
+    <script src="http://localhost:1313/hugo-brewm/js/hugo-brewm.min.js" defer></script><!-- css.html -->
+    <link rel="stylesheet" href="http://localhost:1313/hugo-brewm/css/hugo-brewm.min.css">
+    <style>body {max-width: 786px; margin: auto; padding: 2rem;}img {max-width: 86vw;}</style>
+    
+    
+    
+    <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+</head>
+<body  id="post" >
+    <!-- header.html -->
+<header class="pagewidth">
+    <div id="background-header" class="background" aria-hidden="true"></div>
+    
+    <nav aria-label="Bypass Navigation">
+        <a id="to-content" class="underline" href="#content" aria-label="Skip to Main Content">
+            <span>Skip to Main Content</span>
+            <kbd class="key" aria-hidden="true">c</kbd>
+            <span class="screening" aria-hidden="true"></span>
+        </a>
+    </nav>
+    
+        <a id="logo" href="http://localhost:1313/hugo-brewm/en/" aria-label=" PRISM">
+                <!-- logotype.html --><svg id="logotype" xmlns="http://www.w3.org/2000/svg" version="1.1" width="168pt">
+            <text id="logotype__text" y="19.5pt" x="0"> PRISM</text>
+        </svg>
+        </a>
+    
+    <details class="presentation" id="top-nav">
+        <summary class="on-deck">
+            <span class="t t2">Navigation</span>
+            <span class="menu-icon" role="presentation"></span>
+        </summary>
+        <nav tabindex="-1" aria-label="Top Nav">
+            <!-- menu.html -->
+<details id="has-main-menu" class="presentation" open>
+    <summary  class="hide"  aria-label="Main Menu">
+        <span>Main Menu</span>
+    </summary>
+        
+        <nav id="main-menu" aria-label="Main Menu">
+            <ul class="l1 " role="presentation" tabindex="-1" >
+                
+    
+        <li role="presentation">
+    <details class="presentation js-details" aria-expanded="true"
+        name="on-deck"  >
+        <summary class="anchor  on-deck ">
+            
+            <span >Arbeiten</span>
+        </summary>
+        <ul class="l2  on-plank " role="presentation">
+            
+    
+        <li role="presentation">
+    <a   class=has-desc href=https://seesdisease.com/
+         aria-description="Zellsegmentierung" >
+        
+            <span>SeesDisease</span>
+    </a>
+        </li>
+        <li role="presentation">
+    <a   class=has-desc href=https://www.jugend-forscht.de/projektdatenbank/cellalyse-eine-effiziente-automatisierung-der-zaehlung-und-klassifizierung-von-blutzellen.html
+         aria-description="Blutzellsegmentierung" >
+        
+            <span>CellAlyse</span>
+    </a>
+        </li>
+                <li class="parent-anchor">
+                    <a href=http://localhost:1313/hugo-brewm/en/ aria-label="See all:Arbeiten">
+                        
+                        <span aria-hidden="true"> Arbeiten</span>
+                    </a>
+                </li>
+        </ul><div class="screening js-cpn" role="presentation" aria-hidden="true"></div>
+    </details>
+        </li>
+        <li role="presentation">
+    <a   aria-label=github class=on-deck href=https://github.com/DavidRutkevich title=github
+        >
+        <i class="icon github" aria-hidden="true"></i>
+            <span>Github</span>
+    </a>
+        </li>
+            </ul>
+        </nav>
+</details>
+            
+            <!-- menu.html -->
+<details id="has-more-menu" class="presentation js-details" name="on-deck" >
+    <summary  accesskey="=" class="on-deck"  aria-label="More Menu">
+        <span class="t t2">More Menu</span>
+            <span class="menu-icon" role="presentation"></span>
+    </summary>
+        <!-- on hull -->
+        <nav id="more-menu" aria-label="More Menu">
+            <ul class="l1  on-plank " role="presentation" tabindex="-1" >
+                
+    
+        <li role="presentation">
+    <details class="presentation js-details" aria-expanded="true"
+         open >
+        <summary class="anchor ">
+            
+            <span >Über mich</span>
+        </summary>
+        <ul class="l2 " role="presentation">
+            
+    
+        <li role="presentation">
+    <a   aria-label=internationalization href=https://david-rutkevich.com/ title=internationalization
+        >
+        <i class="icon internationalization" aria-hidden="true"></i>
+            <span>Website</span>
+    </a>
+        </li>
+        <li role="presentation">
+    <a   aria-label=email href=mailto:rutkevich.david@gmail.com title=email
+        >
+        <i class="icon email" aria-hidden="true"></i>
+            <span>E-Mail</span>
+    </a>
+        </li>
+                <li class="parent-anchor">
+                    <a href=https://www.linkedin.com/in/davidrutkevich/ aria-label="See all:Über mich">
+                        
+                        <span aria-hidden="true"> Über mich</span>
+                    </a>
+                </li>
+        </ul>
+    </details>
+        </li>
+            </ul>
+            <div class="screening js-cgpn" role="presentation" aria-hidden="true"></div>
+        </nav>
+</details>
+            <!-- i18n.html -->
+
+
+        </nav>
+        <div id="top-nav-screen" class="screening js-cpn" role="presentation" aria-hidden="true"></div>
+    </details>
+</header>
+    
+    <!-- [main] baseof.html -->
+    <main id="page">
+        <!-- main/header.html -->
+        <header class="pagewidth">
+            
+            <!-- menu.html -->
+    <menu role="presentation">
+        <li>
+            <a id="print-button" class="hide" href="javascript:window.print()" title="Print" role="button" aria-label="Print">
+                <span class="t" role="tooltip">Print</span>
+            </a>
+        </li>
+        <li>
+            <a id="navigatorShare" href="#share" title="Share" role="button" aria-label="Share">
+                <span class="t" role="tooltip">Share</span>
+            </a>
+        </li>
+        <li>
+            <a id="copyPermalink" class="hide" href="javascript:navigator.clipboard.writeText(window.location.href)" title="Copy Url" role="button" aria-label="Copy Url">
+                <span class="t" role="tooltip">Copy Url</span>
+            </a>
+        </li>
+    </menu>
+    <button id="back" class="hide" type="button" onclick="history.back();" aria-label="Zurück">
+        <span class="t" role="tooltip">Zurück</span>
+    </button>
+            
+                <!-- nav.html -->
+<details class="presentation" aria-expanded="true" id="has-breadcrumb" open>
+    <summary id="breadcrumb" tabindex="-1">
+        <span>Breadcrumb</span>
+    </summary>
+        <nav aria-labelledby="breadcrumb">
+            <ul role="presentation" class="breadcrumb">
+                    <!-- breadcrumb.html -->
+        <li>
+            <a href="http://localhost:1313/hugo-brewm/en/posts/" aria-current="true">Posts
+            </a>
+        </li>
+    <li>
+        <a href="" aria-current="page" tabindex="-1">PRISMS – Innovation und Methodik
+        </a>
+    </li>
+            </ul>
+        </nav>
+</details>
+        </header>
+        <div id="top" role="presentation">
+            
+        </div>
+        
+    <article id="main-article" class="pagewidth"
+        role="document" aria-labelledby="title"
+            data-pagefind-body>
+        
+        <header class="textwidth" aria-labelledby="title">
+            <!-- title.html -->
+        <hgroup data-bionRead-safe>
+            <h1 id="title"
+                    data-pagefind-meta="title"
+                >PRISMS – Innovation und Methodik</h1>
+            <p  class="subtitle"
+                role="doc-subtitle">Detaillierte Erklärung zur mathematischen Herangehensweise und Architektur hinter PRISMS (ehemals AnySeg).</p>
+        </hgroup>
+            <div id="doc-author" class="textsw author">
+                
+                    <span>David Rutkevich</span>
+            </div>
+            <!-- timestamp.html-->
+    <div >
+        <time class="doc-publish-date" datetime="2025-02-06T00:00:00&#43;00:00" data-time-label="Published on">February 6, 2025</time>
+    </div>
+        </header>
+        <!-- audio.html -->
+        <section aria-labelledby="Title" id="content" data-bionRead-safe>
+                <h2 id="einleitung">Einleitung</h2>
+<p>In vielen realen Anwendungsszenarien (Medizin, autonomes Fahren, Industrie 4.0) stehen mehrere <strong>Modalitäten</strong> (RGB-Bilder, Tiefendaten, LiDAR, Events etc.) zur Verfügung, die aber selten lückenlos vorliegen. Genau hier setzt <strong>PRISMS</strong> (zuvor “AnySeg”) an: Es handelt sich um ein Verfahren für <em>Anymodal-Semantic-Segmentation</em>, das robuste Segmentierungen ermöglicht – <strong>unabhängig davon</strong>, welche Teilmenge an Modalitäten in einem konkreten Fall verfügbar ist.</p>
+<p>Dieses Dokument erläutert die <strong>Innovationen</strong> von PRISMS im Detail. Zur besseren Veranschaulichung können Abbildungen eingefügt werden, die das <strong>Lehrer–Student-Prinzip</strong>, die <strong>multiskalige Verarbeitung</strong> sowie die <strong>Distillationsmechanismen</strong> illustrieren. Bitte füge die entsprechenden Abbildungen an den gekennzeichneten Stellen ein.</p>
+<hr>
+<h2 id="1-motivation-fehlende-modalitäten-und-unimodaler-bias">1. Motivation: Fehlende Modalitäten und Unimodaler Bias</h2>
+<p>Obwohl mehrere Sensoren gleichzeitig genutzt werden <strong>könnten</strong>, fehlen in der Praxis oft Daten (z. B. eventbasiertes Kamerasignal defekt, Tiefe nicht aufgezeichnet). Zudem ist bei klassischer Multimodalfusion häufig ein <em>Bias</em> zu beobachten: Ein Modell „versteift“ sich auf eine dominante Modalität, was bei deren Ausfall zu drastischem Performance-Verlust führt.</p>
+<p><strong>PRISMS</strong> adressiert diese Probleme mit:</p>
+<ul>
+<li><strong>Multiskaliger Repräsentation</strong> in allen Modalitäten,</li>
+<li><strong>Selbstdistillation</strong> (Lehrer–Schüler-Prinzip),</li>
+<li><strong>Cross-Modaler</strong> Abstimmung, damit jede Modalität ihre Stärken einbringen kann.</li>
+</ul>
+<hr>
+<h2 id="2-architekturüberblick">2. Architekturüberblick</h2>
+<h3 id="21-mehrskalige-transformer-blöcke">2.1 Mehrskalige Transformer-Blöcke</h3>
+<p><img src="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/figures/Model_detail.png" alt="Abbildung Multiskalige Fusion"></p>
+<ul>
+<li>
+<p><strong>Idee</strong>: Jede verfügbare Modalität wird in einem Transformer-basierten Netzwerk verarbeitet.</p>
+</li>
+<li>
+<p><strong>Mittelwertoperation</strong>: Nach jedem Block werden die Feature-Karten über alle aktiven Modalitäten gemittelt. Mathematisch:</p>
+<pre tabindex="0"><code class="language-math" data-lang="math">z_i^l = \frac{1}{M_l} \sum_{m=1}^{M_l} h_{i,m}^l,
+</code></pre><p>wobei (h_{i,m}^l) das Feature der Modalität (m) (von insgesamt (M_l) verfügbaren Modalitäten) im (l)-ten Block beschreibt. Das resultierende (z_i^l) spiegelt ein <strong>multiskaliges</strong> Merkmal wider, das – wenn verfügbar – Informationen aus allen Modalitäten enthält.</p>
+</li>
+<li>
+<p><strong>Segmentierung</strong>: Diese gemittelten Features werden anschließend an einen Segmentation-Head weitergegeben, der die semantische Klassifikation vornimmt (z. B. via Pixelwise Prediction).</p>
+</li>
+</ul>
+<h3 id="22-lehrerstudenten-netzwerke">2.2 Lehrer–Studenten-Netzwerke</h3>
+<p><img src="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/figures/Model_general.png" alt="Abbildung Lehrer–Schüler-Prinzip"></p>
+<ol>
+<li>
+<p><strong>Lehrer</strong></p>
+<ul>
+<li>Erhält im Idealfall alle Modalitäten (oder so viele wie möglich) und lernt daher eine <strong>reiche</strong> Repräsentation.</li>
+<li>Dient als starker Referenzpunkt, von dem das Studentenmodell lernen kann.</li>
+</ul>
+</li>
+<li>
+<p><strong>Student (Anymodal)</strong></p>
+<ul>
+<li>Verarbeitet nur diejenigen Modalitäten, die in einem Mini-Batch tatsächlich vorhanden sind.</li>
+<li>Muss daher <em>robust</em> gegen fehlende Daten sein.</li>
+<li>Lässt sich so trainieren, dass selbst bei nur einer verfügbaren Modalität noch sinnvolle Segmentierungsergebnisse entstehen.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="3-mathematische-kernelemente">3. Mathematische Kernelemente</h2>
+<h3 id="31-modalitätsagnostische-distillation-mad">3.1 Modalitätsagnostische Distillation (MAD)</h3>
+<p>Um den Studenten-Pfad robust zu machen, wird eine <strong>Modalitäts-Agnostische</strong> Distillation angewendet. Das heißt, der Lehrer gibt eine „Zielfunktion“ vor, die unabhängig von der jeweiligen Modalität ist. Auf <strong>Pixel- bzw. Logit-Ebene</strong> kann man dies formulieren als:</p>
+<pre tabindex="0"><code class="language-math" data-lang="math">L_{\text{MAD}} 
+= 
+\sum_{i=1}^{N} \sum_{k=1}^{K}
+\mathrm{KL}\Bigl(
+  P_{\text{stud}}^{i,k} \,\Big\|\,
+  P_{\text{teach}}^{i,k}
+\Bigr),
+</code></pre><ul>
+<li>(P_{\text{stud}}^{i,k}) und (P_{\text{teach}}^{i,k}) sind die Wahrscheinlichkeitsvorhersagen (Logits nach Softmax) für Klasse (k) an Pixel (i).</li>
+<li>Durch die <strong>Kullback-Leibler-Divergenz</strong> wird der Studierende dazu gebracht, die Lehrer-Verteilung nachzuahmen, ungeachtet der aktuell verfügbaren Modalitäten.</li>
+</ul>
+<h3 id="32-weighted-distribution-wd">3.2 Weighted-Distribution (WD)</h3>
+<p>Fehlen in vielen Trainingsiterationen bestimmte Modalitäten, können deren Gewichte leicht „untergehen“. Daher führt PRISMS häufig eine Gewichtung (\omega_m) ein:</p>
+<pre tabindex="0"><code class="language-math" data-lang="math">\omega_m = \frac{1}{1 + \text{FR}^m},
+</code></pre><p>wobei (\text{FR}^m) die Fehlrate (Missing Rate) von Modalität (m) angibt. Eine seltene Modalität ((\text{FR}^m) nahe 1) erhält so eine <strong>höhere</strong> Lernrate, um in ihren wenigen Vorkommen besonders gut genutzt zu werden.</p>
+<h3 id="33-cross-modale-prisms-distillation">3.3 Cross-Modale PRISMS-Distillation</h3>
+<p>Neben dem distanzbasierten Vergleich zwischen Lehrer und Student integriert PRISMS eine <strong>cross-modale</strong> Distillation innerhalb des Studentenmodells. Damit lernt jede Modalität, ähnliche Klassendiskriminierung zu liefern. Eine Beispiel-Formel könnte lauten:</p>
+<pre tabindex="0"><code class="language-math" data-lang="math">L_{\text{cross}} 
+= 
+\sum_{m \neq m&#39;} \omega_m \,\omega_{m&#39;}\,
+\mathrm{dist}\Bigl(\phi(z^m), \phi(z^{m&#39;})\Bigr),
+</code></pre><ul>
+<li>(z^m) bezeichnet das Feature aus Modalität (m).</li>
+<li>(\mathrm{dist}) misst die Ähnlichkeit/Differenz (z. B. via Cosine Similarity, KL oder L2).</li>
+<li>(\phi) ist eine Projektionsebene, z. B. ein MLP oder eine Prototyp-Layer.</li>
+</ul>
+<p>Die cross-modale Distillation sorgt dafür, dass alle Modalitäten <strong>konsistent</strong> werden und sich gegenseitig ergänzen können, statt dass eine Modalität das System dominiert.</p>
+<h3 id="34-gesamt-loss">3.4 Gesamt-Loss</h3>
+<p>Typischerweise fasst man alle Verluste in einer Summe zusammen:</p>
+<pre tabindex="0"><code class="language-math" data-lang="math">L_{\text{total}} 
+=
+L_{\text{seg}}
++
+\lambda_{\text{mad}}\,L_{\text{MAD}}
++
+\lambda_{\text{cross}}\,L_{\text{cross}}
++
+\lambda_{\text{reg}}\,L_{\text{reg}},
+</code></pre><ul>
+<li>(L_{\text{seg}}): klassischer Segmentierungsverlust (z. B. Dice + CE).</li>
+<li>(L_{\text{MAD}}): modalitätsagnostische Distillation vom Lehrer.</li>
+<li>(L_{\text{cross}}): cross-modale Abstimmung zwischen den Modalitäten des Studenten.</li>
+<li>(L_{\text{reg}}): optionale Regulierungen (z. B. Weighted-Distribution).</li>
+</ul>
+<hr>
+<h2 id="4-zusammenspiel-der-komponenten">4. Zusammenspiel der Komponenten</h2>
+<ol>
+<li><strong>Multiskalen-Fusion</strong>: Jede Modalität wird parallel im gleichen Netzwerk pro Block verarbeitet. Durch das Mittelwerten der Feature-Karten entsteht eine gemeinsame Repräsentation, die <strong>direkt</strong> ins Segmentierungsmodul fließt.</li>
+<li><strong>Lehrer–Student</strong>: Ein Lehrer-Netz (möglichst vollmodale Eingabe) liefert Zielverteilungen, während das Studenten-Netz (beliebig modale Eingabe) diese Vorhersagen anpasst.</li>
+<li><strong>Distillation</strong>:
+<ul>
+<li><em>MAD</em>: Lernt Pixel- bzw. Logit-Ähnlichkeit zur Lehrer-Verteilung.</li>
+<li><em>Cross-Modale Distillation</em>: Bringt Modalitäten untereinander in Einklang.</li>
+<li><em>Weighted-Distribution</em>: Kompensiert für seltene Modalitäten.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="5-fazit">5. Fazit</h2>
+<p><strong>PRISMS</strong> schafft einen innovativen Ansatz, um beliebige (unvollständige) Kombinationen von Sensoren nutzen zu können. Durch eine <strong>geschickte Verzahnung</strong> aus:</p>
+<ul>
+<li><strong>Multiskaliger Netzwerkstruktur</strong>,</li>
+<li><strong>Selbstdistillation</strong> (Lehrer–Student),</li>
+<li><strong>Gewichteter Fusion</strong> (Weighted-Distribution)</li>
+<li><strong>Cross-Modaler</strong> Feinjustierung</li>
+</ul>
+<p>wird ein System entwickelt, das trotz fehlender Modalitäten <strong>robust</strong> Segmentierungen erzeugt. Anwendungen in der Medizin (z. B. MRT-Sequenzen), im autonomen Fahren (Kamera, LiDAR, Radar) oder in industriellen Prozessen (Röntgen, Infrarot, visuell) zeigen das breite Potenzial: <strong>PRISMS</strong> macht Modelle <strong>tatsächlich</strong> praxistauglich für Szenarien, in denen man nie sicher weiß, welche Daten genau ankommen.</p>
+<p><strong>Schlussbemerkung zur Fusion von PRISM und PRISMS</strong><br>
+Die in diesem Beitrag vorgestellten Ideen zu PRISM und PRISMS ergänzen sich in ihrer Zielsetzung, unvollständige sowie unbalancierte multimodale Daten effizient zu verarbeiten. Während PRISM vor allem durch die Kombination von Multi-Uni-Selbstdistillation und präferenzbasierter Regulierung überzeugt, überträgt PRISMS die Grundprinzipien eines anymodalen Lernens in einen noch universelleren Kontext. Die Verschmelzung beider Konzepte – also die <strong>Fusion</strong> von PRISM und PRISMS – führt zu einem ganzheitlichen Rahmenwerk, in dem sowohl <strong>globale</strong> (Prototyp-, Klassenrepräsentationen) als auch <strong>lokale</strong> (Pixel-basierte) Distillationsmechanismen nahtlos ineinandergreifen. Dadurch entsteht eine robuste End-to-End-Pipeline, die in unterschiedlichen Netzwerkarchitekturen (von klassischen CNN-basierten Encodern bis hin zu modernen Transformer-Strukturen) eingesetzt werden kann.</p>
+<p>Diese Fusion erlaubt es, die präferenzbasierte Lernratensteuerung (aus PRISM) mit den anymodalen Strategien (aus PRISMS) zu vereinen, sodass auch seltene Modalitäten durchgängig berücksichtigt werden und das Gesamtsystem seine Robustheit gegenüber unvollständigen und fehlerhaften Datensätzen steigert. Die multiskalige Repräsentation und die darauf aufbauende Selbstdistillation – Eckpfeiler beider Ansätze – sind somit kein isoliertes Lernkonstrukt mehr, sondern werden als zentrale, universell einsetzbare Bausteine eines umfassenden Frameworks verstanden. Dadurch lassen sich verschiedenste Anwendungsdomänen (Medizin, autonome Systeme, Industrie 4.0) flexibel bedienen, ohne bei fehlenden Modalitäten oder stark schwankender Datenqualität an Grenzen zu stoßen. Insgesamt entsteht so ein leistungsfähiges, modular aufgebautes Konzept, das bei steigendem Bedarf an multimodalen Verfahren den Weg für eine robuste und skalierbare Any-Modal-Segmentierung ebnet.</p>
+
+        </section>
+        <footer>
+            
+    <div id="keywords">
+        <span>Tags:&nbsp;</span>
+        
+        <!-- terms.html -->
+    <ul class="delimiter" role="presentation">
+            <li><a href="http://localhost:1313/hugo-brewm/en/tags/prisms/">Prisms</a></li>
+            <li><a href="http://localhost:1313/hugo-brewm/en/tags/innovation/">Innovation</a></li>
+            <li><a href="http://localhost:1313/hugo-brewm/en/tags/methodik/">Methodik</a></li>
+    </ul>
+    </div>
+        </footer>
+    </article>
+    <hr class="hide" style="margin: 1in 0;">
+    <div id="contentinfo" class="pagewidth" role="contentinfo" data-pagefind-ignore="all">
+        <!-- related.html -->
+    <nav id="related">
+        <strong class="section-title">You might also like</strong><ol>
+                    <li><a href="http://localhost:1313/hugo-brewm/en/posts/method/">PRISM – Einfach erklärt</a></li>
+                    <li><a href="http://localhost:1313/hugo-brewm/en/posts/framework_intro/">PRISMS - Das Framework</a></li>
+                </ol>
+    </nav>
+        <!-- history.html -->
+        <!-- colophon.html -->
+    <div id="colophon" style="display: none;" aria-live="polite">
+        <strong class="section-title">Kolophon</strong>
+        <div class="f">
+            <div id="qr" role="img" aria-label="QR code"></div>
+            <div class="verbose">
+                <div class="has-aria-label-top" aria-label="PRISMS – Innovation und Methodik"><span>http://localhost:1313/hugo-brewm/en/posts/framework_aufbau/</span></div>
+                <div><span>This page is accessed on: </span><time id="time-stamp"></time></div>
+                <div><span>Diese Seite wurde zuletzt aktualisiert am: </span><time datetime="2025-02-08T03:19:41&#43;01:00">2025-02-08T03:19:41&#43;01:00</time></div>
+                
+            </div>
+        </div>
+    </div>
+        
+        <!-- nav.html -->
+<details class="presentation" aria-expanded="true" id="has-share" open>
+    <summary id="share" tabindex="-1">
+        <span>Share</span>
+    </summary>
+        <nav aria-labelledby="share">
+            <ul role="presentation" class="share">
+                    <!-- share.html -->
+    <li id="has-mastodon">
+        <!-- mastodon.html -->
+    <form class="form" id="mastodon" action="//sharetomastodon.github.io/" target="_blank" rel="noopener noreferrer">
+        <input id="mastodonTitle" type="hidden" name="title" value="PRISMS – Innovation und Methodik">
+        <input id="mastodonPermalink" type="hidden" name="url" value="http://localhost:1313/hugo-brewm/en/posts/framework_aufbau/">
+        <input id="mastodonText" type="hidden" name="text" value="PRISMS – Innovation und Methodik http://localhost:1313/hugo-brewm/en/posts/framework_aufbau/" disabled>
+        <input id="mastodonInstance" type="url" class="ldots form__input" placeholder="Enter Mastodon instance (https://www.example.com)" aria-label="Mastodon instance URL">
+        <button class="form__button" type="submit" aria-label="Share on Mastodon">
+            <i class="icon mastodon" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Mastodon</span>
+        </button>
+    </form>
+    </li>
+    <li>
+        <a href="mailto:?subject=PRISMS%20%e2%80%93%20Innovation%20und%20Methodik&body=http%3a%2f%2flocalhost%3a1313%2fhugo-brewm%2fen%2fposts%2fframework_aufbau%2f" title="Email" role="button" aria-label="Email">
+            <i class="email" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Email</span>
+        </a>
+    </li>
+    <li>
+        <a href="whatsapp://send?text=PRISMS%20%e2%80%93%20Innovation%20und%20Methodik%20http%3a%2f%2flocalhost%3a1313%2fhugo-brewm%2fen%2fposts%2fframework_aufbau%2f" title="[i18n] whatsapp" role="button" aria-label="[i18n] whatsapp">
+            <i class="whatsapp" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Whatsapp</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://telegram.me/share/url?text=PRISMS%20%e2%80%93%20Innovation%20und%20Methodik&amp;url=http://localhost:1313/hugo-brewm/en/posts/framework_aufbau/" role="button"
+            aria-label="Share on Telegram in new tab">
+            <i class="telegram" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Telegram</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://bsky.app/intent/compose?text=PRISMS%20%e2%80%93%20Innovation%20und%20Methodik&amp;url=http://localhost:1313/hugo-brewm/en/posts/framework_aufbau/" role="button"
+            aria-label="Share on Bluesky in new tab">
+            <i class="bluesky" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Bluesky</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://facebook.com/sharer/sharer.php?u=http://localhost:1313/hugo-brewm/en/posts/framework_aufbau/" role="button"
+            aria-label="Share on Facebook in new tab">
+            <i class="facebook" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Facebook</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://news.ycombinator.com/submitlink?u=http://localhost:1313/hugo-brewm/en/posts/framework_aufbau/&amp;t=PRISMS%20%e2%80%93%20Innovation%20und%20Methodik" role="button"
+            aria-label="Share on Hackernews in new tab">
+            <i class="hackernews" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Hackernews</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/hugo-brewm/en/posts/framework_aufbau/&amp;title=PRISMS%20%e2%80%93%20Innovation%20und%20Methodik&amp;summary=PRISMS%20%e2%80%93%20Innovation%20und%20Methodik&amp;source=http://localhost:1313/hugo-brewm/en/posts/framework_aufbau/" role="button"
+            aria-label="Share on Linkedin in new tab">
+            <i class="linkedin" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Linkedin</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://pinterest.com/pin/create/button/?url=http://localhost:1313/hugo-brewm/en/posts/framework_aufbau/&amp;media=http://localhost:1313/hugo-brewm/en/posts/framework_aufbau/&amp;description=PRISMS%20%e2%80%93%20Innovation%20und%20Methodik" role="button"
+            aria-label="Share on Pinterest in new tab">
+            <i class="pinterest" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Pinterest</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://reddit.com/submit/?url=http://localhost:1313/hugo-brewm/en/posts/framework_aufbau/&amp;resubmit=true&amp;title=PRISMS%20%e2%80%93%20Innovation%20und%20Methodik" role="button"
+            aria-label="Share on Reddit in new tab">
+            <i class="reddit" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Reddit</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=PRISMS%20%e2%80%93%20Innovation%20und%20Methodik&amp;caption=PRISMS%20%e2%80%93%20Innovation%20und%20Methodik&amp;content=http://localhost:1313/hugo-brewm/en/posts/framework_aufbau/&amp;canonicalUrl=http://localhost:1313/hugo-brewm/en/posts/framework_aufbau/" role="button"
+            aria-label="Share on Tumblr in new tab">
+            <i class="tumblr" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Tumblr</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="http://vk.com/share.php?title=PRISMS%20%e2%80%93%20Innovation%20und%20Methodik&amp;url=http://localhost:1313/hugo-brewm/en/posts/framework_aufbau/" role="button"
+            aria-label="Share on Vk in new tab">
+            <i class="vk" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Vk</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://twitter.com/intent/tweet/?text=PRISMS%20%e2%80%93%20Innovation%20und%20Methodik&amp;url=http://localhost:1313/hugo-brewm/en/posts/framework_aufbau/" role="button"
+            aria-label="Share on Twitter in new tab">
+            <i class="twitter" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Twitter</span>
+        </a>
+    </li>
+    <li>
+        <a rel="noopener noreferrer" target="_blank" href="https://www.xing.com/app/user?op=share;url=http://localhost:1313/hugo-brewm/en/posts/framework_aufbau/;title=PRISMS%20%e2%80%93%20Innovation%20und%20Methodik" role="button"
+            aria-label="Share on Xing in new tab">
+            <i class="xing" aria-hidden="true"></i>
+            <span class="t" role="tooltip">Share on Xing</span>
+        </a>
+    </li>
+            </ul>
+        </nav>
+</details>
+        <!-- fediverse.html -->
+    </div>
+        <!-- main/footer.html -->
+    <hr class="hide">
+        <footer id="main-footer">
+            <div class="column column--multicols pagewidth" style="--multicols: 2"><div id="main-footer-primary"
+                        aria-labelledby="footer-1">
+                        <p><strong class="section-title">David Rutkevich <i class="icon copyleft"></i> 2025</strong></p>
+<p>All rights reserved.</p>
+
+                    </div>
+                <div id="main-footer-secondary" class="column" style="--col: 15rem">
+                        <div id="coffee-counter">
+                            <strong class="section-title">Kaffee-Statistik</strong>
+                            <p>Die Erstellung dieser Website hat mich mindestens  11 tassen kaffee– wenn nicht sogar mehr.</p>
+                        </div>                    
+                    <!-- menu.html -->
+    <nav id="menu-footer" class="has-aria-label-top" aria-label="Let&#39;s keep in touch!">
+        <ul role="presentation">
+            <li><a href="mailto:rutkevich.david@gmail.com" aria-label="email">        
+                    <i class="icon email" role="presentation" aria-hidden="true"></i>
+                    <span class="t" role="tooltip">email</span>
+                </a>
+            </li>
+            <li><a href="https://www.linkedin.com/in/davidrutkevich/" aria-label="linkedin">        
+                    <i class="icon linkedin" role="presentation" aria-hidden="true"></i>
+                    <span class="t" role="tooltip">linkedin</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <!-- footer.html -->
+<footer id="body-footer" class="pagewidth" style="display: none;">
+    <div id="background-footer" class="background" role="presentation"></div>
+    <!-- a11y.html --><details id="has-a11y" class="presentation js-details" name="on-deck" aria-haspopup="true" aria-labelledby="has-a11y-summary">
+    <summary id="has-a11y-summary" accesskey="a" aria-keyshortcuts="a">
+        <span>&nbsp;Accessibility</span>
+        <kbd class="key">a</kbd>
+    </summary>
+    <!-- a11y console -->
+    <fieldset id="a11y" role="region" disabled>
+        <!-- brightness & contrast -->
+        <div id="setColorScheme" role="group" aria-label="Color Settings">
+            <!-- darkMode.html -->
+    <input
+        id="lightSwitch"
+        type="checkbox"
+        onclick="setColor()"
+        aria-label="Dark Mode"
+        checked>
+        <label for="lightSwitch">
+            <div class="has-aria-label on" role="status" aria-label="Light"></div>
+            <div class="has-aria-label off" role="status" aria-label="Dark"></div>
+            <div id="lightSwitchIndicator" aria-hidden="true"></div>
+        </label>
+            <!-- contrast.html -->
+    <fieldset id="setContrast">
+        <legend>Contrast</legend>
+        <input
+            id="lessContrast"
+            type="radio" name="setContrast" value="less"
+            onclick="setColor()"
+            >
+            <label for="lessContrast">
+                <span>Low</span>
+            </label>
+        <input
+            id="defaultContrast"
+            type="radio" name="setContrast" value="default"
+            onclick="setColor()"
+            >
+            <label for="defaultContrast">
+                <span>Default</span>
+            </label>
+        <input
+            id="moreContrast"
+            type="radio" name="setContrast" value="more"
+            onclick="setColor()"
+            >
+            <label for="moreContrast">
+                <span>High</span>
+            </label>
+    </fieldset>
+        </div>
+        <!-- colorPalette.html -->
+    <div id="setColorPalette" style="display:none;">
+        <label for="colorPalette">Color Palette</label>
+        <select id="colorPalette" name="colorPalette" oninput="setColorPalette()">
+            <option value="defaultColor">Default</option>
+            <option value="deuteranopia">Deuteranopia</option>
+            <option value="protanopia">Protanopia</option>
+            <option value="tritanopia">Tritanopia</option>
+            <option value="monochrome">Monochrome</option>
+        </select>
+    </div>
+        <!-- fontsize.html -->
+    <div class="has-aria-label-top" aria-label="Font Size">
+        <label class="range" for="fontSize" aria-label="Font Size">
+            <input
+                id="fontSize"
+                type="range" min="8" max="12" step="0.5"
+                oninput="setFontSize()">
+            <output
+                id="fontSizeState"
+                onclick="resetFontSize()"
+                aria-live="polite"
+                >10</output>
+        </label>
+    </div>
+        <!-- baselineStretch.html -->
+    <div id="setBaselineStretch" class="has-aria-label-top" aria-label="Baseline Stretch">
+        <label class="range" for="baselineStretch">
+            <input
+                id="baselineStretch"
+                type="range" min="0.8" max="1.2" step="0.05"
+                oninput="setStretch()"
+                >
+            <output
+                id="baselineStretchState"
+                onclick="resetStretch()"
+                aria-live="polite"
+                >1</output>
+        </label>
+    </div>
+        <!-- OpenDyslexic.html -->
+    <div id="setOpenDyslexic">
+        <input
+            id="OpenDyslexic"
+            type="checkbox"
+            onclick="useOpenDyslexic()"
+            aria-label="Use OpenDyslexic Font"
+            >
+            <label
+                class="has-aria-label-top"
+                for="OpenDyslexic"
+                aria-label="Use OpenDyslexic Font"
+                >
+                <span id="OpenDyslexicState" aria-hidden="true">
+                    <span id="OpenDyslexicIndicator"></span>
+                </span>
+            </label>
+    </div>
+        <!-- menu.html -->
+    <menu
+        id="a11y-menu"
+        class="hide"
+        role="toolbar"
+        aria-label="Accessibility Menu Controls"
+        >
+        <button
+            id="saveButton" class="reverse"
+            onclick="saveA11y()"
+            disabled>Save
+        </button>
+        <button
+            id="resetButton" class="has-aria-label"
+            onclick="resetA11y()"
+            aria-label="Reset"
+            disabled>
+        </button>
+        <button
+            id="closeButton" class="has-aria-label"
+            onclick="closeA11yConsole()"
+            aria-label="Close"
+            >
+        </button>
+    </menu>
+        <noscript>
+            <center id="noScript" role="alert">Uh-oh... Javascript is disabled!</center>
+        </noscript>
+        <center id="noLocalStorage" class="hide" role="alert">LocalStorage is not available in your browser. Settings won&#39;t be saved.</center>
+    </fieldset>
+    <div class="screening js-cpn" role="presentation" aria-hidden="true"></div>
+</details>
+
+
+    <!-- bionread.html -->
+    <div id="useBionRead" class="hide">
+        <input
+            id="bionReadSwitch"
+            accesskey="b" type="checkbox"
+            onclick="bionRead()"
+            aria-keyshortcuts="b"
+            aria-label="BionRead Mode"
+            >
+            <label id="bionReadButton" for="bionReadSwitch">
+                <span><strong>Bion</strong>Read</span>
+                <kbd class="key">b</kbd>
+            </label>
+    </div>
+    <!-- [top] bypass block -->
+    <nav aria-label="[i18n] bypassNavigation">
+        <a id="to-top" href="#top" title="To Content Top" accesskey="c" aria-keyshortcuts="c" aria-label="To Content Top">
+            <kbd class="key">c</kbd>
+        </a>
+    </nav>
+</footer>
+
+    
+    <!-- [post] single.html -->
+    <div id="bionReadSnapshot" hidden></div>
+    <!-- [background] baseof.html -->
+    <div id="background-body"
+        role="presentation">
+        <div id="grain" hidden></div>
+        <div id="dwclock" hidden>
+            <div id="min">
+                <div class="hand"></div>
+            </div>
+            <div id="hour">
+                <div class="hand"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

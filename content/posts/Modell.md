@@ -7,7 +7,7 @@ draft: false
 translationKey: prism_modell
 coffee: 1
 tags: ['Modell','multimodal','PRISM']
-categories: ['Dokumentation']
+categories: ['Modul']
 ---
 
 <span class="letterine"><i>D</i>as **PRISM-Modell** ist so entworfen</span>, dass es in Szenarien funktioniert, in denen *nicht alle* Modalitäten – beispielsweise verschiedene MRT-Sequenzen – verfügbar sind. Die grundlegende Idee:  
