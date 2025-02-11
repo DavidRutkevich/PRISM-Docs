@@ -1,4 +1,4 @@
-baseURL = 'https://foxihd.github.io/hugo-brewm/'
+baseURL = 'https://davidrutkevich.github.io/PRISM-Docs/en/'
 title = ' PRISM'
 theme = 'hugo-brewm'
 # enableGitInfo = true
