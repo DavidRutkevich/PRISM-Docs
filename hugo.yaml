@@ -141,7 +141,7 @@ params:
 
   editURL:
     enable: true
-    base: "https://davidrutkevich.github.io/PRISM-Docs/"
+    base: "https://prisms.info"
 
   blog:
     list:
