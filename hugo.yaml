@@ -1,5 +1,5 @@
 # Configuration
-baseURL: "https://example.com/"
+baseURL: "https://davidrutkevich.github.io"
 title: "PRISM"
 
 enableRobotsTXT: true
