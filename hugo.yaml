@@ -1,5 +1,3 @@
-# Configuration
-baseURL: "https://davidrutkevich.github.io"
 title: "PRISM"
 
 enableRobotsTXT: true
