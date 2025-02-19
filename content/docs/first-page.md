@@ -5,5 +5,5 @@ prev: /
 next: docs/folder/
 ---
 
-A simple demo page.
+Eine Dokumentation und Veröffentlichung der PRISM library kommt noch.
 
