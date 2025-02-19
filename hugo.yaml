@@ -15,13 +15,12 @@ outputs:
   page: [HTML]
   section: [HTML, RSS]
 
-defaultContentLanguage: en
+defaultContentLanguage: de
 languages:
-  en:
-    languageName: English
+  de:
+    languageName: Deutsch
     weight: 1
     title: PRISM
-
 module:
   hugoVersion:
     extended: true
@@ -74,23 +73,8 @@ menu:
       params:
         icon: linkedin
 
-  sidebar:
-    - identifier: more
-      name: More
-      params:
-        type: separator
-      weight: 1
-    - identifier: about
-      name: "About"
-      pageRef: "/about"
-      weight: 2
-    - identifier: hugoDocs
-      name: "Hugo Docs ↗"
-      url: "https://gohugo.io/documentation/"
-      weight: 3
-
 params:
-  description: Modern, responsive, batteries-included Hugo theme for creating beautiful static websites.
+  description: Begleitwebsite zum Jugend forscht Projekt PRISM
 
   navbar:
     displayTitle: true
@@ -136,8 +120,8 @@ params:
       tokenize: forward
 
   editURL:
-    enable: false
-    base: "https://prisms.info"
+    enable: true
+    base: "https://github.com/DavidRutkevich/PRISM-Docs/tree/main/content"
 
   blog:
     list:
