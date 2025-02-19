@@ -1,5 +1,5 @@
 ---
-title: Überblick
+title: Modul
 description: "Die verschiedenen bestandtteile von PRISM und weitere Informationen."
 toc: false
 layout: wide
