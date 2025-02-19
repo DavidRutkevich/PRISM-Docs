@@ -15,7 +15,7 @@ outputs:
   page: [HTML]
   section: [HTML, RSS]
 
-defaultContentLanguage: de
+defaultContentLanguage: en
 languages:
   en:
     languageName: English
