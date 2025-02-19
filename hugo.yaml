@@ -136,7 +136,7 @@ params:
       tokenize: forward
 
   editURL:
-    enable: true
+    enable: false
     base: "https://prisms.info"
 
   blog:
