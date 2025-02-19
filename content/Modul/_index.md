@@ -1,6 +1,6 @@
 ---
 title: Überblick
-description: "Überblick von SHIFT: Semantic Hybrid Interactive Feature Transformer"
+description: "Die verschiedenen bestandtteile von PRISM und weitere Informationen."
 toc: false
 layout: wide
 ---
@@ -8,44 +8,50 @@ layout: wide
 <div class="hx-mt-4"></div>
 
 <p class="hx-mb-12 hx-text-center hx-text-lg hx-text-gray-500 dark:hx-text-gray-400">
-Überblick von SHIFT: Semantic Hybrid Interactive Feature Transformer
+Überblick von PRISM: Pixel- und Repräsentationsbasierte Integrierte Selbstdistillation mit Modalitätsrebalancierung
 </p>
 
 {{< cards >}}
-  {{< card
-        link="interactive"
-        title="Informationen zur Interaktiven Segmentierung"
-        image="https://raw.githubusercontent.com/LorenzRutkevich/SHIFT-Doku/refs/heads/images/Interactive_cover.png"
-        imageStyle="object-fit:cover; aspect-ratio:16/9;"
-  >}}
-    {{< card
-        link="network"
-        title="Das SHIFT-Netzwerk"
-        image="https://raw.githubusercontent.com/LorenzRutkevich/SHIFT-Doku/refs/heads/images/Network_cover.png"
-        imageStyle="object-fit:cover; aspect-ratio:16/9;"
-  >}}
-  {{< card
-        link="netwerkvergleich"
-        title="Vergleich von Netzwerken"
-        image="https://raw.githubusercontent.com/LorenzRutkevich/SHIFT-Doku/refs/heads/images/Network_comp_cover.png"
-        imageStyle="object-fit:cover; aspect-ratio:16/9;"
-  >}}
- {{< card
-        link="ablation"
-        title="Ablation von SHIFT"
-        image="https://raw.githubusercontent.com/LorenzRutkevich/SHIFT-Doku/refs/heads/images/Ablation_Cover.png"
-        imageStyle="object-fit:cover; aspect-ratio:16/9;"
-  >}}
-  {{< card
-        link="datensatz"
-        title="Informationen zum Datensatz"
-        image="https://raw.githubusercontent.com/LorenzRutkevich/SHIFT-Doku/refs/heads/images/Datensatz_cover.png"
-        imageStyle="object-fit:cover; aspect-ratio:16/9;"
-  >}}
-  {{< card
-        link="uncertainty"
-        title="Informationen zur Unsicherheit"
-        image="https://raw.githubusercontent.com/LorenzRutkevich/SHIFT-Doku/refs/heads/images/Uncertainty_cover.png"
-        imageStyle="object-fit:cover; aspect-ratio:16/9;"
-  >}}
+
+      {{< card
+            title="Veranschaulichung"
+            subtitle="Visuelle Darstellung der PRISM-Methodik und ihrer Komponenten."
+            image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/figures/overview3d.webp"
+            link="/Modul/Simple_PRISM/"
+      >}}
+
+      {{< card
+            title="Szenarien"
+            subtitle="Unvollständige Trainingsdaten und die Auswirkungen auf die Segmentierung."
+            image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/figures/vtd-utd.png"
+            link="/Modul/Szenarien"
+      >}}
+      {{< card
+            title="Ablation"
+            subtitle="Ablationsanalyse und Qualitative Auswertung. "
+            image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/figures/abl_prism.webp"
+            link="/Modul/Ablation/"
+      >}}
+
+      {{< card
+            title="Modul"
+            subtitle="Genauere Betrachtung der Funtkionsweise von PRISM."
+            image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/figures/cover_method.webp"
+            link="/Modul/Modell/"
+      >}}
+
+      {{< card
+            title="Ergebnis"
+            subtitle="Genauere Betrachtung der Funtkionsweise von PRISM."
+            image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/figures/cover_ablation_prism.webp"
+            link="/Modul/lit/"
+      >}}
+
+      {{< card
+            title="Qualitative Ergebnisse"
+            subtitle="Qualitative Ergebnisse auf dem BraTS2020 und MyoPS 2020 Datensätzen."
+            image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/figures/ergebnis_myops_cov.webp"
+            link="/Modul/Ergebnis/"
+      >}}
+
 {{< /cards >}}

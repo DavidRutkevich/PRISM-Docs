@@ -55,12 +55,8 @@ menu:
       name: Framework
       pageRef: /Framework
       weight: 2
-    - identifier: Showcase
-      name: Showcase
-      pageRef: /Showcase
-      weight: 3
     - identifier: Über mich ↗
-      name: About
+      name: Über mich ↗
       pageRef: https://david-rutkevich.de
       weight: 4
     - name: Search

@@ -1,5 +1,5 @@
 ---
-title: "PRISM – Einfach erklärt"
+title: "PRISM – erklärt"
 description: "Übersichtliche Erläuterung zur Problemdefinition, Multi-Uni-Selbstdistillation und präferenzbasierten Regulierung in PRISM."
 date: 2025-02-05
 math: true
@@ -56,13 +56,9 @@ Für die Segmentierung nutzt man häufig eine Kombination aus **Dice**- und **Cr
 
 
 $$
-L_{\text{Obj.}} 
-= 
+L_{\text{Obj.}} = 
 \sum_{l=0}^{L}
-  \ell_{\mathit{dice+ce}}(\text{Up}_{2^l}(z^l_n),\,y_n)
-+
-\sum_{m=1}^{M}
-  \ell_{\mathit{dice+ce}}(z^{m,0}_n,\,y_n).
+  \ell_{\mathit{dice+ce}}(\text{Up}_{2^l}(z^l_n),\,y_n) + \sum_{m=1}^{M}\ell_{\mathit{dice+ce}}(z^{m,0}_n,\,y_n).
 $$
 
 
@@ -88,8 +84,7 @@ Wir schauen uns die *Logits* der unimodalen Ausgänge $z_n^{m,l}$ an und verglei
 
 
 $$
-L_{\text{pixel}}^m 
-= 
+L_{\text{pixel}}^m = 
 \sum_{l=0}^{L}
   KL\Bigl[
     \sigma\bigl(z_n^{m,l}/\mu\bigr)
@@ -105,12 +100,9 @@ Neben Pixel-Logits können „globale“ Klassenzentren (Prototypen) helfen. Fü
 
 
 $$
-L_{\text{proto}}^m
-=
-\sum_i \sum_{k=1}^K
-\Bigl\|
-  S_{n,k}^{m,s}(i)
-  -
+L_{\text{proto}}^m=
+\sum_i \sum_{k=1}^K \Bigl\|
+  S_{n,k}^{m,s}(i)-
   S_{n,k}^t(i)
 \Bigr\|_2^2.
 $$
@@ -132,10 +124,8 @@ Dazu definiert PRISM eine **relative Präferenz** $RP_n^m$. Die Idee: Wenn Modal
 
 
 $$
-RP_n^m 
-= 
-1 
-- 
+RP_n^m = 
+1 - 
 \frac{D_n^m}{\bar{D}_n}.
 $$
 
@@ -153,10 +143,8 @@ Kombiniert man **Selbstdistillation** (Pixel + Prototyp) mit **Präferenzregulie
 
 
 $$
-L 
-= 
-L_{\text{seg}}
-+
+L = 
+L_{\text{seg}}+
 \sum_{\substack{m=1,\dots,M \\ C_{nm}=1}}
 \Bigl(
   \gamma_1 \,E^m\, L_{\text{pixel}}^m

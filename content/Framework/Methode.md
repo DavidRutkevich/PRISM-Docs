@@ -1,5 +1,8 @@
-# PRISMS: Detaillierte Erklärung von PML, Cross-Modal Correspondence Distillation und Modality-Agnostic Distillation
-
+---
+title: "PRISMS: Detaillierte Erklärung von PML, Cross-Modal Correspondence Distillation und Modality-Agnostic Distillation"
+description: "In diesem Artikel stellen wir drei zentrale Bausteine unseres PRISMS-Frameworks vor: das Parallel Multimodal Learning (PML), die Cross-Modal Correspondence Distillation und die Modality-Agnostic Distillation. Diese Komponenten tragen entscheidend dazu bei, dass unser System robuste Segmentierungsergebnisse liefert – selbst wenn einzelne Modalitäten fehlen oder variieren."
+math: true
+---
 In diesem Artikel stellen wir drei zentrale Bausteine unseres PRISMS-Frameworks vor: das **Parallel Multimodal Learning (PML)**, die **Cross-Modal Correspondence Distillation** und die **Modality-Agnostic Distillation**. Diese Komponenten tragen entscheidend dazu bei, dass unser System robuste Segmentierungsergebnisse liefert – selbst wenn einzelne Modalitäten fehlen oder variieren.
 
 ---
