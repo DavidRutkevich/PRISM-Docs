@@ -1,6 +1,6 @@
 ---
-title: Modul
-description: "Die verschiedenen bestandtteile von PRISM und weitere Informationen."
+title: Relative Präferenz
+description: "Wie funktioniert die Relative Präferenz?"
 toc: false
 layout: wide
 ---
