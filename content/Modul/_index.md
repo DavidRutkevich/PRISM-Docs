@@ -34,11 +34,20 @@ layout: wide
       >}}
 
       {{< card
+            title="Funktionalität"
+            subtitle="Grobe Erklärung der Funktionalität anhand der Figuren aus dem Plakat."
+            image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/figures/cover_fig_prism.webp"
+            link="/Modul/Modul/"
+      >}}
+
+
+      {{< card
             title="Modul"
             subtitle="Genauere Betrachtung der Funtkionsweise von PRISM."
             image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/figures/cover_method.webp"
             link="/Modul/Method/"
       >}}
+
 
       {{< card
             title="Ergebnis"
