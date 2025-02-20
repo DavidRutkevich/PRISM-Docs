@@ -37,7 +37,7 @@ layout: wide
             title="Modul"
             subtitle="Genauere Betrachtung der Funtkionsweise von PRISM."
             image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/figures/cover_method.webp"
-            link="/Modul/Modell/"
+            link="/Modul/Method/"
       >}}
 
       {{< card
