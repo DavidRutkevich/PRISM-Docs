@@ -1,85 +1,75 @@
 ---
-title: "PRISM – Modulübersicht"
+title: "PRISM – Relative Präferenz"
 description: "Wie das mehrstufiges Modell aufgebaut ist und wie die einzelnen Teile ineinandergreifen."
 date: 2025-02-05
 math: true
 ---
 
-<span class="letterine"><i>D</i>as **PRISM-Modell** ist so entworfen</span>, dass es in Szenarien funktioniert, in denen *nicht alle* Modalitäten – beispielsweise verschiedene MRT-Sequenzen – verfügbar sind. Die grundlegende Idee:  
-- Wir haben **mehrere Enkodierzweige** (Encoder) – jeder Zweig kümmert sich um eine Modalität.  
-- Alle Zweige sind mit **einem gemeinsamen Decoder** verbunden.  
-- Auf diese Weise fließen Informationen aller (aktuell vorhandenen) Modalitäten in einer einzigen Fusionsschicht zusammen.
-
-Im Folgenden siehst du zwei Abbildungen, die den Kern des Modells skizzieren und erklären, wie wir die Konzepte „Lehrer“ und „Schüler“ innerhalb ein und desselben Netzwerks umsetzen.  
-
----
-
-## Abbildung 1: *Relative Präferenz* – Überblick
-
 ![Relative Präferenz (Figur 1)](https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/8d1a65675a64e6fc6c43bad46dfbbf8bb38a8e75/Relative%20Pref(1).svg)
 
-**Was du siehst**  
-1. **Kreis mit Pfeilen**:  
-   - Jeder farbige Pfeil repräsentiert eine bestimmte Modalität.  
-   - Der Abstand zur Mitte (bzw. ein Winkel) zeigt, ob und wie stark eine Modalität vom Modell bevorzugt oder vernachlässigt wird.  
-   - „Beschleunigen“ heißt, dass das Modell diese Modalität stärker berücksichtigt; „Verlangsamen“ bedeutet, dass man sie im Training etwas drosselt, damit sich keine Modalität zu sehr in den Vordergrund spielt.
-
-2. **Logit-Diagramm** (unten):  
-   - Die verschiedenfarbigen Kurven sind *Ausgabe-Verteilungen* (Logits) der jeweiligen Modalitäten.  
-   - Die horizontalen Linien/Markierungen (dashed lines) symbolisieren, wie die Lernrate in Abhängigkeit der *Modalität* variiert.  
-   - Weiter rechts heißt: „Stärkere Vorhersage“ oder z. T. „dominierende“ Modalität. Man kann aber auch herleiten, wo unsere *Regulierung* (Sprich: Anpassung der Lernrate) ansetzt.
-
-**Wieso ist das wichtig?**  
-- Jede Modalität kann ihr eigenes „Gewicht“ im Netzwerk haben.  
-- Ist z. B. T2-MRT sehr informativ, könnte es alle anderen Modalitäten überstrahlen.  
-- Die **relative Präferenz** sorgt für *Ausgleich*. Wir wollen sicherstellen, dass keine Modalität komplett untergeht oder das Training dominiert.  
+Die Abbildung zeigt den Mechanismus der präferenzbasierten Regularisierung im Netzwerk, der zur dynamischen Anpassung der Lernraten einzelner Modalitäten dient. Im Folgenden wird der Aufbau der Figur und deren Funktionalität im Netzwerk anhand der mathematischen Beziehungen detailliert erläutert.
 
 ---
 
-## Abbildung 2: *Geteiltes Modell* – Architekturdiagramm
+### Dynamische Anpassung des modalspezifischen Gewichtungsfaktors
 
-![Geteiltes Modell (Figur 2)](https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/986647d02bce43bfd247aa9760de520054dcf7de/Model_vis_web.svg)
+Für jede Modalität $m$ wird ein modalspezifischer Gewichtungsfaktor $E^m$ geführt. Dieser Faktor wird über die Trainingsepochen aktualisiert, um den Beitrag der jeweiligen Modalität anzupassen. Die Update-Regel lautet:
 
-**Aufbau**  
-1. **Encoder (gelb, rosa, lila, …)**  
-   - Jeder Encoder bekommt *eine* MRT-Sequenz als Eingabe.  
-   - Die Encoder-Blöcke extrahieren Merkmale (Features) aus der jeweiligen Modalität.  
+$$
+E^m_{r+1} = E^m_r - \lambda \, RP_m,
+$$
 
-2. **Gemeinsamer Decoder (grau/weiß)**  
-   - Die Ausgaben aller Encoder werden zusammengeführt (Fusion).  
-   - Dieser geteilte Decoder verarbeitet die kombinierten Merkmale und erzeugt eine *multimodale* Vorhersage (hier als „Lehrerpfad“ bezeichnet).  
+wobei
+- $\lambda$ ein kleiner Lernratenparameter ist,
+- $RP_m$ die relative Präferenz der Modalität $m$ darstellt.
 
-3. **Einzelausgänge („Schüler“) pro Modalität**  
-   - Neben dem großen Decoder gibt es für jede Modalität noch einen kleinen Decoder-Zweig.  
-   - Damit erhält jeder Encoder auch einen *eigenen* Output.  
-
-**Warum diese Aufteilung?**  
-- *Multimodaler Pfad* (großer Decoder): Nutzt alle verfügbaren Modalitäten gleichzeitig und kann somit „am meisten“ sehen.  
-- *Unimodale Pfade* (kleine Decoderausgänge):  
-  - Trainieren gezielt auf einer einzigen Modalität.  
-  - Sie bekommen während des Trainings Feedback vom großen Decoder.  
-
-> **Wichtig:** Fehlt eine Modalität komplett (z. B. T1ce ist nicht vorhanden), wird der entsprechende Encoder bei der Fusionsstufe einfach *nicht* genutzt. Das Modell kann also jederzeit auch mit nur zwei oder drei Modalitäten weiterarbeiten, ohne dass wir Code ändern müssen.
-
-**Was ist „SIM“ und „L2-Distanz“ in der Grafik?**  
-- **SIM** (Similarity) deutet an, dass wir die Feature-Darstellungen von *einzelnen* Modalitäten mit dem *multimodalen* Pfad vergleichen.  
-- **L2-Distanz** bedeutet einfach, dass wir zwischen zwei Features (z. B. logitbasiert oder embeddingsbasiert) den L2-Abstand ausrechnen. Dieser Wert sagt aus, wie nah oder fern ein unimodaler Decoder von der „multimodalen Lehrervorhersage“ liegt.
-
-**Fazit der Grafik**  
-- Der komplette orangefarbene Kasten (rechts) bezeichnet den *Lehrer*: Alles was aus dem gemeinsamen Decoder (grau) kommt, gilt als „multimodal“ und dient den Einzeldisziplinen (den Encodern samt ihrer Ausgänge) als *Referenz*.  
-- Jeder einzelne Encoder-Ausgang (gelb, rosa, lila) ist quasi *Schüler* und wird motiviert, sich an der multimodalen Sichtweise zu orientieren.  
+**Interpretation:**
+- **Wenn $RP_m < 0$:**  
+  Dies signalisiert, dass die Modalität schwach repräsentiert ist. Da $-\lambda \, RP_m$ dann positiv wird, steigt $E^m$, wodurch der Einfluss des pixelbasierten Distillationsverlusts $L_{\text{pixel}}$ verstärkt wird. Kurz: Das Lernen dieser Modalität wird beschleunigt.
+- **Wenn $RP_m > 0$:**  
+  Die Modalität ist bereits gut repräsentiert, und $E^m$ wird reduziert, um zu verhindern, dass diese Modalität den Gesamttrainingsprozess dominiert.
 
 ---
 
-## Fazit zum Modell
+### Verstärkung des prototypischen Verlusts
 
-- **Vielseitigkeit**: Durch das Baukasten-Prinzip (mehrere Encoder + gemeinsamer Decoder) kann das Modell auch bei fehlenden Modalitäten gute Ergebnisse liefern.  
-- **Ausbalancierte Nutzung**: Die *relative Präferenz* (Abbildung 1) stellt sicher, dass keine Modalität im Training total über- oder unterbewertet wird.  
-- **Lehrer–Schüler-Prinzip intern**: Statt ein externes Lehrermodell zu bauen, übernimmt der *Fusionsteil* diese Aufgabe gleich mit. So spart man Rechenzeit und bekommt ein kompakteres Design.
+Parallel zur Anpassung des Faktor $E^m$ wird der globale, prototypische Verlust verstärkt. Dieser Verlust, auch als Push L2-Proto Loss bezeichnet, wird verwendet, um die Differenz zwischen der unimodalen (Schüler-) und der multimodalen (Lehrer-) Prototypenrepräsentation zu minimieren:
 
-In weiteren Abschnitten wird genauer beschrieben, **wie** die Methode zur Regelung und Selbstdistillation formal funktioniert und welche Formeln im Detail verwendet werden (siehe „Methodik & Loss-Funktionen“). Für den Einstieg hilft aber schon ein Blick auf diese beiden Abbildungen, um das *große Ganze* zu verstehen:
-- *Viele Eingänge* (Modalitäten) → *ein gemeinsamer Ausgang* + *unimodale Ausgänge*.  
-- Interner Lehrer (Fusionspfad) → interne Schüler (Einzelmodalitäten).  
-- *Relative Präferenz* → verhindert Ungleichgewicht im Training.
+$$
+L_{m}^{\text{proto}} = \left\| S_{m,s}^{n} - S_{t}^{n} \right\|_2^2,
+$$
 
-So lässt sich das PRISM-Modell strukturiert aufbauen und an verschiedene Datensituationen anpassen.
+wobei
+- $S_{m,s}^{n}$ die Kosinus-Ähnlichkeit der Prototypen des unimodalen Modells für Modalität $m$ in Probe $n$ ist,
+- $S_{t}^{n}$ die entsprechende Ähnlichkeit des multimodalen Modells darstellt.
+
+Wird $RP_m < 0$ festgestellt, wird dieser Verlustanteil stärker gewichtet, sodass die schwache Modalität gezielt „gepusht“ wird, ihre globale Repräsentation an die multimodale Referenz anzugleichen.
+
+---
+
+### Übergang zu Gewichtungen: Wahrscheinlichkeitsinterpretation
+
+Der untere Pfeil in der Abbildung symbolisiert, dass die berechneten relativen Präferenzwerte $RP_m$ in Gewichtungen überführt werden, die als Wahrscheinlichkeiten interpretiert werden können. Diese Gewichtungen modulieren den Einfluss der jeweiligen Modalität auf den Gesamtverlust – sei es beim pixelbasierten $L_{\text{pixel}}$ oder beim prototypischen $L_{\text{proto}}$:
+
+$$
+\text{Gewichtung} \sim f(RP_m).
+$$
+
+Dies stellt sicher, dass Modalitäten, die hinterherhinken (also negative $RP_m$ aufweisen), einen größeren Anteil am Trainingssignal erhalten.
+
+---
+
+### Funktionalität im Netzwerk
+
+- **Dynamische Lernratenanpassung:**  
+  Der Faktor $E^m$ wird pro Modalität individuell angepasst. Bei $RP_m < 0$ wird $E^m$ erhöht, wodurch der pixelbasierte Verlust $L_{\text{pixel}}$ für diese Modalität stärker gewichtet wird. Dies ermöglicht ein schnelleres Anlernen schwacher Modalitäten.
+
+- **Integrierte Verlustfunktionen:**  
+  Neben $L_{\text{pixel}}$ wird der prototypische Verlust $L_{\text{proto}}$ genutzt, um globale, semantische Unterschiede zwischen unimodalen und multimodalen Repräsentationen zu minimieren. Beide Verlustkomponenten werden über die Gewichtungen aus den relativen Präferenzen dynamisch skaliert.
+
+- **Gewichtete Fusion:**  
+  Die Umwandlung von $RP_m$ in Gewichtungen sorgt dafür, dass der Beitrag jeder Modalität zum Gesamtverlust abhängig von ihrer Repräsentation dynamisch angepasst wird. Dies führt zu einer ausgewogenen Integration der Modalitäten, selbst wenn einige unvollständig oder schwächer vertreten sind.
+
+---
+
+Diese Mechanismen arbeiten zusammen, um sicherzustellen, dass das Netzwerk auch bei unvollständigen und unbalancierten Datensätzen stabile und robuste Segmentierungsergebnisse erzielt. Der dynamische Anpassungsprozess über $E^m$, gekoppelt mit der verstärkten Gewichtung des prototypischen Verlusts und der Überführung in Wahrscheinlichkeitsgewichtungen, bildet das Herzstück der präferenzbasierten Regularisierung in PRISM.
