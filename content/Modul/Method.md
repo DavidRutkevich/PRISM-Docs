@@ -42,7 +42,7 @@ Ist \(\textit{FR}^m\) nahe 1, so fehlt diese Modalität fast immer.
 
 ### 2. Unvollständige Multimodale Segmentierungs-Baseline
 
-Viele aktuelle Forschungsarbeiten (z. B. \cite{dingDyh127RFNet2024}) verwenden ein Schema, bei dem **jeder Modalität** ein eigener Encoder \(E_m\) zugeordnet wird. Anschließend führe ich die Feature-Karten in einem **gemeinsamen Decoder** \(D_f\) zusammen. Damit kann das Modell alle verfügbaren Informationen fusionieren.
+Viele aktuelle Forschungsarbeiten (z. B. RFNet) verwenden ein Schema, bei dem **jeder Modalität** ein eigener Encoder \(E_m\) zugeordnet wird. Anschließend führe ich die Feature-Karten in einem **gemeinsamen Decoder** \(D_f\) zusammen. Damit kann das Modell alle verfügbaren Informationen fusionieren.
 
 - **Notation**:  
   \( z^l_n = D_f^l(x_n) \) bezeichnet die zusammengeführten Merkmale aus **allen** Modalitäten (falls vorhanden).  
