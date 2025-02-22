@@ -1,20 +1,21 @@
 ---
-title: "PRISM – Ablation"
-description: "Eine Ablation der PRISM Methode und kurze Kommentare und Anmerkungen."
-date: 2025-02-05
+
+title: "PRISM – Ablation"  
+description: "Eine Ablation der PRISM Methode und kurze Kommentare und Anmerkungen."  
+date: 2025-02-05  
 math: true
 
 ---
 
 # Ablationsstudie zu PRISM
 
-In diesem Abschnitt betrachten wir die Ablationsstudie, um die Wirkung einzelner Komponenten sowie verschiedener Distanz- und Hyperparameter-Einstellungen von PRISM genauer zu untersuchen. Die Ablation ist entscheidend, um nachvollziehen zu können, welche Teilschritte in der **Methodik** den stärksten Einfluss auf das Endergebnis haben und wie sich das Zusammenspiel einzelner Module auswirkt.
+In diesem Abschnitt betrachte ich die Ablationsstudie, um die Wirkung einzelner Komponenten sowie verschiedener Distanz- und Hyperparameter-Einstellungen von PRISM genauer zu untersuchen. Die Ablation ist entscheidend, um nachvollziehen zu können, welche Teilschritte in der **Methodik** den stärksten Einfluss auf das Endergebnis haben und wie sich das Zusammenspiel einzelner Module auswirkt.
 
 ---
 
 ## 1. Komponenten-Ablation
 
-Im Folgenden betrachten wir zunächst die einzelnen Bausteine von PRISM. Dazu dient die Tabelle **Komponenten Ablation auf BraTS2020 und MyoPS2020**. Die Zeilen unterscheiden sich darin, ob sie den **pixelweisen Distillation-Term** $\ell_{\text{pixel}}$, den **Prototyp-basierten Term** $\ell_{\text{proto}}$, die **Rebalancierungsmaske** $\omega$ und/oder den **gradientengewichteten Koeffizienten** $E$ aktivieren. Aus der Tabelle geht hervor, wie jeder dieser Bausteine die Ergebnisse jeweils verbessert.
+Im Folgenden betrachte ich zunächst die einzelnen Bausteine von PRISM. Dazu dient die Tabelle **Komponenten Ablation auf BraTS2020 und MyoPS2020**. Die Zeilen unterscheiden sich darin, ob sie den **pixelweisen Distillation-Term** $\ell_{\text{pixel}}$, den **Prototyp-basierten Term** $\ell_{\text{proto}}$, die **Rebalancierungsmaske** $\omega$ und/oder den **gradientengewichteten Koeffizienten** $E$ aktivieren. Aus der Tabelle geht hervor, wie jeder dieser Bausteine die Ergebnisse jeweils verbessert.
 
 <table>
   <caption>Komponenten Ablation auf BraTS2020 und MyoPS2020.</caption>
@@ -189,35 +190,33 @@ Im Folgenden betrachten wir zunächst die einzelnen Bausteine von PRISM. Dazu di
   </tbody>
 </table>
 
-
 ### 1.1 Pixel- vs. Prototyp-basierte Distillation
 
 - **Pixelweise Selbstdistillation** ($\ell_{\text{pixel}}$):  
-  Hier werden die **Logits** des **multimodalen Modells** und des **unimodalen** Teilmodells verglichen. Dies glättet die lokalen Klassifikationsgrenzen und verbessert die Dice-Werte merklich (vgl. Zeile „●○○○“ gegenüber „○○○○“).  
+  Hier vergleiche ich die **Logits** des **multimodalen Modells** und des **unimodalen** Teilmodells. Dies glättet die lokalen Klassifikationsgrenzen und verbessert die Dice-Werte merklich (vgl. Zeile „●○○○“ gegenüber „○○○○“).  
 - **Prototyp-basierte Selbstdistillation** ($\ell_{\text{proto}}$):  
-  Mit Hilfe prototypischer Klassenrepräsentationen werden **globale** semantische Informationen zwischen multi- und unimodalen Pfaden ausgetauscht. Dies steigert unter anderem die Genauigkeit der Segmentierungsgrenzen und reduziert die HD (Hausdorff-Distanz).
+  Mithilfe prototypischer Klassenrepräsentationen tausche ich **globale** semantische Informationen zwischen den multi- und unimodalen Pfaden aus. Dies steigert unter anderem die Genauigkeit der Segmentierungsgrenzen und reduziert die HD (Hausdorff-Distanz).
 
 ### 1.2 Präferenzbasierte Rebalancierung
 
 - **Maske** $\omega$ (Spalte "ω"):  
-  Entscheidet, ob eine Modalität bei negativer relativer Präferenz ($RP^m_n$) zusätzlich verstärkt wird. Das heißt: **vernachlässigte** Modalitäten werden gezielt gefördert.  
+  Entscheide, ob eine Modalität bei negativer relativer Präferenz ($RP^m_n$) zusätzlich verstärkt wird. Das heißt: **vernachlässigte** Modalitäten werden gezielt gefördert.  
 - **Gradientengewichteter Koeffizient** $E$ (Spalte "E"):  
   Dieser wird dynamisch an den Mittelwert der relativen Präferenzen angepasst. Modalitäten mit besonders hoher Fehlrate oder geringem Lerneffekt erhalten dadurch eine höhere Gewichtung im Training.
 
-In der Tabelle erkennen wir, dass erst **mit allen Komponenten** (Zeile „●●●●“) die besten Ergebnisse für alle Metriken (DICE und HD) erzielt werden. Insbesondere steigern sich die **durchschnittlichen Dice-Werte** im Vergleich zur Baseline (erster Eintrag, „○○○○“) deutlich, und die Hausdorff-Distanz sinkt spürbar.
+Aus der Tabelle erkenne ich, dass erst **mit allen Komponenten** (Zeile „●●●●“) die besten Ergebnisse für alle Metriken (DICE und HD) erzielt werden. Insbesondere steigern sich die **durchschnittlichen Dice-Werte** im Vergleich zur Baseline (erster Eintrag, „○○○○“) deutlich, und die Hausdorff-Distanz sinkt spürbar.
 
 ---
 
 ## 2. Vergleich verschiedener Distanzmethoden
 
-Als Nächstes untersuchen wir in einer separaten Ablation, wie sich unterschiedliche Distanzbegriffe oder Loss-Funktionen auf die **Distillation** auswirken. Dafür liegen folgende Einträge vor:  
+Als Nächstes untersuche ich in einer separaten Ablation, wie sich unterschiedliche Distanzbegriffe oder Loss-Funktionen auf die **Distillation** auswirken. Dafür liegen folgende Einträge vor:  
 
 - **Keine**: Keine zusätzliche Distanzbestrafung (nur Baseline).  
 - **Dice Loss**: Statt prototypischer Abgleichung wird ein Würfelkoeffizient-basiertes Matching genutzt.  
 - **KL Loss**: Kullback-Leibler-Divergenz zwischen Lehrer- und Schülerlogits.  
 - **Proto Loss**: Prototyp-basierte Distanz ohne explizite L2-Strafterm-Variante.  
-- **L2-Proto-Distance**: Unsere finale Implementierung der **L2-basierten Prototyp-Distanz**.
-
+- **L2-Proto-Distance**: Meine finale Implementierung der **L2-basierten Prototyp-Distanz**.
 
 <table>
   <caption>Vergleich der Distanzmethoden</caption>
@@ -314,7 +313,7 @@ Mit anderen Worten: Die prototypische Repräsentation vergleicht Klassenmittelwe
 
 ## 3. Einfluss des Hyperparameters λ
 
-In einer weiteren Ablation betrachten wir den Einfluss von $\lambda$ (Lambda). Dieser Parameter steuert, **wie stark** sich die präferenzbasierte Rebalancierung (insbesondere beim Gradientenabstieg) auswirkt.
+In einer weiteren Ablation betrachte ich den Einfluss von $\lambda$ (Lambda). Dieser Parameter steuert, **wie stark** sich die präferenzbasierte Rebalancierung (insbesondere beim Gradientenabstieg) auswirkt.
 
 <table>
   <caption>Hyperparameter λ – Auswirkung auf DICE und HD</caption>
@@ -397,13 +396,13 @@ In einer weiteren Ablation betrachten wir den Einfluss von $\lambda$ (Lambda). D
 ### 3.1 Interpretation
 
 - **Geringe Werte (λ = 1, 2)**:  
-  Man erkennt, dass bei zu kleinem $\lambda$ die Rebalancierung eher schwach ausfällt, wodurch besonders seltene Modalitäten nicht genügend verstärkt werden. Dies zeigt sich in leicht schlechteren Dice-Werten (67.98 bis 68.68) und höheren HDs (zwischen 10.82 und 12.09).  
+  Ich erkenne, dass bei zu kleinem $\lambda$ die Rebalancierung eher schwach ausfällt, wodurch besonders seltene Modalitäten nicht genügend verstärkt werden. Dies zeigt sich in leicht schlechteren Dice-Werten (67.98 bis 68.68) und höheren HDs (zwischen 10.82 und 12.09).  
 - **Optimale Werte (λ = 3, 4)**:  
-  Hier sieht man **Steigerungen** im Dice (bis zu 69.28) bei akzeptabler HD. Besonders $\lambda=4$ liefert einen guten Kompromiss zwischen DICE und HD.  
+  Hier sehe ich **Steigerungen** im Dice (bis zu 69.28) bei akzeptabler HD. Besonders $\lambda=4$ liefert einen guten Kompromiss zwischen DICE und HD.  
 - **Hohe Werte (λ = 5)**:  
   Die Lernraten-Anpassung kann zu stark werden, was Overcompensation bewirkt. Die Dice-Werte fallen wieder (68.32), und die HD steigt.
 
-Daraus lässt sich schlussfolgern, dass $\lambda$ – abhängig vom Datensatz, der Modalitätsverteilung und weiteren Hyperparametern – gut **abgestimmt** werden muss, um die **Effekte der Rebalancierung** weder zu unterschätzen noch zu übersteuern.
+Daraus lasse ich den Schluss zu, dass $\lambda$ – abhängig vom Datensatz, der Modalitätsverteilung und weiteren Hyperparametern – gut **abgestimmt** werden muss, um die **Effekte der Rebalancierung** weder zu unterschätzen noch zu übersteuern.
 
 ---
 
@@ -418,10 +417,8 @@ Daraus lässt sich schlussfolgern, dass $\lambda$ – abhängig vom Datensatz, d
    - Global-semantische Informationen (Prototypen) ergänzen lokale Pixelinformationen ideal, was in einer höheren Robustheit gegenüber unbalancierten Szenarien resultiert.
 
 3. **Hyperparameter λ:**  
-   - Die Rebalancierungsintensität muss **weder zu schwach noch zu stark** ausfallen. Im Bereich von $\lambda = 3$ oder 4 erzielen wir typischerweise die besten Ergebnisse.  
+   - Die Rebalancierungsintensität muss **weder zu schwach noch zu stark** ausfallen. Im Bereich von $\lambda = 3$ oder 4 erziele ich typischerweise die besten Ergebnisse.  
    - Eine zu starke Gewichtung kann zu Overcompensation führen, während eine zu geringe Gewichtung kaum etwas an der Modalitätsimbalance ändert.
-
 
 **Gesamtfazit:**  
 Die Ablationen demonstrieren die Wirksamkeit der in der **Methodik** (PRISM) eingeführten Module: Die Multi-Uni Selbstdistillation bringt eine engere Kopplung zwischen mono- und multimodalen Repräsentationen, während das präferenzbasierte Lernraten-Management sicherstellt, dass alle Modalitäten – auch seltene oder schwache – angemessen in das Endmodell einfließen. Die passenden Distanzfunktionen und Hyperparameter sind dabei entscheidend, um ein **ausgewogenes** und zugleich **leistungsstarkes** Training zu erreichen.
-```

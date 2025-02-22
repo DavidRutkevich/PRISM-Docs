@@ -1,23 +1,25 @@
 ---
-title: "Ablationsstudie: Detaillierte Analyse der Verlustfunktionen und Hyperparameter"
-description: "In diesem Artikel betrachten wir die Ablationsstudie zu unserem vorgeschlagenen PRISMS-Framework im Detail. Dabei zeigen wir, wie sich verschiedene Hyperparameter auf die Leistung (gemessen in mIoU) auswirken, und diskutieren den Einfluss der einzelnen Komponenten auf das Gesamtergebnis. Im Fokus stehen insbesondere die Modality-Agnostic Distillation (L_mad), die Unimodal Distillation (L_umd) sowie die Cross-Modal Distillation (L_cmd)."
-math: true
+
+title: "Ablationsstudie: Detaillierte Analyse der Verlustfunktionen und Hyperparameter"  
+description: "In diesem Artikel betrachte ich die Ablationsstudie zu meinem vorgeschlagenen PRISMS-Framework im Detail. Dabei zeige ich, wie sich verschiedene Hyperparameter auf die Leistung (gemessen in mIoU) auswirken, und diskutiere den Einfluss der einzelnen Komponenten auf das Gesamtergebnis. Im Fokus stehen insbesondere die Modality-Agnostic Distillation (\(\mathcal{L}_{mad}\)), die Unimodal Distillation (\(\mathcal{L}_{umd}\)) sowie die Cross-Modal Distillation (\(\mathcal{L}_{cmd}\))."  
+math: true  
+
 ---
 
 ### 1. Überblick: Ergebnisse auf MUSES und DELIVER
 
-Wie bereits im Hauptartikel beschrieben, zeigt unser Ansatz auf den Datensätzen **MUSES** (real) und **DELIVER** (synthetisch) deutliche Verbesserungen gegenüber dem aktuellen Stand der Technik:
+Wie ich bereits im Hauptartikel beschrieben habe, zeigt mein Ansatz auf den Datensätzen **MUSES** (real) und **DELIVER** (synthetisch) deutliche Verbesserungen gegenüber dem aktuellen Stand der Technik:
 
 - **MUSES**: mIoU von **40.23** (+6.37 % gegenüber vorherigem SoTA).  
 - **DELIVER**: mIoU von **46.64** (+6.15 % gegenüber MAGIC).
 
-Diese Steigerung belegt, dass unser Modell insbesondere bei fehlenden Modalitäten oder in komplexen Szenarien stabiler bleibt als andere Methoden, die stark von einzelnen Modalitäten (z. B. RGB oder Tiefe) abhängig sind.
+Diese Steigerung belege ich damit, dass mein Modell insbesondere bei fehlenden Modalitäten oder in komplexen Szenarien stabiler bleibt als andere Methoden, die stark von einzelnen Modalitäten (z. B. RGB oder Tiefe) abhängig sind.
 
 ---
 
 ### 2. Ablation: Modality-Agnostic Distillation \(\mathcal{L}_{mad}\)
 
-Im Folgenden betrachten wir, wie sich unterschiedliche Gewichtungen \(\lambda\) für die Modality-Agnostic Distillation (\(\mathcal{L}_{mad}\)) auf die Performance (mIoU) auswirken. Die Tabelle ist im HTML-Format gehalten und verzichtet auf farbige Hinterlegungen, damit sie in **Dark Mode** und **Light Mode** gleichermaßen gut lesbar bleibt.
+Im Folgenden betrachte ich, wie sich unterschiedliche Gewichtungen \(\lambda\) für die Modality-Agnostic Distillation (\(\mathcal{L}_{mad}\)) auf die Performance (mIoU) auswirken. Die Tabelle ist im HTML-Format gehalten und verzichtet auf farbige Hinterlegungen, damit sie in **Dark Mode** und **Light Mode** gleichermaßen gut lesbar bleibt.
 
 <table>
   <thead>
@@ -188,16 +190,16 @@ Im Folgenden betrachten wir, wie sich unterschiedliche Gewichtungen \(\lambda\) 
   </tbody>
 </table>
 
-**Wichtigste Erkenntnisse**:
+**Wichtigste Erkenntnisse**:  
 - Eine **moderate Erhöhung** von \(\lambda\) (bis etwa 50) steigert die Ergebnisse deutlich (Mean mIoU bis 40.11).  
-- Besonders **L** (LiDAR) und **EL** (Event + LiDAR) profitieren, da diese Modalitäten im Training öfter kompensiert und betont werden.  
+- Besonders **L** (LiDAR) und **EL** (Event + LiDAR) profitieren, da ich diese Modalitäten im Training öfter kompensiere und betone.  
 - Über das Optimum hinaus (\(\lambda > 50\)) nimmt der Zugewinn ab, teils kehrt sich der Effekt sogar um.
 
 ---
 
 ### 3. Ablation: Unimodal Distillation \(\mathcal{L}_{umd}\)
 
-Die **Unimodal Distillation** (\(\alpha\)) stärkt gezielt die einzelnen Modalitäten. Die nächste Tabelle zeigt, wie sich verschiedene \(\alpha\)-Werte auswirken, wenn alle anderen Faktoren fixiert sind.
+Die **Unimodal Distillation** (\(\alpha\)) stärke ich gezielt für die einzelnen Modalitäten. Die folgende Tabelle zeigt, wie sich verschiedene \(\alpha\)-Werte auswirken, wenn alle anderen Faktoren fixiert sind.
 
 <table>
   <thead>
@@ -349,32 +351,32 @@ Die **Unimodal Distillation** (\(\alpha\)) stärkt gezielt die einzelnen Modalit
   </tbody>
 </table>
 
-**Wichtigste Erkenntnisse**:
+**Wichtigste Erkenntnisse**:  
 - Geringe \(\alpha\)-Werte (\(\alpha=1\)) verbessern oft einzelne Modalitäten (z. B. F: +0.83), beeinträchtigen aber andere (E, L).  
-- Bei \(\alpha=10\) erreichen wir sehr hohe Werte für **F** und **FL**, allerdings sinkt die Event-Performance stark (E: -7.26).  
-- Ein **Trade-off** entsteht zwischen Einzelmodalitäten und Multimodalität.
+- Bei \(\alpha=10\) erreiche ich sehr hohe Werte für **F** und **FL**, allerdings sinkt die Performance der Events stark (E: -7.26).  
+- Ein **Trade-off** entsteht zwischen der Optimierung einzelner Modalitäten und der Gesamtfusion.
 
 ---
 
 ### 4. Cross-Modal Distillation \(\mathcal{L}_{cmd}\) und Kombinationen
 
-Werden Unimodal Distillation (\(\mathcal{L}_{umd}\)) und Cross-Modal Distillation (\(\mathcal{L}_{cmd}\)) gemeinsam eingesetzt, lässt sich der **unimodale Bias** weiter reduzieren. Allerdings muss der Faktor \(\beta\) für \(\mathcal{L}_{cmd}\) moderat gewählt werden: Zu hohe Werte können einzelne Modalitäten überkompensieren und somit andere verschlechtern.
+Wenn ich die Unimodal Distillation (\(\mathcal{L}_{umd}\)) und die Cross-Modal Distillation (\(\mathcal{L}_{cmd}\)) gemeinsam einsetze, kann ich den **unimodalen Bias** weiter reduzieren. Allerdings muss ich den Faktor \(\beta\) für \(\mathcal{L}_{cmd}\) moderat wählen, denn zu hohe Werte können einzelne Modalitäten überkompensieren und dadurch andere verschlechtern.
 
 ---
 
 ### 5. Keine Distillation auf „fused Features“
 
-Experimente in einer weiteren Tabelle zeigen, dass das **direkte Distillieren fusionierter Features** (d. h. ein gemeinsames, gemitteltes Feature aller Modalitäten) kaum Vorteile bringt. Im Gegenteil: Die Performance leidet, weil die für das Training relevanten Informationen in den „vermischten“ Merkmalen schwerer zu extrahieren sind. Stattdessen ist es effektiver, **unimodale** und **cross-modale** Repräsentationen separat zu distillieren.
+Aus weiteren Experimenten habe ich festgestellt, dass das **direkte Distillieren fusionierter Features** (also ein gemeinsames, gemitteltes Feature aller Modalitäten) kaum Vorteile bringt. Im Gegenteil: Die Performance leidet, da die für das Training relevanten Informationen in den „vermischten“ Merkmalen schwerer zu extrahieren sind. Daher ist es für mich effektiver, **unimodale** und **cross-modale** Repräsentationen separat zu distillieren.
 
 ---
 
 ## Fazit
 
-Die Ablationsstudie unterstreicht, wie wichtig ein **fein abgestimmtes Zusammenspiel** der einzelnen Distillationsverluste ist:
+Die Ablationsstudie unterstreicht für mich, wie wichtig ein **fein abgestimmtes Zusammenspiel** der einzelnen Distillationsverluste ist:
 
 1. **Modality-Agnostic Distillation** (\(\mathcal{L}_{mad}\)) fängt fehlende Modalitäten semantisch ab.  
-2. **Unimodal Distillation** (\(\mathcal{L}_{umd}\)) verbessert gezielt die Leistung einzelner Modalitäten, muss aber durch Cross-Modal-Verfahren ausgeglichen werden.  
+2. **Unimodal Distillation** (\(\mathcal{L}_{umd}\)) verbessert gezielt die Leistung einzelner Modalitäten, muss aber durch cross-modale Verfahren ausgeglichen werden.  
 3. **Cross-Modal Distillation** (\(\mathcal{L}_{cmd}\)) gleicht intermodale Beziehungen an und verhindert eine Überdominanz „leichter“ Modalitäten.  
-4. **Fused-Feature-Distillation** bringt keine Vorteile, da wichtige Details in den zusammengeführten Merkmalen verloren gehen.
+4. **Fused-Feature-Distillation** bringt für mich keine Vorteile, da wichtige Details in den zusammengeführten Merkmalen verloren gehen.
 
-Insgesamt zeigen die Experimente, dass unser Framework sowohl in Einmodal- als auch in Multimodal-Szenarien überzeugt – vorausgesetzt, alle Komponenten werden sorgfältig aufeinander abgestimmt. So erreicht PRISMS auch bei realen Anwendungen, in denen Daten häufig unvollständig oder variabel sind, eine robuste und qualitativ hochwertige Segmentierungsleistung.
+Insgesamt zeigen die Experimente, dass das Framework sowohl in Einmodal- als auch in multimodalen Szenarien überzeugt – vorausgesetzt, alle Komponenten werden sorgfältig aufeinander abgestimmt. So erreicht PRISMS auch bei realen Anwendungen, in denen Daten häufig unvollständig oder variabel sind, eine robuste und qualitativ hochwertige Segmentierungsleistung.
