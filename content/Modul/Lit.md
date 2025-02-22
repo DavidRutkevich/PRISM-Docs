@@ -1,5 +1,4 @@
 ---
-
 title: "Quantitativer Vergleich auf BraTS2020 und MyoPS2020"  
 date: 2025-02-19  
 draft: false  

@@ -1,5 +1,3 @@
-Hier ist dein Artikel in der Ich-Form:
-
 ---
 
 title: "Architektur und Aufbau des PRISMS-Frameworks"  

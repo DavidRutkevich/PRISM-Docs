@@ -1,7 +1,7 @@
 ---
 
 title: "Ablationsstudie: Detaillierte Analyse der Verlustfunktionen und Hyperparameter"  
-description: "In diesem Artikel betrachte ich die Ablationsstudie zu meinem vorgeschlagenen PRISMS-Framework im Detail. Dabei zeige ich, wie sich verschiedene Hyperparameter auf die Leistung (gemessen in mIoU) auswirken, und diskutiere den Einfluss der einzelnen Komponenten auf das Gesamtergebnis. Im Fokus stehen insbesondere die Modality-Agnostic Distillation (\(\mathcal{L}_{mad}\)), die Unimodal Distillation (\(\mathcal{L}_{umd}\)) sowie die Cross-Modal Distillation (\(\mathcal{L}_{cmd}\))."  
+description: "In diesem Artikel betrachte ich die Ablationsstudie zu meinem vorgeschlagenen PRISMS-Framework im Detail."  
 math: true  
 
 ---
