@@ -7,35 +7,35 @@ math: true
 
 -----------------------------  
 
-## **Ergebnisse für BraTS2020**
+## Ergebnisse für BraTS2020
 
-In diesem Abschnitt präsentiere ich meine Ergebnisse auf dem **BraTS2020-Datensatz**, wobei ich unterschiedliche Modalitätskombinationen betrachte. Die Reihenfolge der Spalten zeigt die verschiedenen Ansätze: **Baseline, ModDrop, PMR und PRISM**. Mit PRISM setze ich ein selbstdistillierendes Netzwerk ein, um robuste Segmentierungsergebnisse zu erzielen.
+Im Folgenden werden die Ergebnisse auf dem **BraTS2020-Datensatz** vorgestellt, wobei unterschiedliche Modalitätskombinationen untersucht wurden. Die Spaltenreihenfolge gibt die verschiedenen Ansätze an: **Baseline, ModDrop, PMR und PRISM**. Mittels PRISM wird ein selbstdistillierendes Netzwerk eingesetzt, um robuste Segmentierungsergebnisse zu erzielen.
 
-### **Qualitative Ergebnisse (BraTS2020)**
+### Qualitative Ergebnisse (BraTS2020)
 ![Qualitative Ergebnisse BraTS2020](https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/e090271a8e24c9725f1692590e3c487a2ae84cc0/qual_brats.svg)
 
-#### **Analyse der Ergebnisse:**
+#### Analyse der Ergebnisse
 
 - **Baseline**:  
-  Bei der Baseline stelle ich zahlreiche Fehlklassifikationen fest. Sowohl falsch positive als auch falsch negative Bereiche treten auf. Besonders problematisch finde ich die inkonsistente Abgrenzung der Tumorregionen bei unvollständigen Modalitäten.
+  Bei der Baseline treten zahlreiche Fehlklassifikationen auf. Sowohl falsch positive als auch falsch negative Bereiche sind festzustellen. Insbesondere zeigt sich eine inkonsistente Abgrenzung der Tumorregionen, wenn unvollständige Modalitäten vorliegen.
 - **ModDrop**:  
-  Mit ModDrop reduziere ich die falsch positiven Bereiche leicht, allerdings führt dies zu fragmentierten Segmentierungen. Einige Tumorregionen erscheinen unvollständig oder verzerrt.
+  Durch den Einsatz von ModDrop können die falsch positiven Bereiche leicht reduziert werden, jedoch führt dies teilweise zu fragmentierten Segmentierungen. Einige Tumorregionen erscheinen unvollständig oder verzerrt.
 - **PMR**:  
-  Bei PMR priorisiere ich bestimmte Modalitäten, was zu einer besseren Abdeckung der Tumorkerne führt. Dennoch treten weiterhin größere falsch negative Bereiche auf, insbesondere wenn essentielle Modalitäten fehlen.
+  Mit PMR erfolgt eine Priorisierung bestimmter Modalitäten, was zu einer besseren Abdeckung der Tumorkerne führt. Dennoch bleiben größere falsch negative Bereiche bestehen, vor allem wenn essentielle Modalitäten fehlen.
 - **PRISM**:  
-  Mit PRISM erziele ich die beste Balance zwischen Sensitivität und Spezifität. Die Tumorregionen sind klar abgegrenzt, falsch positive Bereiche werden minimiert und selbst bei reduzierten Modalitäten bleibt die Tumorkontur erhalten.
+  Der Einsatz von PRISM ermöglicht die beste Balance zwischen Sensitivität und Spezifität. Die Tumorregionen werden klar abgegrenzt, falsch positive Bereiche werden minimiert und die Tumorkontur bleibt selbst bei reduzierten Modalitäten erhalten.
 
 **Einfluss der Modalitätskombinationen:**  
 - **T1 allein**:  
-  Ich beobachte, dass T1 allein eine inkonsistente Erkennung der Tumorkontur liefert.  
-- **T1ce und Flair**:  
-  Diese Kombination führt zu besseren Ergebnissen, da sie die Enhancing-Region präziser erfasst.  
+  Die alleinige Nutzung von T1 führt zu einer inkonsistenten Erkennung der Tumorkontur.  
+- **T1ce und FLAIR**:  
+  Diese Kombination resultiert in besseren Ergebnissen, da die Enhancing-Region präziser erfasst wird.  
 - **T2 allein**:  
-  T2 allein liefert unbefriedigende Ergebnisse, da wichtige Informationen zu Enhancement-Regionen fehlen.  
-- **T1ce und Flair**:  
-  Ich komme zu dem Schluss, dass die Kombination aus T1ce und Flair eine der besten Alternativen darstellt, wenn nicht alle Modalitäten verfügbar sind.
+  Der alleinige Einsatz von T2 liefert unbefriedigende Ergebnisse, da wichtige Informationen zu den Enhancement-Regionen fehlen.  
+- **T1ce und FLAIR**:  
+  Es wird festgestellt, dass die Kombination aus T1ce und FLAIR eine der besten Alternativen darstellt, wenn nicht alle Modalitäten verfügbar sind.
 
-#### **Quantitative Auswertung (BraTS2020)**
+#### Quantitative Auswertung (BraTS2020)
 
 | Methode   | WT Dice (%) ↑ | TC Dice (%) ↑ | ET Dice (%) ↑ | Avg Dice (%) ↑ | HD Avg (mm) ↓ |
 | --------- | ------------- | ------------- | ------------- | -------------- | ------------- |
@@ -44,39 +44,39 @@ In diesem Abschnitt präsentiere ich meine Ergebnisse auf dem **BraTS2020-Datens
 | PMR       | 77.59         | 65.44         | **52.86**     | 65.30          | 20.58         |
 | **PRISM** | **83.42**     | **71.74**     | 52.78         | **69.31**      | **10.52**     |
 
-Ich zeige, dass PRISM signifikante Verbesserungen in allen Metriken aufweist – insbesondere bei der Gesamt-Dice-Score und der Hausdorff-Distanz (HD) – was auf eine präzisere Segmentierung hindeutet.
+Die Ergebnisse zeigen, dass PRISM in allen Metriken signifikante Verbesserungen erzielt. Insbesondere steigen die durchschnittlichen Dice-Werte deutlich an, während die Hausdorff-Distanz (HD) erheblich reduziert wird – ein Hinweis auf eine präzisere Segmentierung.
 
 ---
 
-## **Ergebnisse für MyoPS2020**
+## Ergebnisse für MyoPS2020
 
-Für den **MyoPS2020-Datensatz** präsentiere ich eine ähnliche Auswertung. In der folgenden Abbildung zeige ich Segmentierungsergebnisse für verschiedene Modalitätskombinationen.
+Für den **MyoPS2020-Datensatz** wird eine ähnliche Auswertung präsentiert. Die folgende Abbildung zeigt Segmentierungsergebnisse für verschiedene Modalitätskombinationen.
 
-### **Qualitative Ergebnisse (MyoPS2020)**
+### Qualitative Ergebnisse (MyoPS2020)
 ![Qualitative Ergebnisse MyoPS2020](https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/e090271a8e24c9725f1692590e3c487a2ae84cc0/qual_myops.svg)
 
-#### **Analyse der Ergebnisse:**
+#### Analyse der Ergebnisse
 
 - **Baseline**:  
-  Bei der Baseline habe ich Schwierigkeiten bei der Abgrenzung der Herzmuskelregion festgestellt. Falsch positive Bereiche treten insbesondere in den Randbereichen der Struktur auf.
+  Bei der Baseline ergeben sich Schwierigkeiten bei der Abgrenzung der Herzmuskelregion. Insbesondere in den Randbereichen der Struktur sind falsch positive Bereiche zu erkennen.
 - **ModDrop**:  
-  Mit ModDrop verbessere ich die Gesamtform der Segmentierung, jedoch kommt es in einigen Bereichen zu Fragmentierungen.
+  Der Einsatz von ModDrop führt zu einer Verbesserung der Gesamtform der Segmentierung, jedoch kommt es in einigen Bereichen zu Fragmentierungen.
 - **PMR**:  
-  Bei PMR erziele ich bessere Umrisse, neige jedoch dazu, einige relevante Strukturen nicht vollständig zu erfassen.
+  Bei PMR werden die Umrisse verbessert, es kommt jedoch zu einer unvollständigen Erfassung einiger relevanter Strukturen.
 - **PRISM**:  
-  Mit PRISM erreiche ich die höchste Präzision und reduziere sowohl falsch positive als auch falsch negative Bereiche erheblich.
+  Der Einsatz von PRISM führt zu einer höchsten Präzision. Sowohl falsch positive als auch falsch negative Bereiche werden erheblich reduziert.
 
 **Einfluss der Modalitätskombinationen:**  
 - **bSSFP allein**:  
-  Ich stelle fest, dass bSSFP allein eine schwache Abgrenzung der Myokardstruktur liefert.
+  Der alleinige Einsatz von bSSFP führt zu einer schwachen Abgrenzung der Myokardstruktur.  
 - **LGE**:  
-  Ich beobachte, dass LGE die Identifikation von Infarktregionen verbessert, jedoch mit einem hohen Risiko für falsch positive Ergebnisse.
+  Die Nutzung von LGE verbessert die Identifikation von Infarktregionen, birgt jedoch ein höheres Risiko für falsch positive Ergebnisse.  
 - **T2**:  
-  T2 liefert zusätzliche Kontraste, ist aber allein unzureichend für eine präzise Segmentierung.
+  T2 liefert zusätzliche Kontraste, ist jedoch allein nicht ausreichend für eine präzise Segmentierung.  
 - **LGE und bSSFP**:  
-  Ich komme zu dem Schluss, dass die Kombination aus LGE und bSSFP eine der stabilsten Segmentierungslösungen bietet.
+  Es wird festgestellt, dass die Kombination aus LGE und bSSFP eine der stabilsten Segmentierungslösungen darstellt.
 
-#### **Quantitative Auswertung (MyoPS2020)**
+#### Quantitative Auswertung (MyoPS2020)
 
 | Methode   | LVBP Dice (%) ↑ | RVBP Dice (%) ↑ | MYO Dice (%) ↑ | Avg Dice (%) ↑ | HD Avg (mm) ↓ |
 | --------- | --------------- | --------------- | -------------- | -------------- | ------------- |
@@ -85,4 +85,8 @@ Für den **MyoPS2020-Datensatz** präsentiere ich eine ähnliche Auswertung. In 
 | PMR       | 73.05           | 52.61           | 69.32          | 64.99          | 20.54         |
 | **PRISM** | **81.44**       | **60.97**       | **77.44**      | **73.28**      | **14.50**     |
 
-Auch hier wird gezeigt, dass PRISM alle anderen Methoden in allen Metriken übertrifft und die Hausdorff-Distanz erheblich reduziert – ein klarer Hinweis auf eine genauere Segmentierung.
+Die quantitativen Ergebnisse bestätigen, dass PRISM alle anderen Ansätze in allen Metriken übertrifft. Insbesondere wird die Hausdorff-Distanz deutlich reduziert, was auf eine präzisere Segmentierung hinweist.
+
+---
+
+Die vorliegenden Ergebnisse demonstrieren, dass die PRISM-Methode sowohl bei den Gehirntumorsegmentierungen (BraTS2020) als auch bei den kardiologischen Segmentierungen (MyoPS2020) zu signifikanten Verbesserungen führt. Durch den Einsatz der selbstdistillierenden Architektur werden die lokalen und globalen Repräsentationen optimal angepasst, sodass auch bei unvollständigen Modalitäten robuste und präzise Segmentierungsergebnisse erzielt werden.

@@ -7,33 +7,33 @@ math: true
 
 ---
 
-Stell Dir vor, ich leite ein großes Orchester, in dem verschiedene **Instrumente** zusammenwirken, um ein musikalisches Meisterwerk zu schaffen. Manchmal fehlt jedoch ein Instrument (z. B. wegen Krankheit) oder es klingt verstimmt. Dennoch soll das gesamte Orchester **harmonisch** klingen. Ähnlich verhält es sich in der medizinischen Bildverarbeitung, wenn einzelne MRT-Sequenzen (**Modalitäten**) fehlen oder nur in schlechter Qualität vorliegen. Das Ziel von **PRISM** (Präferenzbasierte Regulierung und Selbstdistillation) ist, trotz unvollständiger „Instrumente“ einen **harmonischen Gesamtklang** zu erzielen – sprich eine **robuste Segmentierung**.
+Stellen Sie sich ein großes Orchester vor, in dem verschiedene **Instrumente** zusammenwirken, um ein musikalisches Meisterwerk zu erzeugen. Manchmal fehlt ein Instrument – beispielsweise aufgrund von Krankheit – oder es spielt verstimmt. Dennoch soll das gesamte Orchester **harmonisch** klingen. Ähnlich verhält es sich in der medizinischen Bildverarbeitung, wenn einzelne MRT-Sequenzen (**Modalitäten**) fehlen oder nur in reduzierter Qualität vorliegen. Das Ziel von **PRISM** (Präferenzbasierte Regulierung und Selbstdistillation) besteht darin, trotz unvollständiger „Instrumente“ einen **harmonischen Gesamtklang** zu erzielen – sprich eine robuste Segmentierung.
 
-In diesem Artikel erkläre ich **im Detail**, wie das PRISM-Modul aufgebaut ist, wie es sich in bestehende Segmentierungsarchitekturen integriert und warum es in Szenarien mit fehlenden Modalitäten zu besonders stabilen Ergebnissen führt.
+Der vorliegende Artikel erläutert detailliert, wie das PRISM-Modul aufgebaut ist, wie es in bestehende Segmentierungsarchitekturen integriert werden kann und weshalb es in Szenarien mit fehlenden Modalitäten zu besonders stabilen Ergebnissen führt.
 
 ---
 
 ## Inhaltsverzeichnis
 
-1. [Die Rollen im Orchester: Einzelmodalitäten und Fusionsmodell](#die-rollen-im-orchester)
-2. [Die Figur: Klangwellen und Instrumentenbeiträge](#klangwellen-und-instrumentenbeitraege)
-3. [Partitur und Dirigent: Überblick über das PRISM-Modul](#partitur-und-dirigent)
-4. [Baustein 1: Selbstdistillation (Teacher–Student-Ansatz im Modell)](#baustein-1-selbstdistillation)
-5. [Baustein 2: Präferenzbasierte Regulierung (Re-Balancing)](#baustein-2-präferenzbasierte-regulierung)
-6. [Gesamtverlustfunktion: Wie alles zusammenklingt](#gesamtverlustfunktion)
-7. [Integration in bestehende Architekturen](#integration-in-bestehende-architekturen)
+1. [Die Rollen im Orchester: Einzelmodalitäten und Fusionsmodell](#die-rollen-im-orchester)  
+2. [Die Figur: Klangwellen und Instrumentenbeiträge](#klangwellen-und-instrumentenbeitraege)  
+3. [Partitur und Dirigent: Überblick über das PRISM-Modul](#partitur-und-dirigent)  
+4. [Baustein 1: Selbstdistillation (Teacher–Student-Ansatz im Modell)](#baustein-1-selbstdistillation)  
+5. [Baustein 2: Präferenzbasierte Regulierung (Re-Balancing)](#baustein-2-präferenzbasierte-regulierung)  
+6. [Gesamtverlustfunktion: Wie alles zusammenklingt](#gesamtverlustfunktion)  
+7. [Integration in bestehende Architekturen](#integration-in-bestehende-architekturen)  
 8. [Fazit und Ausblick](#fazit-und-ausblick)
 
 ---
 
 ## 1. Die Rollen im Orchester <a name="die-rollen-im-orchester"></a>
 
-In meinem Orchester hat jedes Instrument seine eigene **Klangfarbe** und deckt verschiedene **Frequenzbereiche** ab. Übertragen auf die medizinische Bildverarbeitung bedeutet das:
+In einem Orchester hat jedes Instrument seine eigene **Klangfarbe** und deckt unterschiedliche **Frequenzbereiche** ab. Übertragen auf die medizinische Bildverarbeitung entspricht dies:
 
 - **Instrument** = **Modalität** (z. B. T1, T2, FLAIR, T1ce)  
 - **Gesamtklang** = **Fusionsmodell**, das alle verfügbaren Modalitäten vereint
 
-Oftmals fehlen jedoch einzelne MRT-Sequenzen, weil sie beispielsweise nicht aufgenommen werden konnten. Dadurch wird das Orchester „unvollständig“. In der Praxis führt dies häufig zu **Performance-Einbrüchen** bei klassischen Modellen, die alle Modalitäten gleichberechtigt erwarten.
+Häufig fehlen jedoch einzelne MRT-Sequenzen, weil sie nicht immer aufgenommen werden können. Dies führt zu einem „unvollständigen Orchester“ und beeinträchtigt in klassischen Modellen, die alle Modalitäten gleichberechtigt voraussetzen, die Gesamtperformance.
 
 ---
 
@@ -41,29 +41,29 @@ Oftmals fehlen jedoch einzelne MRT-Sequenzen, weil sie beispielsweise nicht aufg
 
 ![Klangwellen und Instrumentenbeiträge (Differenzvergleich à la KL-Divergenz in PRISM)](https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/figures/poster_plot.png)
 
-In der obigen Abbildung zeige ich verschiedene Wellenkurven:
+In der Abbildung sind mehrere Wellenkurven dargestellt:
 
-- Die **weiße Kurve** stellt den **Gesamtklang** dar – analog zum Fusionspfad, der alle verfügbaren Modalitäten zusammenführt.  
-- Die **bunten Kurven** (gelb, orange, lila) repräsentieren jeweils eine einzelne **Modalität** (Instrument). Je nach Qualität und Verfügbarkeit kann eine Modalität lauter (höhere Amplitude) oder leiser klingen.
+- Die **weiße Kurve** symbolisiert den **Gesamtklang**, analog zum Fusionspfad, der alle verfügbaren Modalitäten kombiniert.  
+- Die **bunten Kurven** (z. B. gelb, orange, lila) repräsentieren jeweils eine einzelne **Modalität**. Je nach Qualität und Vorhandensein klingt ein Instrument lauter (höhere Amplitude) oder leiser.
 
-Je nachdem, wie gut oder schlecht eine Modalität vorliegt, beeinflusst sie den Gesamtklang stärker oder schwächer. Mein Ziel mit **PRISM** ist es, trotz dieser Schwankungen und Ausfälle (z. B. wenn eine Modalität fehlt) am Ende eine möglichst **harmonische Gesamtkurve** (weiße Linie) zu erzeugen. Dazu setze ich unter anderem einen KL-Divergenz-basierten Abgleich ein, der wie ein „Abstimmen“ der Instrumente wirkt.
+Die Qualität und Präsenz einzelner Modalitäten beeinflusst den Gesamtklang – Modalitäten, die verstärkt vertreten sind, können den Gesamteindruck dominieren, während schwächere Modalitäten zu wenig beitragen. PRISM zielt darauf ab, durch gezielte Regularisierung und Distillation, selbst bei fehlenden oder verrauschten Modalitäten, einen harmonischen Gesamtklang (weiße Linie) zu erzielen. Hierbei wird unter anderem ein KL-Divergenz-basierter Abgleich eingesetzt, der an das Abstimmen von Instrumenten erinnert.
 
 ---
 
 ## 3. Partitur und Dirigent: Überblick über das PRISM-Modul <a name="partitur-und-dirigent"></a>
 
-Für mich funktioniert PRISM wie ein **Dirigent** und eine **Partitur** in einem:  
-- Der **Dirigent** (mein **Fusionspfad**) hat den Überblick über alle verfügbaren Instrumente (Modalitäten) und erzeugt den „Gesamtklang“.  
-- Die **Partitur** (meine **Loss-Funktionen** und **Regularisierungstermen**) regelt, wie laut oder leise jedes Instrument spielt und wie es sich an den Gesamtklang anpasst.
+PRISM fungiert als eine Art **Dirigent** und **Partitur** in einem:
+- Der **Dirigent** (Fusionspfad) übernimmt die Gesamtkoordination, indem er alle Modalitäten zusammenführt.
+- Die **Partitur** (Loss-Funktionen und Regularisierungstermen) regelt, wie laut oder leise jedes Instrument (Modalität) spielt und wie dessen Beitrag an den Gesamtklang angepasst wird.
 
-Konkret unterteile ich PRISM in zwei zentrale Bausteine:
+Konkret wird PRISM in zwei zentrale Bausteine unterteilt:
 
-1. **Selbstdistillation**  
-   – Jede Modalität lernt nicht nur aus den eigenen Daten, sondern auch aus dem Fusionsmodell.  
-2. **Präferenzbasierte Regulierung**  
-   – Ein Mechanismus, der das Lerngewicht einzelner Modalitäten dynamisch anpasst, damit keine Modalität „untergeht“ oder zu dominant wird.
+1. **Selbstdistillation:**  
+   – Jede Modalität lernt nicht nur aus den eigenen Daten, sondern orientiert sich zusätzlich an der Ausgabe des Fusionspfads.
+2. **Präferenzbasierte Regulierung:**  
+   – Ein Mechanismus passt das Lerngewicht einzelner Modalitäten dynamisch an, um zu verhindern, dass dominante Modalitäten das Training überwältigen.
 
-Zur Realisierung verwende ich eine **Indikationsmatrix** für das Vorhandensein (1) oder Fehlen (0) einer Modalität:
+Zur Umsetzung wird eine **Indikationsmatrix** \(C\) eingeführt, welche das Vorhandensein (1) oder Fehlen (0) einer Modalität codiert:
 
 \[
 C_{nm} =
@@ -77,117 +77,144 @@ C_{nm} =
 
 ## 4. Baustein 1: Selbstdistillation <a name="baustein-1-selbstdistillation"></a>
 
-### Idee: „Teacher–Student“ innerhalb eines einzelnen Netzwerks
+### Konzept: Internes Teacher–Student-Verfahren
 
-Statt ein großes „Lehrer“-Modell und ein kleineres „Schüler“-Modell separat zu trainieren, realisiere ich in PRISM beides **in einem** Netzwerk. Dabei übernimmt der **Fusionspfad** die Lehrerrolle und jede **einzelne Modalität** die Schülerrolle.
+Anstatt ein separates Lehrer- und ein Schüler-Modell zu trainieren, übernimmt das Netzwerk selbst beide Rollen:
+- **Fusionspfad (Teacher):**  
+  Der Fusionspfad kombiniert alle verfügbaren Modalitäten zu einem Gesamtklang und liefert so eine Referenzausgabe.
+- **Modalitäts-Encoder (Student):**  
+  Jeder Modalitäts-Encoder lernt zusätzlich aus der Ausgabe des Fusionspfads, um seine eigenen Vorhersagen zu verbessern.
 
-1. **Fusionspfad (Teacher)**  
-   – Dieser stellt den Gesamtklang dar, indem er alle verfügbaren Modalitäten vereint.  
-2. **Modalitäts-Encoder (Students)**  
-   – Jede Modalität wird separat enkodiert und versucht, sich am Fusionsklang zu orientieren.
+#### Selbstdistillation auf Pixel-Ebene
 
-### Selbstdistillation auf Pixel-Ebene
+Auf der Pixel- bzw. Voxel-Ebene wird die **Kullback-Leibler-Divergenz** zwischen den Logits des Fusionspfads und denen der einzelnen Modalitäten minimiert. Mithilfe eines Temperaturparameters \(\mu\) wird die Ausgabe geglättet:
 
-Auf **Pixel-Ebene** (bzw. Voxel-Ebene) minimiere ich die **Kullback-Leibler-Divergenz** zwischen dem Fusionsausgang (Lehrer-Logits) und den Logits jeder einzelnen Modalität (Schüler). Dadurch lernt jede Modalität, ähnliche Klassifikationsausgaben wie der Fusionspfad zu erzeugen.
+\[
+L_{\text{pixel}}^m = 
+\sum_{l=0}^{L}
+  KL\Bigl[
+    \sigma\Bigl(\frac{z_n^{m,l}}{\mu}\Bigr)
+    \,\Big\|\,
+    \sigma\Bigl(\frac{z_n^l}{\mu}\Bigr)
+  \Bigr].
+\]
 
-### Selbstdistillation auf Semantik-Ebene
+Diese Methode sorgt dafür, dass die unimodalen Pfade ähnliche lokale Vorhersagen wie der Fusionspfad erzielen.
 
-Zusätzlich vergleiche ich **globale Klassenrepräsentationen** (sogenannte **Prototypen**). Für jede Klasse (z. B. Tumorgewebe, gesundes Gewebe usw.) bilde ich einen Prototyp aus den Pixel-Merkmalen. Der Unterschied zwischen dem Fusionsprototyp (Lehrer) und dem Modalitätsprototyp (Schüler) wird minimiert, sodass jede Modalität eine Art **Leitmelodie** erhält, an der sie sich orientieren kann.
+#### Selbstdistillation auf Semantik-Ebene (Prototypen)
+
+Auf der globalen Ebene werden für jede Klasse \(k\) Prototypen gebildet. Für jedes Beispiel \(n\) wird der Lehrer-Prototyp \(c^t_{n,k}\) als Durchschnitt der Pixel-Features berechnet, während der Schüler-Prototyp \(c^{m,s}_{n,k}\) analog für Modalität \(m\) bestimmt wird. Die Differenz zwischen den Kosinus-Ähnlichkeiten (zwischen Pixel-Features und Prototypen) des Lehrers und des Schülers wird minimiert:
+
+\[
+L_{\text{proto}}^m =
+\sum_i \sum_{k=1}^K \Bigl\|
+  S_{n,k}^{m,s}(i) - S_{n,k}^t(i)
+\Bigr\|_2^2.
+\]
+
+Durch diesen Abgleich werden globale semantische Informationen an den unimodalen Pfaden verankert.
 
 ---
 
 ## 5. Baustein 2: Präferenzbasierte Regulierung <a name="baustein-2-präferenzbasierte-regulierung"></a>
 
-### Warum brauche ich das?
+### Motivation und Konzept
 
-In einem echten Orchester könnte es passieren, dass ein sehr lautes Instrument (z. B. Trompete) ständig dominiert, während leise Instrumente (z. B. Oboe) kaum zu hören sind. Übertragen auf mein MRT-Setting heißt das:  
-- **Starke Modalität**: hat viele Daten und klare Merkmalsmuster.  
-- **Schwache Modalität**: ist selten vorhanden oder verrauscht.
+Wie in einem Orchester können dominante Instrumente den Klang übermäßig beeinflussen, während leise Instrumente in den Hintergrund treten. Übertragen auf die medizinische Bildverarbeitung können Modalitäten, die häufig oder in hoher Qualität vorliegen, das Training dominieren, während weniger häufige oder verrauschte Modalitäten untergehen. Um einen ausgewogenen Gesamtklang zu gewährleisten, wird eine **relative Präferenz** definiert.
 
-Ohne Regulierung würden die „lauten“ Modalitäten das Training dominieren. **PRISM** sorgt daher für einen **dynamischen Ausgleich**.
+#### Relative Präferenz (RP)
 
-### Relative Präferenz (RP)
+Für jede Modalität \(m\) wird eine semantische Distanz \(D_n^m\) zwischen dem Schüler- und dem Lehrer-Pfad für ein Beispiel \(n\) berechnet. Anschließend wird der Durchschnittswert \(\bar{D}_n\) aller verfügbaren Modalitäten ermittelt. Die relative Präferenz wird dann wie folgt definiert:
 
-Ich definiere eine Metrik, die misst, ob eine Modalität tendenziell **über-** oder **unterrepräsentiert** ist. Dazu:
+\[
+RP_n^m = 1 - \frac{D_n^m}{\bar{D}_n}.
+\]
 
-1. Berechne ich eine **Distanz** (etwa mittels KL-Divergenz oder Prototypen-Abstand) zwischen dem **Fusionspfad** und der Modalität \(m\) für ein bestimmtes Trainingsbeispiel \(n\).  
-2. Vergleiche diese Distanz mit dem Durchschnitt aller verfügbaren Modalitäten, um festzustellen, ob Modalität \(m\) **vernachlässigt** oder **bevorzugt** wird.  
+- **Wenn \(RP_n^m < 0\):**  
+  Wird signalisiert, dass die Modalität im Vergleich zum Durchschnitt schwach repräsentiert ist.  
+- **Wenn \(RP_n^m > 0\):**  
+  Ist die Modalität gut repräsentiert.
 
-So erhalte ich die **Relative Präferenz** (RP), die größer als 0 sein kann (Modalität dominiert) oder kleiner als 0 (Modalität hinkt hinterher).
+#### Dynamische Anpassung der Lernraten
 
-### Lernratenanpassung
+Die relative Präferenz wird genutzt, um den modalspezifischen Gewichtungsfaktor \(E^m\) anzupassen:
 
-Mit dem errechneten RP passe ich die Lernraten bzw. die **Loss-Gewichte** einzelner Modalitäten an:  
-- Ist eine Modalität **unterrepräsentiert** (RP < 0), gebe ich ihr ein **höheres Gewicht**, um das Lernen zu beschleunigen.  
-- Ist eine Modalität **dominant** (RP > 0), reduziere ich ihr Gewicht, um ein Überwiegen zu verhindern.
+\[
+E^m_{r+1} = E^m_r - \lambda \, RP_m,
+\]
 
-So stelle ich einen dynamischen Ausgleich her – ich sorge dafür, dass keine Modalität „zuschreit“, aber auch keine „verstummt“.
+wobei \(\lambda\) ein kleiner Lernratenparameter ist.  
+- **Bei negativen \(RP_m\)** wird \(E^m\) erhöht, sodass der Verlust \(L_{\text{pixel}}\) dieser Modalität stärker gewichtet und das Lernen beschleunigt wird.  
+- **Bei positiven \(RP_m\)** wird \(E^m\) verringert, um eine Überbetonung bereits gut repräsentierter Modalitäten zu vermeiden.
+
+Gleichzeitig wird der prototypische Verlust \(L_{\text{proto}}^m\) verstärkt, wenn \(RP_m < 0\), um die globale Repräsentation der schwächeren Modalitäten zu verbessern.
+
+Die berechneten relativen Präferenzwerte werden zudem in Gewichtungen umgewandelt, die als Wahrscheinlichkeiten interpretiert werden können, wodurch der Einfluss jeder Modalität auf den Gesamtverlust dynamisch skaliert wird.
 
 ---
 
 ## 6. Gesamtverlustfunktion: Wie alles zusammenklingt <a name="gesamtverlustfunktion"></a>
 
-Am Ende kombiniere ich alle Bausteine – den Segmentierungsloss, die Selbstdistillation und die präferenzbasierte Regulierung – zu einem **Gesamt-Loss**. Das sieht schematisch so aus:
+Die finale Verlustfunktion von PRISM integriert alle Komponenten – den Segmentierungsloss, die selbstdistillierenden Verluste und die präferenzbasierte Regularisierung – zu einem harmonischen Gesamt-Loss:
 
-1. **Segmentierungsloss**  
-   – Zum Beispiel die Kombination aus Dice und Cross-Entropy (Ziel: korrekte Segmentierung).  
-2. **Selbstdistillation**  
-   - **Pixel-Ebene**: Minimierung der KL-Divergenz zwischen Fusion-Logits und Einzelmodalitäts-Logits.  
-   - **Semantik-Ebene**: Abgleich der Prototypen (Teacher–Student).  
-3. **Präferenzbasierte Regulierung**  
-   - Dynamische Anpassung der Loss-Gewichte anhand der relativen Präferenz.
+\[
+L = L_{\text{seg}} +
+\sum_{\substack{m=1,\dots,M \\ C_{nm}=1}}
+\Bigl(
+  \gamma_1 \,E^m\, L_{\text{pixel}}^m +
+  \gamma_2 \,\omega_n^m\, L_{\text{proto}}^m
+\Bigr),
+\]
 
-So entsteht für mich eine **harmonische Gesamtpartitur**, in der jeder Instrumentenbeitrag sinnvoll gewichtet ist.
+wobei  
+- \(L_{\text{seg}}\) den Basis-Segmentierungsloss (z. B. Dice + Cross-Entropy) darstellt,  
+- \(L_{\text{pixel}}^m\) und \(L_{\text{proto}}^m\) die lokalen und globalen Distillationsverluste bezeichnen,  
+- \(E^m\) und \(\omega_n^m\) die dynamisch angepassten Gewichtungsfaktoren sind,  
+- \(\gamma_1\) und \(\gamma_2\) als Hyperparameter die jeweiligen Verlustkomponenten gewichten.
+
+Diese Kombination sorgt dafür, dass alle Modalitäten, selbst wenn sie unvollständig oder schwach vertreten sind, gleichwertig in den Trainingsprozess einfließen und ein stabiler Gesamtklang erzielt wird.
 
 ---
 
 ## 7. Integration in bestehende Architekturen <a name="integration-in-bestehende-architekturen"></a>
 
-### 7.1 Orchestrierung mit U-Net, RFNet & mmFormer
+PRISM wurde so konzipiert, dass es als **Plug-and-Play-Modul** in verschiedene bestehende Segmentierungsarchitekturen integriert werden kann – sei es in klassischen U-Net-Strukturen oder in modernen transformerbasierten Modellen wie mmFormer oder RFNet.
 
-Egal, ob ich ein **klassisches U-Net** oder ein **transformer-basiertes** Modell (z. B. **mmFormer**, **RFNet**) einsetze – PRISM lasse sich als **Plug-and-Play-Modul** integrieren:
+### 7.1 Orchestrierung
 
-1. **Encoder-Teil pro Modalität**  
-   – Diese agieren wie separate Instrumentengruppen, die jeweils ihren Klang beisteuern.  
-2. **Fusionspfad**  
-   – Der Dirigent, der alle Modalitäten zusammenführt (z. B. über Concatenation, Attention oder Additionen).  
-3. **PRISM-Module**  
-   - **Selbstdistillation**: Vergleicht die Ausgaben der Modalitäts-Encoder mit der Fusion.  
-   - **Präferenzbasierte Regulierung**: Steuert die Lernraten bzw. die Loss-Gewichte.
+- **Encoderausgänge pro Modalität:**  
+  Jede Modalität wird separat enkodiert, sodass die individuellen „Instrumentengruppen“ erhalten bleiben.  
+- **Fusionspfad als Dirigent:**  
+  Der Fusionspfad vereint alle Encoderausgänge und bildet so den „Gesamtklang“.  
+- **Integration der PRISM-Module:**  
+  An den Schnittstellen zwischen den Encodern und dem Fusionspfad werden die selbstdistillierenden und regularisierenden Komponenten angewandt. Dies erfordert nur geringfügige Anpassungen, etwa das Bereitstellen der Indikationsmatrix \(C\) und das Einfügen der zusätzlichen Loss-Terme.
 
-### 7.2 Implementierungsdetails
+### 7.2 Praktische Details
 
-- **Datenmaskierung**:  
-  Während des Trainings maskiere ich Modalitäten anhand der Indikationsmatrix \(C_{nm}\). Fehlende Modalitäten bleiben „stumm“ (werden nicht enkodiert).  
-- **Leichtgewichtige Anpassungen**:  
-  Ich muss lediglich an den Punkten „Modalitäts-Encoder-Ausgang“ und „Fusion“ ansetzen, um die Distillations- und Regularisierungstermine zu berechnen.  
-- **Hyperparameter**:  
-  - Temperaturfaktor für die KL-Divergenz  
-  - Gewichtungen der einzelnen Verluste (z. B. \(\gamma_1\) für Pixel-Distillation, \(\gamma_2\) für Prototyp-Distillation)  
-  - Lernrate \(\lambda\) für die Aktualisierung der **relativen Präferenz**
+- **Datenmaskierung:**  
+  Fehlende Modalitäten werden durch die Indikationsmatrix \(C_{nm}\) maskiert, sodass sie während des Trainings nicht berücksichtigt werden.  
+- **Hyperparameter:**  
+  Neben den Standardparametern werden die Temperatur \(\mu\), die Gewichtungen \(\gamma_1\) und \(\gamma_2\) sowie der Lernratenparameter \(\lambda\) festgelegt, um den Einfluss der einzelnen Komponenten optimal zu steuern.
 
 ---
 
 ## 8. Fazit und Ausblick <a name="fazit-und-ausblick"></a>
 
-### Das Ergebnis: Ein harmonisches Orchester trotz fehlender Instrumente
+### Zusammenfassung
 
-- **Robustheit**: Selbst wenn eine oder mehrere MRT-Sequenzen (Modalitäten) fehlen, erziele ich mit PRISM stabile Segmentierungsergebnisse.  
-- **Ausgleich**: Über die dynamische Anpassung werden dominante Modalitäten heruntergeregelt und schwache verstärkt.  
-- **Einfache Einbindung**: Das Modul lässt sich problemlos in nahezu jede bestehende Architektur integrieren.
+Das PRISM-Modul bietet einen innovativen Ansatz zur Integration unvollständiger multimodaler Daten in der medizinischen Bildverarbeitung. Durch die Kombination aus **selbstdistillierender Lernstrategie** und **präferenzbasierter Regularisierung** wird sichergestellt, dass auch Modalitäten, die seltener vorhanden oder verrauscht sind, optimal in den Gesamttrainingsprozess einfließen. Dies führt zu einer stabilen und präzisen Segmentierung, vergleichbar mit einem harmonisch abgestimmten Orchester – selbst wenn einzelne Instrumente fehlen oder verstimmt sind.
 
-### Mögliche Erweiterungen
+### Ausblick
 
-- **Erweiterte Fusion**: Einsatz noch komplexerer Mechanismen (z. B. Cross-Modal Attention) für eine noch tiefere Kombination der Modalitäten.  
-- **Selbstüberwachte Lernverfahren**: Kombination von PRISM mit selbstüberwachten Ansätzen, um die Menge der benötigten Labels zu reduzieren.  
-- **Multi-Domänen-Anwendung**: Über die medizinische Bildverarbeitung hinaus könnte ich PRISM in anderen Bereichen (z. B. Sensorfusion im IoT, Audio-Video-Daten) einsetzen.
+Mögliche Erweiterungen umfassen:
+- **Erweiterte Fusionstechniken:**  
+  Die Integration von komplexeren Mechanismen wie Cross-Modal Attention könnte die Verbindung zwischen den Modalitäten weiter verbessern.
+- **Selbstüberwachte Lernverfahren:**  
+  Die Kombination von PRISM mit selbstüberwachten oder halbüberwachten Ansätzen könnte den Bedarf an umfangreichen, vollannotierten Datensätzen weiter reduzieren.
+- **Anwendung in weiteren Domänen:**  
+  Über die medizinische Bildverarbeitung hinaus kann PRISM in anderen Bereichen, etwa im IoT oder in der Sensorfusion, eingesetzt werden, um die Integration heterogener Datenquellen zu optimieren.
 
 ---
 
-## Abschließende Worte
-
-Mit **PRISM** sorge ich dafür, dass das Orchester der Modalitäten – selbst wenn einzelne Instrumente fehlen oder verstimmt sind – einen **harmonischen Gesamtklang** erzeugt. Die **Multi-Unit-Selbstdistillation** und die **präferenzbasierte Regulierung** wirken wie zwei dirigierende Hände, die den einzelnen Instrumenten (Modalitäten) den richtigen Einsatz geben und sie dynamisch ausbalancieren.
-
-Falls Du Fragen hast, tiefer in den Code einsteigen möchtest oder Ideen für neue Einsatzzwecke hast, freue ich mich, von Dir zu hören. Gemeinsam können wir das Orchester weiter verfeinern und die Segmentierungsergebnisse in der medizinischen Bildverarbeitung (und darüber hinaus) auf ein neues Level heben.
-
-**Viel Erfolg bei Deinen Experimenten mit PRISM – und denke daran: Selbst wenn ein Instrument fehlt, kann das Orchester großartig klingen, wenn der Dirigent die richtigen Einsätze gibt!**
+Abschließend wird festgehalten:  
+**PRISM** orchestriert die verschiedenen Modalitäten in einem einheitlichen System, sodass trotz unvollständiger Daten ein harmonischer Gesamtklang erzielt wird. Die Kombination aus selbstdistillierender Lernstrategie und präferenzbasierter Regularisierung stellt sicher, dass alle Modalitäten – gleich ob dominant oder schwach – ihren Beitrag zur Segmentierung leisten. Dies ebnet den Weg für robuste und zuverlässige Segmentierungsergebnisse in der medizinischen Bildverarbeitung und darüber hinaus.

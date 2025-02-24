@@ -61,6 +61,16 @@ layout: hextra-home
         link="/Modul/Ergebnis/"
       >}}
 
+      {{< hextra/feature-card
+        title="FAQ"
+        subtitle="FAQ zu dem Modul. Hier finden Sie Antworten auf thematische Fragen."
+        class="hx-aspect-auto md:hx-aspect-[1.1/1] max-md:hx-min-h-[340px]"
+        image="images/FAQ_cover.webp"
+        imageClass="hx-top-[40%] hx-left-[24px] hx-w-[180%] sm:hx-w-[110%] dark:hx-opacity-80"
+        style="background: radial-gradient(ellipse at 50% 80%,rgba(194,97,254,0.15),hsla(0,0%,100%,0));"
+        link="/Modul/Ergebnis/"
+      >}}
+
 {{< /hextra/feature-grid >}}
 
 <div class="hx-mt-6 hx-mb-6"></div>

@@ -1,54 +1,51 @@
 ---
 
 title: "Unvollständige Trainingsdaten (UTD) in der Multimodalen Segmentierung"  
-description: "Ein Überblick darüber, was UTD ist, warum es wichtig ist, wie ich damit umgehe und welche Herausforderungen zu beachten sind."  
+description: "Ein Überblick darüber, was UTD ist, warum es wichtig ist, wie damit umgegangen wird und welche Herausforderungen zu beachten sind."  
 date: 2025-01-26  
 math: true  
 
 ---
 
-<span class="letterine"><i>U</i>nvollständige Trainingsdaten</span> (kurz: UTD) sind in vielen realen Anwendungsfällen die Regel und nicht die Ausnahme. Ich spreche von UTD, wenn in einem Datensatz **nicht** alle Modalitäten (oder Merkmale) vorhanden sind, die ursprünglich vorgesehen waren. Im medizinischen Umfeld kann dies beispielsweise bedeuten, dass für einige Patienten bestimmte MRT-Sequenzen nicht erfasst wurden.
+<span class="letterine"><i>U</i>nvollständige Trainingsdaten</span> (UTD) stellen in vielen realen Anwendungsszenarien die Regel und nicht die Ausnahme dar. UTD bezeichnet Datensätze, bei denen nicht alle ursprünglich vorgesehenen Modalitäten (oder Merkmale) für jedes Beispiel verfügbar sind. Im medizinischen Kontext kann dies beispielsweise bedeuten, dass für einzelne Patienten bestimmte MRT-Sequenzen nicht erfasst wurden.
 
 ![UTDvsVTD](https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/figures/VTD_UTD_Comp.png)
 
 ## Was ist UTD?
 
-Ich unterscheide **unvollständige** von **vollständigen** Trainingsdaten (VTD):  
-- **VTD:** Alle Modalitäten liegen für jeden Datensatzpunkt vor.  
-- **UTD:** Mindestens eine oder mehrere Modalitäten fehlen teilweise oder vollständig.
+Es wird zwischen **vollständigen Trainingsdaten (VTD)** und **unvollständigen Trainingsdaten (UTD)** unterschieden:  
+- **VTD:** Alle Modalitäten sind für jeden Datensatzpunkt vorhanden.  
+- **UTD:** Eine oder mehrere Modalitäten fehlen entweder teilweise oder vollständig.
 
-Bei UTD kann es passieren, dass manche Modalitäten *konstant* fehlen (z. B. kostspielige oder zeitaufwändige MRT-Sequenzen) oder lediglich in einem Teil der Datensätze verfügbar sind.
+In UTD-Szenarien kann es vorkommen, dass bestimmte Modalitäten konstant fehlen (z. B. kostenintensive oder zeitaufwändige MRT-Sequenzen) oder nur in einem Teil der Datensätze vorhanden sind.
 
-> **Beispiel**:  
-> In einem Datensatz mit vier MRT-Sequenzen (T1, T1ce, T2, Flair) könnte es vorkommen, dass für 30 % aller Patienten keine T1- und T1ce-Aufnahmen angefertigt wurden. Ich habe also *unvollständige* Informationen.
+> **Beispiel:**  
+> In einem Datensatz, der vier MRT-Sequenzen (T1, T1ce, T2, FLAIR) umfasst, können beispielsweise für 30 % aller Patienten keine T1- und T1ce-Aufnahmen vorliegen. Somit liegen unvollständige Informationen vor.
 
 ![VTD->UTD](https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/figures/vtd-utd.png)
 
-## Warum UTD?
+## Warum ist UTD wichtig?
 
-1. **Praktische Realität**:  
-   In vielen Szenarien (z. B. Radiologie, Video-Surveillance) steht mir eine Modalität nicht immer zur Verfügung.
+1. **Praktische Realität:**  
+   In vielen Anwendungsbereichen, beispielsweise in der Radiologie oder Videoüberwachung, ist nicht immer jede Modalität verfügbar.
 
-2. **Zeit- und Kostenersparnis**:  
-   Bestimmte Diagnostik-Verfahren (z. B. Kontrastmittel-MRT) sind aufwändig. In der Klinik entscheide ich oft, manche Sequenzen nur bei dringendem Verdacht durchzuführen.
+2. **Zeit- und Kostenersparnis:**  
+   Bestimmte Diagnostikverfahren (wie Kontrastmittel-MRT) sind aufwändig und kostenintensiv. In der klinischen Praxis wird häufig entschieden, nur bei dringendem Verdacht alle Sequenzen aufzunehmen.
 
-3. **Robuste Modelle**:  
-   Ein Modell, das auch mit teils fehlenden Modalitäten umgehen kann, ist allgemein *robuster* und lässt sich leichter in der Praxis anwenden.
+3. **Robuste Modelle:**  
+   Modelle, die auch mit teilweise fehlenden Modalitäten umgehen können, zeigen eine höhere Robustheit und sind leichter in der Praxis einsetzbar.
 
-## Wie gehe ich mit UTD um?
+## Wie wird mit UTD umgegangen?
 
-Die folgenden Strategien sind verbreitet, um trotz unvollständiger Daten **valide** Modelle zu trainieren. Auch ich setze häufig eine oder mehrere der folgenden Methoden ein:
+Verschiedene Strategien werden eingesetzt, um trotz unvollständiger Daten valide Modelle zu trainieren. Zu den gängigen Methoden zählen:
 
-1. **Daten-Imputation (Bildrekonstruktion)**  
-   - Fehlende Modalitäten werden *synthetisch* erzeugt (z. B. per GAN oder Diffusion).  
-   - Dies kann funktionieren, benötigt jedoch oft vollmodale Beispiele (während einer Vortrainingsphase).
+1. **Daten-Imputation (Bildrekonstruktion):**  
+   Fehlende Modalitäten werden synthetisch erzeugt (z. B. mittels GANs oder Diffusionsmodellen). Dieser Ansatz setzt jedoch oft voraus, dass in einer Vortrainingsphase vollständige Datensätze vorhanden waren.
 
-2. **Wissenstransfer (Distillation)**  
-   - Ein Modell wird auf *vollständigen* Daten trainiert und dient als Lehrer.  
-   - Ein Schülermodell lernt anschließend, *unimodale* Daten zu segmentieren.  
-   - Problem: Dies erfordert in der Regel zumindest einige vollständig annotierte Fälle.
+2. **Wissenstransfer (Distillation):**  
+   Zunächst wird ein Modell auf vollständigen Daten trainiert, das als Lehrer fungiert. Anschließend wird ein Schülermodell trainiert, das auf unimodalen Daten basiert. Diese Methode erfordert in der Regel zumindest einige vollständig annotierte Beispiele.
 
-3. **Selbstdistillation und geteilte Repräsentationen**  
-   - Ich implementiere ein *einziges* Netzwerk, das mehrere Encoder (einen pro Modalität) und einen Fusionspfad enthält.  
-   - Das verfügbare Wissen wird intern ausgetauscht.  
-   - Fehlende Modalitäten kommen seltener vor, werden aber gezielt berücksichtigt.
+3. **Selbstdistillation und geteilte Repräsentationen:**  
+   Ein einziges Netzwerk wird implementiert, das mehrere Encoder (einen pro Modalität) und einen gemeinsamen Fusionspfad umfasst. Das interne Wissen wird zwischen den Pfaden ausgetauscht. Dabei wird darauf geachtet, dass auch Modalitäten, die seltener vorkommen, gezielt unterstützt werden.
+
+Die vorgestellten Ansätze werden kombiniert, um eine robuste Segmentierung zu ermöglichen, selbst wenn Modalitäten fehlen oder in geringer Qualität vorliegen.

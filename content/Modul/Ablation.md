@@ -1,7 +1,7 @@
 ---
 
 title: "PRISM – Ablation"  
-description: "Eine Ablation der PRISM Methode und kurze Kommentare und Anmerkungen."  
+description: "Eine Ablation der PRISM-Methode sowie kurze Kommentare und Anmerkungen."  
 date: 2025-02-05  
 math: true
 
@@ -9,13 +9,13 @@ math: true
 
 # Ablationsstudie zu PRISM
 
-In diesem Abschnitt betrachte ich die Ablationsstudie, um die Wirkung einzelner Komponenten sowie verschiedener Distanz- und Hyperparameter-Einstellungen von PRISM genauer zu untersuchen. Die Ablation ist entscheidend, um nachvollziehen zu können, welche Teilschritte in der **Methodik** den stärksten Einfluss auf das Endergebnis haben und wie sich das Zusammenspiel einzelner Module auswirkt.
+In diesem Abschnitt wird eine Ablationsstudie vorgestellt, mit der die Wirkung einzelner Komponenten sowie verschiedener Distanz- und Hyperparameter-Einstellungen von PRISM genauer untersucht wird. Die Analyse dient dazu, nachzuvollziehen, welche Teilschritte der Methodik den stärksten Einfluss auf das Endergebnis haben und wie das Zusammenspiel der einzelnen Module sich auswirkt.
 
 ---
 
 ## 1. Komponenten-Ablation
 
-Im Folgenden betrachte ich zunächst die einzelnen Bausteine von PRISM. Dazu dient die Tabelle **Komponenten Ablation auf BraTS2020 und MyoPS2020**. Die Zeilen unterscheiden sich darin, ob sie den **pixelweisen Distillation-Term** $\ell_{\text{pixel}}$, den **Prototyp-basierten Term** $\ell_{\text{proto}}$, die **Rebalancierungsmaske** $\omega$ und/oder den **gradientengewichteten Koeffizienten** $E$ aktivieren. Aus der Tabelle geht hervor, wie jeder dieser Bausteine die Ergebnisse jeweils verbessert.
+Zunächst werden die einzelnen Bausteine von PRISM betrachtet. Dazu wurde die Tabelle **Komponenten Ablation auf BraTS2020 und MyoPS2020** erstellt. Die einzelnen Zeilen differenzieren danach, ob der **pixelweise Distillation-Term** \(\ell_{\text{pixel}}\), der **prototyp-basierte Term** \(\ell_{\text{proto}}\), die **Rebalancierungsmaske** \(\omega\) und/oder der **gradientengewichtete Koeffizient** \(E\) aktiviert werden. Die Tabelle zeigt, inwiefern jeder dieser Bausteine zu einer Verbesserung der Ergebnisse beiträgt.
 
 <table>
   <caption>Komponenten Ablation auf BraTS2020 und MyoPS2020.</caption>
@@ -192,31 +192,23 @@ Im Folgenden betrachte ich zunächst die einzelnen Bausteine von PRISM. Dazu die
 
 ### 1.1 Pixel- vs. Prototyp-basierte Distillation
 
-- **Pixelweise Selbstdistillation** ($\ell_{\text{pixel}}$):  
-  Hier vergleiche ich die **Logits** des **multimodalen Modells** und des **unimodalen** Teilmodells. Dies glättet die lokalen Klassifikationsgrenzen und verbessert die Dice-Werte merklich (vgl. Zeile „●○○○“ gegenüber „○○○○“).  
-- **Prototyp-basierte Selbstdistillation** ($\ell_{\text{proto}}$):  
-  Mithilfe prototypischer Klassenrepräsentationen tausche ich **globale** semantische Informationen zwischen den multi- und unimodalen Pfaden aus. Dies steigert unter anderem die Genauigkeit der Segmentierungsgrenzen und reduziert die HD (Hausdorff-Distanz).
+- **Pixelweise Selbstdistillation** (\(\ell_{\text{pixel}}\)):  
+  Im Rahmen der pixelweisen Distillation werden die Logits des multimodalen Modells mit denen des unimodalen Teilmodells verglichen. Durch diese Herangehensweise werden die lokalen Klassifikationsgrenzen geglättet, was sich in einer signifikanten Steigerung der Dice-Werte widerspiegelt (siehe Vergleich „●○○○“ gegenüber „○○○○“).
 
-### 1.2 Präferenzbasierte Rebalancierung
-
-- **Maske** $\omega$ (Spalte "ω"):  
-  Entscheide, ob eine Modalität bei negativer relativer Präferenz ($RP^m_n$) zusätzlich verstärkt wird. Das heißt: **vernachlässigte** Modalitäten werden gezielt gefördert.  
-- **Gradientengewichteter Koeffizient** $E$ (Spalte "E"):  
-  Dieser wird dynamisch an den Mittelwert der relativen Präferenzen angepasst. Modalitäten mit besonders hoher Fehlrate oder geringem Lerneffekt erhalten dadurch eine höhere Gewichtung im Training.
-
-Aus der Tabelle erkenne ich, dass erst **mit allen Komponenten** (Zeile „●●●●“) die besten Ergebnisse für alle Metriken (DICE und HD) erzielt werden. Insbesondere steigern sich die **durchschnittlichen Dice-Werte** im Vergleich zur Baseline (erster Eintrag, „○○○○“) deutlich, und die Hausdorff-Distanz sinkt spürbar.
+- **Prototyp-basierte Selbstdistillation** (\(\ell_{\text{proto}}\)):  
+  Mittels prototypischer Klassenrepräsentationen werden globale semantische Informationen zwischen dem multimodalen und dem unimodalen Pfad ausgetauscht. Dies führt zu einer Verbesserung der Genauigkeit der Segmentierungsgrenzen sowie zu einer Reduktion der Hausdorff-Distanz (HD).
 
 ---
 
 ## 2. Vergleich verschiedener Distanzmethoden
 
-Als Nächstes untersuche ich in einer separaten Ablation, wie sich unterschiedliche Distanzbegriffe oder Loss-Funktionen auf die **Distillation** auswirken. Dafür liegen folgende Einträge vor:  
+Im Folgenden wird der Einfluss unterschiedlicher Distanzbegriffe bzw. Loss-Funktionen auf den Distillationsprozess untersucht. Die verwendeten Methoden umfassen:
 
-- **Keine**: Keine zusätzliche Distanzbestrafung (nur Baseline).  
-- **Dice Loss**: Statt prototypischer Abgleichung wird ein Würfelkoeffizient-basiertes Matching genutzt.  
-- **KL Loss**: Kullback-Leibler-Divergenz zwischen Lehrer- und Schülerlogits.  
-- **Proto Loss**: Prototyp-basierte Distanz ohne explizite L2-Strafterm-Variante.  
-- **L2-Proto-Distance**: Meine finale Implementierung der **L2-basierten Prototyp-Distanz**.
+- **Keine**: Es wird keine zusätzliche Distanzbestrafung angewendet (nur die Baseline).  
+- **Dice Loss**: Ein Loss, der auf dem Würfelkoeffizienten basiert, wird zur Matching-Berechnung eingesetzt.  
+- **KL Loss**: Es erfolgt ein Vergleich der Wahrscheinlichkeitsverteilungen von Lehrer- und Schülerlogits mittels Kullback-Leibler-Divergenz.  
+- **Proto Loss**: Es wird ein prototypbasierter Abgleich durchgeführt, jedoch ohne die explizite Verwendung eines L2-Strafterms.  
+- **L2-Proto-Distance**: Die finale Implementierung verwendet eine L2-Norm zur Berechnung der Differenz zwischen den prototypischen Repräsentationen.
 
 <table>
   <caption>Vergleich der Distanzmethoden</caption>
@@ -298,29 +290,30 @@ Als Nächstes untersuche ich in einer separaten Ablation, wie sich unterschiedli
 
 ### 2.1 Analyse
 
-- **„Keine“** (Baseline):  
-  Liefert bereits solide Dice-Werte, zeigt jedoch eine **höhere** mittlere HD (11.90).  
-- **Dice Loss** oder **KL Loss**:  
-  Beide erreichen ähnliche Werte, wobei der Dice Loss hier (68.67 avg. Dice) minimal besser abschneidet als KL bei ET, aber die HD ist schwankend.  
-- **Proto Loss**:  
-  Zeigt eine Steigerung der Dice-Werte (besonders in TC: 71.31). Allerdings bleibt die **HD** in WT und TC etwas höher.  
-- **L2-Proto-Distance**:  
-  Dieses Verfahren erzielt den besten Gesamtwert (69.28 avg. Dice und 10.71 avg. HD). Die Kombination aus lokalem und globalem Matching (Prototypen + L2) führt also zu einer stabileren Repräsentation.  
+- **„Keine“ (Baseline):**  
+  Erzielte solide Dice-Werte, jedoch wurde eine höhere mittlere HD (11.90 mm) beobachtet.
 
-Mit anderen Worten: Die prototypische Repräsentation vergleicht Klassenmittelwerte und Pixel-Features im **Feature-Raum** und nutzt hierbei eine L2-Norm, um Abweichungen zu minimieren. So werden **inter-** und **intra-klassenbezogene** Unterschiede deutlicher regularisiert.
+- **Dice Loss / KL Loss:**  
+  Beide Methoden erzielen vergleichbare Ergebnisse; der Dice Loss führt zu einem leichten Vorteil bei den durchschnittlichen Dice-Werten, während die HD-Werte ähnlich bleiben.
+
+- **Proto Loss:**  
+  Eine Erhöhung der Dice-Werte, insbesondere im TC-Bereich, wird festgestellt, wobei die HD in WT und TC etwas höher bleiben.
+
+- **L2-Proto-Distance:**  
+  Diese Methode erreicht den besten Gesamtwert mit einem durchschnittlichen Dice von 69.28 % und einer HD von 10.71 mm. Die Kombination aus lokalem und globalem Matching unter Verwendung der L2-Norm führt zu einer stabileren Repräsentation.
 
 ---
 
-## 3. Einfluss des Hyperparameters λ
+## 3. Einfluss des Hyperparameters \(\lambda\)
 
-In einer weiteren Ablation betrachte ich den Einfluss von $\lambda$ (Lambda). Dieser Parameter steuert, **wie stark** sich die präferenzbasierte Rebalancierung (insbesondere beim Gradientenabstieg) auswirkt.
+Der Einfluss des Hyperparameters \(\lambda\), der die Stärke der präferenzbasierten Rebalancierung steuert, wird im Folgenden untersucht.
 
 <table>
-  <caption>Hyperparameter λ – Auswirkung auf DICE und HD</caption>
+  <caption>Hyperparameter \(\lambda\) – Auswirkung auf Dice und HD</caption>
   <thead>
     <tr>
-      <th rowspan="2">λ</th>
-      <th colspan="4">DICE [%]</th>
+      <th rowspan="2">\(\lambda\)</th>
+      <th colspan="4">Dice [%]</th>
       <th colspan="4">HD [mm]</th>
     </tr>
     <tr>
@@ -395,30 +388,35 @@ In einer weiteren Ablation betrachte ich den Einfluss von $\lambda$ (Lambda). Di
 
 ### 3.1 Interpretation
 
-- **Geringe Werte (λ = 1, 2)**:  
-  Ich erkenne, dass bei zu kleinem $\lambda$ die Rebalancierung eher schwach ausfällt, wodurch besonders seltene Modalitäten nicht genügend verstärkt werden. Dies zeigt sich in leicht schlechteren Dice-Werten (67.98 bis 68.68) und höheren HDs (zwischen 10.82 und 12.09).  
-- **Optimale Werte (λ = 3, 4)**:  
-  Hier sehe ich **Steigerungen** im Dice (bis zu 69.28) bei akzeptabler HD. Besonders $\lambda=4$ liefert einen guten Kompromiss zwischen DICE und HD.  
-- **Hohe Werte (λ = 5)**:  
-  Die Lernraten-Anpassung kann zu stark werden, was Overcompensation bewirkt. Die Dice-Werte fallen wieder (68.32), und die HD steigt.
+- **Niedrige Werte (\(\lambda = 1, 2\)):**  
+  Bei zu kleinen \(\lambda\)-Werten fällt die Rebalancierung zu schwach aus, wodurch seltene Modalitäten nicht ausreichend verstärkt werden. Dies führt zu etwas niedrigeren Dice-Werten (zwischen 67.98 und 68.68) und höheren HDs (10.82 bis 12.09 mm).
 
-Daraus lasse ich den Schluss zu, dass $\lambda$ – abhängig vom Datensatz, der Modalitätsverteilung und weiteren Hyperparametern – gut **abgestimmt** werden muss, um die **Effekte der Rebalancierung** weder zu unterschätzen noch zu übersteuern.
+- **Optimale Werte (\(\lambda = 3, 4\)):**  
+  Hier wird eine Steigerung der Dice-Werte (bis zu 69.28) bei akzeptablen HD-Werten beobachtet. Insbesondere \(\lambda=4\) liefert einen guten Kompromiss zwischen den Metriken.
+
+- **Hohe Werte (\(\lambda = 5\)):**  
+  Eine zu starke Anpassung führt zu einer Overcompensation, wodurch die Dice-Werte wieder sinken (auf 68.32) und die HD ansteigen.
+
+Aus diesen Ergebnissen folgt, dass der Hyperparameter \(\lambda\) – abhängig vom Datensatz, der Modalitätsverteilung und weiteren Parametern – sorgfältig abgestimmt werden muss, um die Effekte der Rebalancierung weder zu unter- noch zu übersteuern.
 
 ---
 
 ## 4. Fazit der Ablationen
 
 1. **Komponenten-Betrachtung:**  
-   - Die Kombination aus pixelweiser und prototypbasierter Distillation führt zu einer deutlich verbesserten Segmentierung.  
-   - Die Einführung der präferenzbasierten Rebalancierung ($\omega$ & $E$) ist besonders relevant, wenn einige Modalitäten hohe Fehlraten aufweisen oder seltener verfügbar sind.  
+   Die Kombination aus pixelweiser und prototyp-basierter Distillation führt zu einer signifikanten Verbesserung der Segmentierungsergebnisse. Die Integration der präferenzbasierten Rebalancierung (durch \(\omega\) und \(E\)) ist insbesondere bei Modalitäten mit hohen Fehlraten von großer Bedeutung.
 
 2. **Distanzmethoden:**  
-   - Ein prototypbasierter Abgleich (L2-Proto) schlägt herkömmliche Verfahren wie Dice- oder KL-basiertes Matching in den meisten Metriken.  
-   - Global-semantische Informationen (Prototypen) ergänzen lokale Pixelinformationen ideal, was in einer höheren Robustheit gegenüber unbalancierten Szenarien resultiert.
+   Der prototypbasierte Abgleich mittels L2-Norm (L2-Proto-Distance) übertrifft herkömmliche Ansätze wie Dice- oder KL-basierte Matching-Methoden in den meisten Metriken. Die Kombination von global-semantischen Informationen mit lokalen Pixelinformationen führt zu einer erhöhten Robustheit gegenüber unbalancierten Szenarien.
 
-3. **Hyperparameter λ:**  
-   - Die Rebalancierungsintensität muss **weder zu schwach noch zu stark** ausfallen. Im Bereich von $\lambda = 3$ oder 4 erziele ich typischerweise die besten Ergebnisse.  
-   - Eine zu starke Gewichtung kann zu Overcompensation führen, während eine zu geringe Gewichtung kaum etwas an der Modalitätsimbalance ändert.
+3. **Hyperparameter \(\lambda\):**  
+   Die Intensität der Rebalancierung muss weder zu schwach noch zu stark sein. Werte im Bereich von \(\lambda = 3\) oder 4 erzielen typischerweise die besten Ergebnisse, während zu hohe Werte zu einer Überkompensation führen.
 
 **Gesamtfazit:**  
-Die Ablationen demonstrieren die Wirksamkeit der in der **Methodik** (PRISM) eingeführten Module: Die Multi-Uni Selbstdistillation bringt eine engere Kopplung zwischen mono- und multimodalen Repräsentationen, während das präferenzbasierte Lernraten-Management sicherstellt, dass alle Modalitäten – auch seltene oder schwache – angemessen in das Endmodell einfließen. Die passenden Distanzfunktionen und Hyperparameter sind dabei entscheidend, um ein **ausgewogenes** und zugleich **leistungsstarkes** Training zu erreichen.
+Die durchgeführten Ablationen bestätigen die Wirksamkeit der in der Methodik eingeführten Module. Die Multi-Uni Selbstdistillation fördert eine engere Kopplung zwischen mono- und multimodalen Repräsentationen, während das präferenzbasierte Lernraten-Management sicherstellt, dass alle Modalitäten – auch seltene oder schwache – adäquat berücksichtigt werden. Die geeignete Wahl der Distanzfunktionen und Hyperparameter ist dabei entscheidend, um ein ausgewogenes und leistungsstarkes Training zu erreichen.
+
+---
+
+## 5. Zusammenfassung
+
+Die Ablationsstudie zeigt, dass PRISM durch die Kombination von pixelweiser und prototyp-basierter Selbstdistillation sowie durch eine gezielte, präferenzbasierte Rebalancierung eine signifikante Verbesserung der Segmentierungsleistung erzielt. Die ausgewählten Distanzmethoden und Hyperparameter tragen maßgeblich dazu bei, dass auch in Szenarien mit unvollständigen und unbalancierten Modalitäten stabile und präzise Ergebnisse erzielt werden können.
