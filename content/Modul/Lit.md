@@ -29,7 +29,6 @@ Für die visuelle Hervorhebung wurden spezielle Farben definiert:
 
 Nachfolgend wird der LaTeX-Code der Tabelle dargestellt, der diesen quantitativen Vergleich veranschaulicht:
 
-```latex
 <style>
   /* Standard (Light Mode) */
   .hl-blue {
@@ -117,7 +116,7 @@ Nachfolgend wird der LaTeX-Code der Tabelle dargestellt, der diesen quantitative
     <!-- Weitere UTD-Blöcke folgen -->
     <!-- ... (die übrigen Zeilen der Tabelle werden analog angepasst) ... -->
 </table>
-```
+
 
 ### Zusammenfassung
 

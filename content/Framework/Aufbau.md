@@ -1,5 +1,3 @@
-Nachfolgend wird der Artikel stilistisch überarbeitet, wobei der inhaltliche Kern beibehalten wird:
-
 ---
 
 title: "Architektur und Aufbau des PRISMS-Frameworks"  

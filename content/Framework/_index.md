@@ -17,7 +17,7 @@ Das Framework basiert auf einer parallelen Verarbeitung aller verfügbaren Modal
         title="Warum ein Framework?"
         subtitle="Problem definition und möglichkeiten in dem Parallelen Multimodalen Lernen. Einführung in Grundbegriffe und Herausforderungen."
         image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/figures/Muses_cover.webp"
-        link="/Framework/Einleitung"
+        link="/Framework/Einleitung/"
   >}}
 
     {{< card
@@ -38,6 +38,6 @@ Das Framework basiert auf einer parallelen Verarbeitung aller verfügbaren Modal
                 title="Erklärung der Loss Funktionen"
                 subtitle="Einführung in die Loss Funktionen und deren Bedeutung für das Framework."
                 image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/figures/math_prisms.webp"
-                link="/Framework/Methode /"
+                link="/Framework/Methode/"
         >}}
 {{< /cards >}}
