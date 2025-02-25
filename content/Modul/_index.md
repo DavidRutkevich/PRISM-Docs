@@ -1,6 +1,6 @@
 ---
-title: Relative Präferenz
-description: "Wie funktioniert die Relative Präferenz?"
+title: Modul
+description: "Wie funktioniert das Modul?"
 toc: false
 layout: wide
 ---
