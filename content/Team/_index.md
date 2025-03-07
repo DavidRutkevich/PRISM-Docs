@@ -17,7 +17,7 @@ Unser Team besteht aus Davids (und einem Daniel)
   {{< card
         title="David Rutkevich"
         subtitle="AI Magic man"
-        image="https://github.com/DavidRutkevich/PRISM-Docs/blob/main/static/images/David%20R%20pic.jpg"
+        image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/blob/main/static/images/DavidRpic.jpg"
         link="https://david-rutkevich.com/"
   >}}
 
