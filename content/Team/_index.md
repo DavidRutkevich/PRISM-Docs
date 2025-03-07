@@ -1,6 +1,6 @@
 ---
 title: Team
-description: "Das Framework benutzt PRISM, um ein mehrstufiges Lernverfahren zu ermöglichen."
+description: "Unser Team"
 toc: false
 layout: wide
 ---
@@ -8,23 +8,24 @@ layout: wide
 <div class="hx-mt-4"></div>
 <div class="hx-mb-12">
 {{< hextra/hero-subtitle >}}
-Das Framework basiert auf einer parallelen Verarbeitung aller verfügbaren Modalitäten, um einen starken Lehrer zu entwickeln, der als Fundament für die Segmentierung dient. 
+Unser Team besteht aus Davids (und einem Daniel)
+  David, David, David, Danil
 {{< /hextra/hero-subtitle >}}
 </div>
 
 {{< cards >}}
   {{< card
-        title="Warum ein Framework?"
-        subtitle="Problem definition und möglichkeiten in dem Parallelen Multimodalen Lernen. Einführung in Grundbegriffe und Herausforderungen."
-        image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/figures/Muses_cover.webp"
-        link="/Framework/Einleitung/"
+        title="David Rutkevich"
+        subtitle="AI Magic man"
+        image="https://github.com/DavidRutkevich/PRISM-Docs/blob/main/static/images/David%20R%20pic.jpg"
+        link="https://david-rutkevich.com/"
   >}}
 
     {{< card
-        title="Aufbau des Frameworks"
+        title="Daniel Grib"
         subtitle="Ein Transformer mit Selbstdistillation und Cross-Modalen Abstimmung. Einführung in die Architektur und die Verarbeitungsschritte"
         image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/figures/Aufbau_cover.webp"
-        link="/Framework/Aufbau/"
+        link="https://github.com/Daniel-Grib/daniel-grib.com"
     >}}
 
     {{< card
