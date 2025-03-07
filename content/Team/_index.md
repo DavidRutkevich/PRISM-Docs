@@ -9,7 +9,7 @@ layout: wide
 <div class="hx-mb-12">
 {{< hextra/hero-subtitle >}}
 Unser Team besteht aus Davids (und einem Daniel)
-  David, David, David, Danil
+  David, David, David, Daniel
 {{< /hextra/hero-subtitle >}}
 </div>
 
