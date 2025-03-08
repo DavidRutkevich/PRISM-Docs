@@ -11,7 +11,7 @@ layout: hextra-home
 {{< /hextra/hero-badge >}}
   
 {{< hextra/hero-badge link="https://2025.jufo-berlin.de/">}}
-  <div class="hx-w-2 hx-h-2 hx-rounded-full hx-bg-primary-400"></div>
+  <div class="hx-w-2 hx-h-2 hx-rounded-full hx-bg-custom-primary-400"></div>
   <span>Jugend forscht Berlin</span>
   {{< icon name="arrow-circle-right" attributes="height=14" >}}
 {{< /hextra/hero-badge >}}
