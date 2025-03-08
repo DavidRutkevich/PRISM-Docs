@@ -6,10 +6,15 @@ layout: hextra-home
 
 {{< hextra/hero-badge link="https://www.adlershof.de/termin/25-02-2025-jugend-forscht-regionalwettbewerb-berlin-sued">}}
   <div class="hx-w-2 hx-h-2 hx-rounded-full hx-bg-primary-400"></div>
-  <span>Ein jugend Forscht Projekt</span>
+  <span>Jugend forscht Berlin Süd</span>
   {{< icon name="arrow-circle-right" attributes="height=14" >}}
 {{< /hextra/hero-badge >}}
-
+  
+{{< hextra/hero-badge link="https://2025.jufo-berlin.de/">}}
+  <div class="hx-w-2 hx-h-2 hx-rounded-full hx-bg-primary-400"></div>
+  <span>Jugend forscht Berlin</span>
+  {{< icon name="arrow-circle-right" attributes="height=14" >}}
+{{< /hextra/hero-badge >}}
 <div class="hx-mt-6 hx-mb-6">
 {{< hextra/hero-headline >}}
   Robuste multi-modale&nbsp;<br class="sm:hx-block hx-hidden" />Bildsegmentierung
