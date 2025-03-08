@@ -6,7 +6,7 @@
 
 .hx-bg-custom-primary-400 {
   --tw-bg-opacity: 1;
-  background-color: hsl(var(--custom-primary-hue) var(--custom-primary-saturation) calc(var(--custom-primary-lightness) + calc(calc(100% - var(--custom-primary-lightness)) / 50) * 16) / var(--tw-bg-opacity));
+  background-color: #c50e1f;
 }
 
 .hx-bg-custom-primary-600 {
