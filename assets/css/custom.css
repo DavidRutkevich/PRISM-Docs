@@ -1,0 +1,15 @@
+:root {
+  --custom-primary-hue: 200deg; /* Adjust the hue value */
+  --custom-primary-saturation: 80%; /* Adjust the saturation value */
+  --custom-primary-lightness: 50%; /* Adjust the lightness value */
+}
+
+.hx-bg-custom-primary-400 {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--custom-primary-hue) var(--custom-primary-saturation) calc(var(--custom-primary-lightness) + calc(calc(100% - var(--custom-primary-lightness)) / 50) * 16) / var(--tw-bg-opacity));
+}
+
+.hx-bg-custom-primary-600 {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--custom-primary-hue) var(--custom-primary-saturation) calc(calc(var(--custom-primary-lightness) / 50) * 45) / var(--tw-bg-opacity));
+}
