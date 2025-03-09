@@ -10,7 +10,7 @@ layout: hextra-home
   {{< icon name="arrow-circle-right" attributes="height=14" >}}
 {{< /hextra/hero-badge >}}
   
-<div class="hx-mt-6 hx-mb-6"></div>
+<div class="hx-mt-4 hx-mb-4"></div>
 
 {{< hextra/hero-badge link="https://2025.jufo-berlin.de/">}}
   <div class="hx-w-2 hx-h-2 hx-rounded-full hx-bg-custom-primary-400"></div>
