@@ -9,17 +9,25 @@ layout: hextra-home
   <span>Jugend forscht Berlin Süd</span>
   {{< icon name="arrow-circle-right" attributes="height=14" >}}
 {{< /hextra/hero-badge >}}
-  
+
 <div class="hx-mt-2 hx-mb-2"></div>
 
-{{< hextra/hero-badge link="https://2025.jufo-berlin.de/">}}
+{{< hextra/hero-badge link="https://www.instagram.com/jugendforscht.berlin/">}}
   <div class="hx-w-2 hx-h-2 hx-rounded-full hx-bg-custom-primary-400"></div>
   <span>Jugend forscht Berlin</span>
   {{< icon name="arrow-circle-right" attributes="height=14" >}}
 {{< /hextra/hero-badge >}}
-  
+
+<div class="hx-mt-2 hx-mb-2"></div>
+
+{{< hextra/hero-badge link="https://www.jugend-forscht.de/wettbewerbe/bundeswettbewerb-2025.html">}}
+  <div class="hx-w-2 hx-h-2 hx-rounded-full hx-bg-custom-primary-800"></div>
+  <span>Jugend forscht Hamburg</span>
+  {{< icon name="arrow-circle-right" attributes="height=14" >}}
+{{< /hextra/hero-badge >}}
+
 <div class="hx-mt-6 hx-mb-6">
-  
+
 {{< hextra/hero-headline >}}
   Robuste multi-modale&nbsp;<br class="sm:hx-block hx-hidden" />Bildsegmentierung
 {{< /hextra/hero-headline >}}
@@ -27,7 +35,7 @@ layout: hextra-home
 
 <div class="hx-mb-12">
 {{< hextra/hero-subtitle >}}
-  Entdecken Sie den Weg vom ersten Überblick bis hin zur detaillierten Ablationsanalyse und fundierten qualitativen Auswertung. 
+  Entdecken Sie den Weg vom ersten Überblick bis hin zur detaillierten Ablationsanalyse und fundierten qualitativen Auswertung.
   Hier finden Sie die vollständige Dokumentation.
 {{< /hextra/hero-subtitle >}}
 </div>
@@ -36,48 +44,38 @@ layout: hextra-home
 <div class="hx-mt-6"></div>
 
 {{< hextra/hero-section >}}
-  PRISM Modul
+  Das Modul
 {{< /hextra/hero-section >}}
 <div class="hx-mt-6 hx-mb-6"></div>
 {{< hextra/feature-grid >}}
-      {{< hextra/feature-card
+        {{< hextra/feature-card
         title="PRISM Einfach erklärt"
-        subtitle="Visuelle Erklärung von PRISM. Mithilfe der Analogie eines Orchestra werden Implementierung und Methodik erklärt."
+        subtitle="Einführung in die Grundlagen des Moduls. Hier finden Sie eine Übersicht über die wichtigsten Themen."
         class="hx-aspect-auto md:hx-aspect-[1.1/1] max-md:hx-min-h-[340px]"
-        image="images/overview3d.webp"
+        image="images/title.webp"
         imageClass="hx-top-[40%] hx-left-[24px] hx-w-[180%] sm:hx-w-[110%] dark:hx-opacity-80"
         style="background: radial-gradient(ellipse at 50% 80%,rgba(194,97,254,0.15),hsla(0,0%,100%,0));"
-        link="/Modul/Simple_PRISM/"
+        link="/prism/simple/"
       >}}
 
       {{< hextra/feature-card
           title="Die Methode im Detail"
           subtitle="Detailierte Erklärung von PRISM. Die mathematische Grundlage und die Implementierung."
           class="hx-aspect-auto md:hx-aspect-[1.1/1] max-md:hx-min-h-[340px]"
-          image="images/Method.webp"
+          image="images/title-prism-method.webp"
           imageClass="hx-top-[40%] hx-left-[24px] hx-w-[180%] sm:hx-w-[110%]"
           style="background: radial-gradient(ellipse at 50% 80%,rgba(194,97,254,0.15),hsla(0,0%,100%,0));"
-          link="/Modul/Method/"
+          link="/prism/methods/"
       >}}
 
       {{< hextra/feature-card
         title="Die Ergebnisse"
         subtitle="Analyse der Qualitativen und Quantitativen Ergebnisse. Einschließlich eines Literaturvergleichs."
         class="hx-aspect-auto md:hx-aspect-[1.1/1] max-md:hx-min-h-[340px]"
-        image="images/eval.webp"
+        image="images/title-prism-result.webp"
         imageClass="hx-top-[40%] hx-left-[24px] hx-w-[180%] sm:hx-w-[110%] dark:hx-opacity-80"
         style="background: radial-gradient(ellipse at 50% 80%,rgba(194,97,254,0.15),hsla(0,0%,100%,0));"
-        link="/Modul/Ergebnis/"
-      >}}
-
-      {{< hextra/feature-card
-        title="FAQ"
-        subtitle="FAQ zu dem Modul. Hier finden Sie Antworten auf thematische Fragen."
-        class="hx-aspect-auto md:hx-aspect-[1.1/1] max-md:hx-min-h-[340px]"
-        image="images/FAQ_cover.webp"
-        imageClass="hx-top-[40%] hx-left-[24px] hx-w-[180%] sm:hx-w-[110%] dark:hx-opacity-80"
-        style="background: radial-gradient(ellipse at 50% 80%,rgba(194,97,254,0.15),hsla(0,0%,100%,0));"
-        link="/Modul/faq/"
+        link="/prism/results/"
       >}}
 
 {{< /hextra/feature-grid >}}

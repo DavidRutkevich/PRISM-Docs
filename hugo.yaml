@@ -38,21 +38,21 @@ markup:
     extensions:
       passthrough:
         delimiters:
-          block: [['\[', '\]'], ['$$', '$$']]
-          inline: [['\(', '\)']]
+          block: [['\[', '\]'], ["$$", "$$"]]
+          inline: [["$", "$"], ['\(', '\)']]
         enable: true
 
 enableInlineShortcodes: true
 
 menu:
   main:
-    - identifier: Modul
+    - identifier: PRISM
       name: Modul
-      pageRef: /Modul
+      pageRef: /prism
       weight: 1
-    - identifier: Framework
+    - identifier: PRISMS
       name: Framework
-      pageRef: /Framework
+      pageRef: /prisms
       weight: 2
     - identifier: Über mich ↗
       name: Über mich ↗
@@ -89,12 +89,12 @@ params:
 
   page:
     # full (100%), wide (90rem), normal (1280px)
-    width: normal
+    width: wide
 
   theme:
     # light | dark | system
-    default: system
-    displayToggle: true
+    default: dark
+    displayToggle: false
 
   footer:
     enable: true
