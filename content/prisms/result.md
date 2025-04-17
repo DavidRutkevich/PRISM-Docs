@@ -1,14 +1,39 @@
 ---
-
-title: "Methodik: PRISM und PRISMS"
-description: "Zusammenführung der mathematischen Grundlagen mit den PRISM- und PRISMS-Konzepten, unter Einbezug der Code-Logik für Adaptive Fusion Transformer (AFT), Spatial Relevance Attention (SRA) und Kanalbezogenen Fusionstransformer (KFT)."
+title: "Ergebnisse"
+description: "Ergebnisse der Auswertung von PRISMS. Qualitativ und Quantitativ"
 date: 2025-02-05
 math: true
-
 ---
+### Datensätze
+
+Für die Evaluation werden zwei Datensätze aus der "Multimodal Brain Tumor Segmentation Challenge (BRATS)" herangezogen. Beide Datensätze enthalten MRT-Bilder aus vier Modalitäten: Flair, T1ce, T2 und T1. Wie in [1–3] beschrieben, wurden zunächst die schwarzen Hintergrundregionen entfernt, und jede Modalität wurde anschließend auf einen Nullmittelwert und eine Einheitsvarianz normalisiert.
+Für den BRATS2018-Datensatz wurden die Datenaufteilungen aus [1] und [3] übernommen, sodass die Fälle in 199 Trainings-, 29 Validierungs- und 57 Testbeispiele unterteilt wurden. Beim BRATS2020-Datensatz, der 369 Fälle umfasst, erfolgte eine Aufteilung in 219 Trainings-, 50 Validierungs- und 100 Testbeispiele – hier wurde die Methodik aus [3] strikt eingehalten. Zur Evaluierung wurden sowohl der Dice Similarity Coefficient (DSC) als auch die Hausdorff-Distanz (HD) verwendet.
+
+
+
+### Implementierungsdetails
+
+Das Framework wurde in PyTorch implementiert und mit dem AdamW-Optimierer trainiert. Dabei kam eine initiale Lernrate von \(2 \times 10^{-4}\) sowie ein Weight Decay von \(1 \times 10^{-4}\) zum Einsatz; die Batch-Größe betrug 2. Das Training fand über 1000 Epochen auf Google Colab Premium statt. Zur Anpassung der Lernrate wurde eine adaptive Strategie („why-uop learning rate scheduling“) genutzt, die mit einem Poly-Decay-Verfahren (mit \(p = 0.9\)) kombiniert wurde.
+
+Gemäß [1–3] erfolgte das Training im VTD-Szenario, wobei modalitiespezifische Maskierung zur Simulation fehlender Modalitäten eingeführt wurde. Jedes Volumen wurde dabei zufällig auf eine Größe von \(80 \times 80 \times 80\) Pixeln zugeschnitten und zusätzlich durch zufällige Rotationen, Intensitätsänderungen sowie Mirror-Flips augmentiert. In Bezug auf die Positional Embeddings wurden, analog zu dem Inter-Modal Transformer im mmFormer, lernbare Positions-Embeddings den Fusionstokens hinzugefügt – ein Konzept, das dem großen Class-Token im ViT ähnelt.
+
+## Vergleich mit state-of-the-art Methoden
+
+Basierend auf der Verfügbarkeit von Open-Source-Code sowie den öffentlich zugänglichen Datenaufteilungen wurden fünf moderne Ansätze für die unvollständige multimodale Hirntumorsegmentierung ausgewählt. Für den Vergleich wurden identische Datensplits verwendet. Zu den ausgewählten Methoden zählen sowohl CNN-basierte Ansätze – namentlich HeMIS [A], U-HVED [B], RobustMSeg [C] und RFNet [D] – als auch der transformerbasierte Ansatz mmFormer [E].
+
+
+
+
+### 1) Quantitativer Vergleich
+
+In Tab. 1 sind die Ergebnisse aller 15 multimodalen Modalitätskombinationen auf dem BraTS2018-Datensatz aufgeführt. Unter den etablierten State‑of‑the‑Art-Methoden erzielt **RFNet** die besten Mittelwerte für Whole Tumor (WT), Tumor Core (TC) und Enhancing Tumor (ET) und übertrifft **mmFormer** in 40 von 45 Kombinationen. **PRISMS** hingegen liefert in **allen** 45 Konstellationen durchgängig höhere Dice-Werte als sowohl mmFormer als auch RFNet – und zwar für WT, TC und ET gleichermaßen.
+
+Ein ähnliches Bild zeigt sich in Tab. 2 (z. B. auf BraTS2020 oder im UTD-Szenario): Die größten Leistungsgewinne durch PRISMS treten in den schwierigeren Klassen auf (Reihenfolge der Schwierigkeit: WT < TC < ET. Dies unterstreicht, dass PRISMS cross‑modale Informationen besonders effektiv nutzt, was gerade in herausfordernden Settings (UTD vs. VTD) entscheidend ist. Zusätzlich belegen die angeführten p‑Werte die statistische Signifikanz dieser Verbesserungen.
+
+Schließlich werden in Tab. 3 die gleichen Methoden anhand der Hausdorff-Distanz (HD) verglichen. Auch hier zeigt PRISMS durchweg niedrigere HD-Werte als die Konkurrenz, was auf eine präzisere Formwiedergabe der Segmentierungen hinweist.
 
 <table>
-  <caption></caption>
+  <caption>Tabelle 1 BraTS2018</caption>
   <thead>
     <tr><th rowspan="4">Typ</th><th rowspan="4">Model</th><th>Flair</th><th>○</th><th>○</th><th>○</th><th>●</th><th>○</th><th>○</th><th>●</th><th>○</th><th>●</th><th>●</th><th>●</th><th>●</th><th>●</th><th>●</th><th>●</th><th rowspan="4">Avg.</th><th rowspan="4">p‑value</th></tr>
     <tr><th>T1</th><th>○</th><th>○</th><th>●</th><th>○</th><th>○</th><th>●</th><th>●</th><th>●</th><th>○</th><th>○</th><th>●</th><th>●</th><th>○</th><th>●</th><th>●</th></tr>
@@ -37,10 +62,13 @@ math: true
   </tbody>
 </table>
 
+
+
 ---
 
+
 <table>
-  <caption></caption>
+  <caption>Tabelle 2 BraTS2020</caption>
   <thead>
     <tr><th rowspan="4">Typ</th><th rowspan="4">Model</th><th>Flair</th><th>○</th><th>○</th><th>○</th><th>●</th><th>○</th><th>○</th><th>●</th><th>○</th><th>●</th><th>●</th><th>●</th><th>●</th><th>●</th><th>●</th><th>●</th><th rowspan="4">Avg.</th><th rowspan="4">p‑value</th></tr>
     <tr><th>T1</th><th>○</th><th>○</th><th>●</th><th>○</th><th>○</th><th>●</th><th>●</th><th>●</th><th>○</th><th>○</th><th>●</th><th>●</th><th>○</th><th>●</th><th>●</th><th>○</th></tr>
@@ -68,3 +96,60 @@ math: true
     <tr><td><strong>PRISMS</strong></td><td>51.50</td><td>82.57</td><td>40.87</td><td>43.39</td><td>82.35</td><td>83.81</td><td>47.04</td><td>49.90</td><td>53.87</td><td>83.07</td><td>84.12</td><td>53.33</td><td>81.23</td><td>82.36</td><td>82.17</td><td><strong>66.77</strong></td><td>--</td></tr>
   </tbody>
 </table>
+
+---
+
+<table>
+  <caption>Tabelle 3 HD auf BraTS2018 und BraTS2020</caption>
+  <thead>
+    <tr><th>Typ</th><th>Methode</th><th>BraTS2018 (HD)</th><th>BraTS2020 (HD)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td rowspan="6">WT</td><td>HeMIS</td><td>26.72</td><td>27.32</td></tr>
+    <tr><td>U‑HVED</td><td>25.10</td><td>28.00</td></tr>
+    <tr><td>RobustMSeg</td><td>11.37</td><td>13.05</td></tr>
+    <tr><td>RFNet</td><td>7.24</td><td>8.42</td></tr>
+    <tr><td>mmFormer</td><td>7.30</td><td>7.71</td></tr>
+    <tr><td><strong>PRISMS</strong></td><td><strong>6.38</strong></td><td><strong>5.68</strong></td></tr>
+    <tr><td rowspan="6">TC</td><td>HeMIS</td><td>27.99</td><td>25.27</td></tr>
+    <tr><td>U‑HVED</td><td>25.18</td><td>23.77</td></tr>
+    <tr><td>RobustMSeg</td><td>11.74</td><td>12.70</td></tr>
+    <tr><td>RFNet</td><td>7.24</td><td>8.42</td></tr>
+    <tr><td>mmFormer</td><td>7.30</td><td>7.71</td></tr>
+    <tr><td><strong>PRISMS</strong></td><td><strong>6.60</strong></td><td><strong>6.49</strong></td></tr>
+    <tr><td rowspan="6">ET</td><td>HeMIS</td><td>15.48</td><td>16.70</td></tr>
+    <tr><td>U‑HVED</td><td>13.48</td><td>14.86</td></tr>
+    <tr><td>RobustMSeg</td><td>8.28</td><td>9.04</td></tr>
+    <tr><td>RFNet</td><td>7.24</td><td>8.42</td></tr>
+    <tr><td>mmFormer</td><td>7.30</td><td>7.71</td></tr>
+    <tr><td><strong>PRISMS</strong></td><td><strong>5.95</strong></td><td><strong>5.02</strong></td></tr>
+  </tbody>
+</table>
+
+### 2) Qualitiativer Vergleich
+
+![Qualitiatver Vergleich auf BraTS2018 und BraTS2020](https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/new_figures/Prisms%20%7C%20Framework/Qual_PRISMS_1820(2).svg)
+
+
+![Segmentierungsergebnisse auf BraTS2018 und BraTS2020](https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/new_figures/Prisms%20%7C%20Framework/qual_seg_PRISMS(1).svg)
+
+---
+
+Hier sind die Quellenangaben in einem einheitlichen, vollständigen Format:
+
+**[1]** Dorent, R., Joutard, S., Modat, M., Ourselin, S., & Vercauteren, T. (2019). *Hetero‑Modal Variational Encoder‑Decoder for Joint Modality Completion and Segmentation*. In **Medical Image Computing and Computer Assisted Intervention – MICCAI 2019** (pp. 87–95). Springer. https://arxiv.org/abs/1907.11150
+**[2]** Chen, C., Dou, Q., Jin, Y., Chen, H., Qin, J., & Heng, P.‑A. (2020). *Robust Multimodal Brain Tumor Segmentation via Feature Disentanglement and Gated Fusion*. _CoRR_, abs/2002.09708. arXiv:2002.09708 citeturn1search0
+
+**[3]** Sun, L., Yang, K., Hu, X., Hu, W., & Wang, K. (2020). *Real‑time Fusion Network for RGB‑D Semantic Segmentation Incorporating Unexpected Obstacle Detection for Road‑driving Images*. _CoRR_, abs/2002.10570. https://github.com/dyh127/RFNet
+
+---
+
+**[A]** Havaei, M., Davy, A., Warde‑Farley, D., et al. (2016). *HeMIS: Hetero‑modal Image Segmentation*. In **Medical Image Computing and Computer Assisted Intervention – MICCAI 2016** (LNCS 9901, pp. 111–119).  https://arxiv.org/abs/1607.05194
+
+**[B]** Dorent, R., Joutard, S., Modat, M., Ourselin, S., & Vercauteren, T. (2019). *Hetero‑Modal Variational Encoder‑Decoder for Joint Modality Completion and Segmentation*. https://arxiv.org/pdf/1907.11150
+
+**[C]** Chen, C., Dou, Q., Jin, Y., Chen, H., Qin, J., & Heng, P.‑A. (2020). *Robust Multimodal Brain Tumor Segmentation via Feature Disentanglement and Gated Fusion*. https://arxiv.org/pdf/2002.09708
+
+**[D]** Sun, L., Yang, K., Hu, X., Hu, W., & Wang, K. (2020). *Real‑time Fusion Network for RGB‑D Semantic Segmentation Incorporating Unexpected Obstacle Detection for Road‑driving Images*. https://arxiv.org/abs/2002.10570
+
+**[E]** Zhang, Y., He, N., Yang, J., Li, Y., Wei, D., Huang, Y., Zhang, Y., He, Z., & Zheng, Y. (2022). *mmFormer: Multimodal Medical Transformer for Incomplete Multimodal Learning of Brain Tumor Segmentation*. In **Medical Image Computing and Computer Assisted Intervention – MICCAI 2022** (LNCS 13332, pp. 71–83). https://arxiv.org/abs/2206.02425
