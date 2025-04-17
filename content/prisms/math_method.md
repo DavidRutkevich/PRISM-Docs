@@ -3,7 +3,7 @@
 title: "Methodik: Mathe und mehr Mathe"
 description: "Zusammenführung der mathematischen Grundlagen mit den PRISM- und PRISMS-Konzepten, unter Einbezug der Code-Logik für AFT, SRA und KFT."
 date: 2025-02-05
-mat h: true
+math: true
 
 ---
 Das Framework **PRISMS** stellt einen neuartigen, mathematisch fundierten Ansatz zur robusten multimodalen Segmentierung dar – mit besonderem Fokus auf die Herausforderungen der Gehirntumorsegmentierung. Für jede der verwendeten Modalitäten (Flair, T1ce, T1, T2) werden eigenständige 3D-Encoder eingesetzt, die charakteristische Feature-Tensoren
@@ -98,13 +98,7 @@ Die modality-masked attention wird konkret folgendermaßen berechnet:
   \mathcal{M}_{i,j}\, \exp\Bigl(\frac{q_i\,k_j^T}{\sqrt{c/H}}\Bigr)
 }{
   \displaystyle
-  \sum_{\substack{j' \\ \mathcal{M}_{i,j'}=1}}
-  \exp\Bigl(\frac{q_i\,k_{j'}^T}{\sqrt{c/H}}\Bigr)
-},
-\]
-
-wobei \(H\) die Anzahl der Attention-Heads und \(c\) die Kanaldimension darstellt. Nach der Berechnung der Attention werden die ursprünglichen Embeddings \(Z_0\) mithilfe eines Feed-Forward-Netzwerks (FFN) und Layer Normalization weiterverarbeitet:
-
+  \sum_{\substaWT
 \[
 \begin{aligned}
 Z'_0 &\leftarrow \text{MA}(Q,K)\cdot V, \\
