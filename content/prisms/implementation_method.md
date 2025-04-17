@@ -14,13 +14,13 @@ In diesem Abschnitt werden die theoretischen Grundlagen der einzelnen Module erl
 ### 1.1. Modality Encoder
 
 **Mathematische Beschreibung:**
-Der Modality Encoder ist dafür verantwortlich, für jede Modalität \( m \) separate, charakteristische Features zu extrahieren. Dabei wird der Eingang \( x^m_0 \) (z. B. ein 3D-MRT-Bild) schrittweise durch eine Reihe von konvolutionellen Operationen transformiert. Formal lässt sich der Prozess für eine Modalität \( m \) durch die rekursive Gleichung darstellen:
+Der Modality Encoder ist dafür verantwortlich, für jede Modalität \( m \) separate, charakteristische Features zu extrahieren. Dabei wird der Eingang \( x^m_0 \) (z. B. ein 3D-MRT-Bild) schrittweise durch eine Reihe von conlutional Operationen transformiert. Formal lässt sich der Prozess für eine Modalität \( m \) durch die rekursive Gleichung darstellen:
 
 \[
 x^m_{i+1} = E_m(x^m_i)
 \]
 
-wobei \( E_m \) unterschiedliche konvolutionelle Blöcke repräsentiert, die in unserem Code beispielsweise mit Reflection Padding (pad_type='reflect') implementiert werden. Diese Architektur, die an 3D-UNet-Strukturen angelehnt ist, erlaubt eine tiefe, schichtweise Extraktion von Features. Besonders wichtig ist die separate Verarbeitung der Modalitäten, da dadurch auch unvollständige Datensätze robust behandelt werden können.
+wobei \( E_m \) unterschiedliche conlutional Blöcke repräsentiert, die in unserem Code beispielsweise mit Reflection Padding (pad_type='reflect') implementiert werden. Diese Architektur, die an 3D-UNet-Strukturen angelehnt ist, erlaubt eine tiefe, schichtweise Extraktion von Features. Besonders wichtig ist die separate Verarbeitung der Modalitäten, da dadurch auch unvollständige Datensätze robust behandelt werden können.
 
 **Codeausschnitt:**
 
@@ -189,7 +189,7 @@ proto_loss[0], dist[0] = prototype_prism_loss(
 ## 3. Zusammenfassung
 
 - **Modality Encoder:**
-  Extrahiert durch konvolutionelle Schichten modalitätsspezifische Feature-Repräsentationen, die unabhängig voneinander verarbeitet werden können.
+  Extrahiert durch conlutional Schichten modalitätsspezifische Feature-Repräsentationen, die unabhängig voneinander verarbeitet werden können.
 
 - **Adaptive Fusion Transformer (AFT):**
   Kombiniert modalitätsspezifische Features und Fusionstokens durch Konkatenation, Addition von Positionsvektoren und globale Verarbeitung unter Berücksichtigung einer Maskierung für fehlende Modalitäten. Das Ergebnis wird anschließend in die einzelnen Modalitäten zurückgeführt.
@@ -198,7 +198,7 @@ proto_loss[0], dist[0] = prototype_prism_loss(
   Nutzt die Attention-Matrix des ersten AFT-Layers, um aus den Fusionstokens Gewichtungsvektoren zu berechnen, die die relevanten räumlichen Regionen jeder Modalität hervorheben.
 
 - **Kanalbezogener Fusionstransformer (KFT):**
-  Rebalanciert kanalweise die Informationen, indem lokale, konvolutional-basierte Projektionen eingesetzt werden, um den Beitrag einzelner Kanäle adaptiv zu gewichten.
+  Rebalanciert kanalweise die Informationen, indem lokale, conlutional-basierte Projektionen eingesetzt werden, um den Beitrag einzelner Kanäle adaptiv zu gewichten.
 
 - **Modalitätsmaskierte Attention (MMA):**
   Modifiziert den standardmäßigen Attention-Mechanismus durch eine binäre Maske, sodass nur die verfügbaren Modalitäten in die Berechnung einfließen.
@@ -206,7 +206,7 @@ proto_loss[0], dist[0] = prototype_prism_loss(
 - **PRISM-Mechanismus:**
   Durch prototypbasierte Distillation werden unimodale Repräsentationen an globale Prototypen angepasst, um die Robustheit insbesondere bei unvollständigen Datensätzen zu verbessern.
 
-Diese Bausteine bilden die Grundlage von **PRISMS**, einem modularen Framework, das klassische konvolutionelle Methoden mit modernen Transformer-Techniken kombiniert, um eine robuste und präzise Segmentierung multimodaler Daten zu ermöglichen.
+Diese Bausteine bilden die Grundlage von **PRISMS**, einem modularen Framework, das klassische conlutional Methoden mit modernen Transformer-Techniken kombiniert, um eine robuste und präzise Segmentierung multimodaler Daten zu ermöglichen.
 
 Hier folgt eine überarbeitete Passage, die die Integration des PRISM-Moduls in das PRISMS-Framework detailliert erläutert – mit aktualisierten Namenskonventionen, sodass veraltete Bezeichnungen nicht erwähnt werden:
 
