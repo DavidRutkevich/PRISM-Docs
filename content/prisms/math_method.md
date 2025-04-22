@@ -21,6 +21,7 @@ Ergänzend dazu wird mithilfe der **Spatial Relevance Attention** sichergestellt
 Schließlich wird ein fünfstufiger Decoder \(D_{\text{fusion}}\) eingesetzt, der mit Hilfe von optimierten Skip-Connections – bei denen die Features vor der Fusion durch SRA und KFT verfeinert werden – und Deep Supervision zu hochpräzisen Segmentierungsergebnissen führt.
 
 ![Überblick PRISMS](https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/new_figures/Prisms%20%7C%20Framework/overview_dark.png)
+
 ## Modalitätsspezifische Feature Extraction
 
 Gegeben sei die Menge der verwendeten Modalitäten

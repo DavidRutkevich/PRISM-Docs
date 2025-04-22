@@ -40,9 +40,9 @@ layout: wide
       {{< card
             title="Ergebnisse"
             subtitle="Die Ergebnisse von PRISM auf dem BraTS2020 und MyoPS2020 Datensatz. Einschließlich einer Vergleichsanalyse mit anderen Methoden."
-            image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/new_figures/Prism%20%7C%20Modul/title_prism_result.svg"
+            image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/new_figures/Prisms%20%7C%20Framework/prisms_result_title.png"
             imageClass="hx-h-48 hx-w-full hx-object-cover"
-            link="/prism/results/">}}
+            link="/prisms/result/">}}
 
 
       {{< card
@@ -50,5 +50,5 @@ layout: wide
             subtitle="Ablation Studie von PRISM. Hier wird die Methodik von PRISM in ihren Einzelteilen betrachtet und analysiert."
             image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/new_figures/Prism%20%7C%20Modul/title-prism-ablation.svg"
             imageClass="hx-h-48 hx-w-full hx-object-cover"
-            link="/prism/ablation/">}}
+            link="/prisms/ablation/">}}
 {{< /cards >}}
