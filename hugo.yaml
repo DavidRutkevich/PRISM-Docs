@@ -57,18 +57,18 @@ menu:
     - identifier: Über mich ↗
       name: Über mich ↗
       url: https://david-rutkevich.me
-      weight: 4
+      weight: 3
     - name: Search
-      weight: 5
+      weight: 4
       params:
         type: search
     - name: GitHub
-      weight: 6
+      weight: 5
       url: "https://github.com/davidrutkevich"
       params:
         icon: github
     - name: LinkedIn
-      weight: 7
+      weight: 6
       url: "https://www.linkedin.com/in/davidrutkevich"
       params:
         icon: linkedin
