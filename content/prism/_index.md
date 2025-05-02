@@ -57,7 +57,7 @@ PRISM ist ein neuartiges Plug-and-Play-Framework, das mittels Selbstdistillation
             subtitle="Verdeutlichung der Gradient Manipulation Trainingsmethode und Guided Self-Supervision für GMD und Shapespec."
             image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/new_figures/Prism%20%7C%20Modul/title-gss.svg"
             imageClass="hx-h-48 hx-w-full hx-object-cover"
-            link="/prism/gmd/"
+            link="/prism/gss/"
       >}}
 
       {{< card
