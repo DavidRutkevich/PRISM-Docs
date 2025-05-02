@@ -1,6 +1,9 @@
-# PRISM – Guided Self-Supervision für robuste multimodale Hirntumorsegmentierung
-
-## Einführung in die Herausforderung unvollständiger MRT-Modalitäten
+---
+title: "GMD und GSS"
+description: "Guided Self-Supervision für robuste multimodale Hirntumorsegmentierung"
+date: 2025-02-05
+math: true
+---
 
 In der klinischen Praxis der Hirntumor-Bildgebung werden häufig mehrere MRT-Sequenzen (FLAIR, T1, T1ce, T2) verwendet, um komplementäre Informationen über Tumorgewebe zu erfassen. Leider sind in realen klinischen Szenarien oft nicht alle Modalitäten verfügbar oder weisen Qualitätsprobleme auf. Dies stellt eine erhebliche Herausforderung für automatisierte Segmentierungsalgorithmen dar, die typischerweise auf vollständige Datensätze trainiert wurden.
 
