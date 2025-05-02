@@ -1,13 +1,10 @@
----
-title: "Meta-Drop"
-description: "Bi-Level Meta-Learning für robuste multimodale Segmentierung"
-date: 2025-02-05
-math: true
----
+# PRISM (Meta-Drop): Bi-Level Meta-Learning für robuste multimodale Segmentierung
+
+## 1. Einleitung: Die Herausforderung unvollständiger Daten und das Ziel von Meta-Drop
 
 Multimodale MRT-Datensätze (z.B. FLAIR, T1, T1ce, T2) sind in der klinischen Praxis oft unvollständig, d.h. einzelne Sequenzen fehlen. Standard-Trainingsansätze stoßen hier an ihre Grenzen, da sie Schwierigkeiten haben, mit diesen variierenden und oft unbekannten Kombinationen fehlender Modalitäten umzugehen.
 
-Die **PRISM (Meta-Drop)** Methode, implementiert in `train_meta_drop.py`, erweitert das ursprüngliche PRISM-Framework um eine **Bi-Level Meta-Learning Strategie**. Das Hauptziel ist es, die **Robustheit** und **Generalisierungsfähigkeit** von Segmentierungsmodellen signifikant zu verbessern, insbesondere wenn sie mit inhärent unvollständigen Trainingsdaten (Inherently Deficient Training, IDT) oder unvollständigen Testdaten (Unseen Test Data, UTD) konfrontiert werden, bei denen die Verteilung der fehlenden Modalitäten während des Tests unbekannt ist (`utd_drop`).
+Die **PRISM (Meta-Drop)** Methode, implementiert in `train_meta_drop.py`, erweitert das ursprüngliche PRISM-Framework um eine **Bi-Level Meta-Learning Strategie**. Das Hauptziel ist es, die **Robustheit** und **Generalisierungsfähigkeit** von Segmentierungsmodellen signifikant zu verbessern, insbesondere wenn sie mit inhärent unvollständigen Trainingsdaten oder unvollständigen Testdaten konfrontiert werden, bei denen die Verteilung der fehlenden Modalitäten während des Tests unbekannt ist (`utd_drop`).
 
 ## 2. Kernkonzept: Bi-Level Meta-Learning
 
@@ -31,14 +28,14 @@ Im inneren Loop wird das Modell an einen spezifischen Trainings-Batch \(D_{\text
 phi_0 = {k: p.clone() for k, p in model.named_parameters()}
 
 # Inner Loop: Task-spezifische Anpassung
-output_train = model(x_train, mask_train, target_train) # mask_train ist hier entscheidend für IDT/UTD
+output_train = model(x_train, mask_train, target_train)
 loss_train = calculate_total_loss(output_train, target_train, ...) # Berechnet L_total
 optimizer.zero_grad()
 loss_train.backward()
 optimizer.step() # Aktualisiert phi zu phi_tilde
 
 # Angepasste Parameter sichern (optional, für das Update benötigt)
-phi_tilde = {k: p.clone() for k, p in model.named_parameters()}
+phi_tilde = {k: p.clone() for k, p in model.named_parameters()} 
 ```
 
 ### 2.2 Outer Loop: Meta-Level Anpassung für Generalisierung
@@ -81,7 +78,7 @@ with torch.no_grad():
             # sondern einer Implementierungsvariante des Meta-Updates.
             # Eine häufige Variante ist, die Gradienten direkt auf phi_0 anzuwenden oder MAML-ähnliche Updates.
             # Die exakte Implementierung im Code:
-            p.copy_(phi_0[name] + alpha * (phi_tilde[name] - phi_0[name]) - eta_meta * p.grad)
+            p.copy_(phi_0[name] + alpha * (phi_tilde[name] - phi_0[name]) - eta_meta * p.grad) 
             # Hier ist eta_meta die Lernrate des äußeren Loops (args.meta_lr)
 
 # Zustand für nächsten Schritt vorbereiten (optional, falls phi_0 wieder gebraucht wird)
