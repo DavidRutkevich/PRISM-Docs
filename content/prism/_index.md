@@ -13,15 +13,6 @@ PRISM ist ein neuartiges Plug-and-Play-Framework, das mittels Selbstdistillation
 
 
 {{< cards >}}
-
-      {{< card
-            title="Veranschaulichung"
-            subtitle="Visuelle Darstellung der PRISM-Methodik und ihrer Komponenten."
-            image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/new_figures/Prism%20%7C%20Modul/title.png"
-            imageClass="hx-h-48 hx-w-full hx-object-cover"
-            link="/prism/simple/"
-      >}}
-
       {{< card
             title="Einleitung"
             subtitle="Einführung in PRISM. Die Herausforderungen unvollständiger multimodaler Daten und meine Lösung."
@@ -32,7 +23,7 @@ PRISM ist ein neuartiges Plug-and-Play-Framework, das mittels Selbstdistillation
 
       {{< card
             title="Methodik"
-            subtitle="Die komplette Methodik von PRISM. Die mathematische Grundlage und tiefere Erklärungen als in der Facharbeit. Hier wird die Innovation von PRISM mathematisch betrachtet." 
+            subtitle="Die komplette Methodik von PRISM. Die mathematische Grundlage und tiefere Erklärungen als in der Facharbeit. Hier wird die Innovation von PRISM mathematisch betrachtet."
             image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/new_figures/Prism%20%7C%20Modul/title-prism-method.svg"
             imageClass="hx-h-48 hx-w-full hx-object-cover"
             link="/prism/methods/"
@@ -45,11 +36,27 @@ PRISM ist ein neuartiges Plug-and-Play-Framework, das mittels Selbstdistillation
             imageClass="hx-h-48 hx-w-full hx-object-cover"
             link="/prism/results/">}}
 
-      
+
       {{< card
             title="Ablation"
             subtitle="Ablation Studie von PRISM. Hier wird die Methodik von PRISM in ihren Einzelteilen betrachtet und analysiert."
             image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/new_figures/Prism%20%7C%20Modul/title-prism-ablation.svg"
             imageClass="hx-h-48 hx-w-full hx-object-cover"
             link="/prism/ablation/">}}
+
+      {{< card
+            title="Meta-Learning"
+            subtitle="Verdeutlichung der Meta-Learning Strategie und Einführung in das UTD_drop Szenario."
+            image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/new_figures/Prism%20%7C%20Modul/title-meta.svg"
+            imageClass="hx-h-48 hx-w-full hx-object-cover"
+            link="/prism/meta/"
+      >}}
+
+      {{< card
+            title="Guided Self-Supervision"
+            subtitle="Verdeutlichung der Gradient Manipulation Trainingsmethode und Guided Self-Supervision für GMD und Shapespec."
+            image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/new_figures/Prism%20%7C%20Modul/title-gss.svg"
+            imageClass="hx-h-48 hx-w-full hx-object-cover"
+            link="/prism/gmd/"
+      >}}
 {{< /cards >}}
