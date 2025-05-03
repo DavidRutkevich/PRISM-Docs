@@ -149,8 +149,8 @@ if args.model == 'mmformer':
     model = mmformer.Model(num_cls=num_cls)
 elif args.model == 'rfnet':
     model = rfnet.Model(num_cls=num_cls)
-elif args.model == 'm2ftrans':
-    model = m2ftrans.Model(num_cls=num_cls)
+elif args.model == 'prisms':
+    model = prisms.Model(num_cls=num_cls)
 # ...
 ```
 
