@@ -175,10 +175,8 @@ Schließlich werden in Tab. 3 die gleichen Methoden anhand der Hausdorff-Distan
 
 ---
 
-Hier sind die Quellenangaben in einem einheitlichen, vollständigen Format:
-
 **[1]** Dorent, R., Joutard, S., Modat, M., Ourselin, S., & Vercauteren, T. (2019). *Hetero‑Modal Variational Encoder‑Decoder for Joint Modality Completion and Segmentation*. In **Medical Image Computing and Computer Assisted Intervention – MICCAI 2019** (pp.87–95). Springer. https://arxiv.org/abs/1907.11150
-**[2]** Chen, C., Dou, Q., Jin, Y., Chen, H., Qin, J., & Heng, P.‑A. (2020). *Robust Multimodal Brain Tumor Segmentation via Feature Disentanglement and Gated Fusion*. _CoRR_, abs/2002.09708. arXiv:2002.09708 citeturn1search0
+**[2]** Chen, C., Dou, Q., Jin, Y., Chen, H., Qin, J., & Heng, P.‑A. (2020). *Robust Multimodal Brain Tumor Segmentation via Feature Disentanglement and Gated Fusion*. _CoRR_, abs/2002.09708. arXiv:2002.09708
 
 **[3]** Sun, L., Yang, K., Hu, X., Hu, W., & Wang, K. (2020). *Real‑time Fusion Network for RGB‑D Semantic Segmentation Incorporating Unexpected Obstacle Detection for Road‑driving Images*. _CoRR_, abs/2002.10570. https://github.com/dyh127/RFNet
 
