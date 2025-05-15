@@ -1,4 +1,5 @@
 ---
+
 Titel: Methodik: Das PRISMS Framework – Modulare Fusion für Robuste Segmentierung
 Description: Detaillierte Erläuterung der mathematischen Grundlagen und der Implementierung des PRISMS-Frameworks.
 Date: 2025-02-05
