@@ -46,9 +46,9 @@ layout: wide
 
 
       {{< card
-            title="Mermaid Charts Overview"
-            subtitle="An overview of the Mermaid charts used in the PRISMS project."
-            image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/new_figures/Prism%20%7C%20Modul/title.png"
+            title="Mermaid Charts"
+            subtitle="PRISMS Bestandteile in Form von Mermaid-Diagrammen."
+            image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/new_figures/Prisms%20%7C%20Framework/title_merm.png"
             imageClass="hx-h-48 hx-w-full hx-object-cover"
             link="/prisms/mermaid_charts_overview/"
       >}}
