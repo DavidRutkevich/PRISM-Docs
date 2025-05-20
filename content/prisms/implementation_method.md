@@ -178,12 +178,12 @@ attn_probs = attn_scores.softmax(dim=-1)
 
 ## 2. Der PRISM-Distillationsmechanismus in PRISMS
 
-Das **PRISMS**-Framework integriert den PRISM-Distillationsansatz, um Wissen von einem starken "Lehrer" (der multimodalen Fusionsrepräsentation) auf "Schüler" (effektiv unimodale Verarbeitungspfade innerhalb des Fusionsnetzwerks) zu übertragen.
+Das **PRISMS**-Framework integriert den PRISM-Distillationsansatz, um Wissen von einem starken "Teacher" (der multimodalen Fusionsrepräsentation) auf "Student" (effektiv unimodale Verarbeitungspfade innerhalb des Fusionsnetzwerks) zu übertragen.
 
 ### 2.1. Pixel-weiser KL Divergence Loss
 
 **Konzept:** Angleichung der Vorhersageverteilungen auf Pixelebene.
-Der Lehrerpfad (Haupt-Fusionspipeline von PRISMS) erzeugt Logits \( z^t_n \). Für jeden Schülerpfad \( m \) (konzeptionell erzeugt durch Verarbeitung nur der Modalität \( m \) durch die Fusionspipeline mit unimodaler Maske) werden Logits \( z^m_n \) erzeugt. Der Verlust ist:
+Der Teacherpfad (Haupt-Fusionspipeline von PRISMS) erzeugt Logits \( z^t_n \). Für jeden Studentpfad \( m \) (konzeptionell erzeugt durch Verarbeitung nur der Modalität \( m \) durch die Fusionspipeline mit unimodaler Maske) werden Logits \( z^m_n \) erzeugt. Der Verlust ist:
 
 \[
 L^{m}_{\text{pixel-KL}} = \sum_n D_{\mathrm{KL}}\!\left[\sigma(z^t_n/\tau)\,\middle\|\,\sigma(z^m_n/\tau)\right]
@@ -193,7 +193,7 @@ Dies wird für finale Vorhersagen und Aux Heads berechnet.
 ### 2.2. Prototype Alignment Loss (Semantische Distillation)
 
 **Konzept:** Angleichung der semantischen Klassenrepräsentationen.
-Für jede Klasse \( k \) werden Prototyp-Vektoren durch räumliche Aggregation der Merkmale des Lehrers (\(f^t_n\)) und des Schülers \( m \) (\(f^m_n\)) berechnet:
+Für jede Klasse \( k \) werden Prototyp-Vektoren durch räumliche Aggregation der Merkmale des Teachers (\(f^t_n\)) und des Students \( m \) (\(f^m_n\)) berechnet:
 \[
 S^{t}_{k} = \mathrm{Pool}_{\text{class } k}(f^t_n), \quad S^{m}_{k} = \mathrm{Pool}_{\text{class } k}(f^m_n)
 \]
@@ -209,17 +209,17 @@ Die Gradienten aus dem kombinierten PRISM-Verlust \(L_{\text{prism}}\) aktualisi
 
 ```python
 align_loss_flair, dist_flair = prototype_alignment_loss(
-    student_features=de_f_flair[0],       # Merkmale des Flair-Schülers
-    teacher_features=de_f_avg[0].detach(),# Merkmale des Lehrers (kein Gradient)
+    student_features=de_f_flair[0],       # Merkmale des Flair-Students
+    teacher_features=de_f_avg[0].detach(),# Merkmale des Teachers (kein Gradient)
     target_labels=target,
-    student_logits=fuse_pred_flair,       # Logits des Flair-Schülers
-    teacher_logits=fuse_pred.detach(),    # Logits des Lehrers (kein Gradient)
+    student_logits=fuse_pred_flair,       # Logits des Flair-Students
+    teacher_logits=fuse_pred.detach(),    # Logits des Teachers (kein Gradient)
     # ...
 )
 # L_prism = Summe aller align_loss_m und kl_loss_m
 ```
 
-*Der Code zeigt die Berechnung des Prototype Alignment Loss für einen Schülerpfad.*
+*Der Code zeigt die Berechnung des Prototype Alignment Loss für einen Studentpfad.*
 
 ---
 
@@ -229,7 +229,7 @@ align_loss_flair, dist_flair = prototype_alignment_loss(
 *   **Adaptive Fusion Transformer (AFT) im PRISM Bottleneck:** Initiale globale Fusion von Modalitäts- und Fusions-Tokens mittels **MMA**.
 *   **Spatial Weight Attention (SRA):** Gewichtung der räumlichen Relevanz von AFT-Ausgaben und Skip-Connections basierend auf AFT-Attention.
 *   **Cross-Modal Fusion Transformer (KFT):** Tiefe Interaktion und Re-Kalibrierung von Fusions- und Skip-Connection-Features auf Decoder-Ebenen mittels **MMA** (realisiert durch `MultiCrossToken`-Blöcke).
-*   **Modalitätsmaskierte Attention (MMA) (Modality Masked Attention):** Kernmechanismus in AFT und KFT zur Berücksichtigung nur valider Token-Paare.
-*   **Haupt-Fusionsdecoder:** Verarbeitet KFT-Ausgaben und SRA-gewichtete Skips; dient als "Lehrer".
-*   **PRISM-Distillationsmechanismus:** Überträgt Wissen vom Lehrer auf konzeptionelle Schülerpfade mittels Pixel-KL- und Prototype-Alignment-Loss.
+*   **Modalitätsmaskierte Attention (MMA):** Kernmechanismus in AFT und KFT zur Berücksichtigung nur valider Token-Paare.
+*   **Haupt-Fusionsdecoder:** Verarbeitet KFT-Ausgaben und SRA-gewichtete Skips; dient als "Teacher".
+*   **PRISM-Distillationsmechanismus:** Überträgt Wissen vom Teacher auf konzeptionelle Studentpfade mittels Pixel-KL- und Prototype-Alignment-Loss.
 *   **Regulation Decoders:** Separate Decoder pro Modalität für \(L_{\text{reg}}\).

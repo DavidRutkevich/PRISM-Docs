@@ -9,9 +9,9 @@ In der klinischen Praxis der Hirntumor-Bildgebung werden häufig mehrere MRT-Seq
 
 Die Guided Self-Supervision (GSS) Methode adressiert dieses Problem, indem sie ein innovatives Wissenstransfer-Paradigma zwischen verfügbaren und fehlenden Modalitäten implementiert. GSS ist Teil des PRISM-Frameworks zur multimodalen Segmentierung unter inhärent unvollständigen Trainingsdaten.
 
-## Kernkonzept: Konfidenzbasierte Lehrersignalgenerierung
+## Kernkonzept: Konfidenzbasierte Teachersignalgenerierung
 
-Das zentrale Innovationselement von GSS ist die intelligente Erzeugung von Lehrersignalen aus verfügbaren Modalitäten, die dann zur Anleitung der Vorhersagen für fehlende Modalitäten dienen. Die Methode unterscheidet dabei zwischen verschiedenen Konfidenzniveaus:
+Das zentrale Innovationselement von GSS ist die intelligente Erzeugung von Teachersignalen aus verfügbaren Modalitäten, die dann zur Anleitung der Vorhersagen für fehlende Modalitäten dienen. Die Methode unterscheidet dabei zwischen verschiedenen Konfidenzniveaus:
 
 ### 1. Region-spezifische Signalgenerierung
 
@@ -66,7 +66,7 @@ Dies reduziert falsch-positive Vorhersagen in unsicheren Bereichen und erhöht d
 
 ## Wissenstransfer durch Knowledge Distillation
 
-Nach der Generierung der Lehrervorhersagen implementiert GSS einen Wissenstransfer zu den modalitätsspezifischen Vorhersagen mittels Kullback-Leibler-Divergenz:
+Nach der Generierung der Teachervorhersagen implementiert GSS einen Wissenstransfer zu den modalitätsspezifischen Vorhersagen mittels Kullback-Leibler-Divergenz:
 
 ```python
 # Anwendung von KL-Divergenz für jede Modalität
@@ -76,7 +76,7 @@ kl2 = criterions.notemp_kl_loss_bs(t1_pred, teacher_pred.detach(), target, num_c
 kl3 = criterions.notemp_kl_loss_bs(t2_pred, teacher_pred.detach(), target, num_cls=num_cls, temp=temp)
 ```
 
-Besonders wichtig ist die Verwendung von `.detach()`, wodurch der Gradientenfluss in die Lehrervorhersagen verhindert wird. Dies stellt sicher, dass die Lehrer stabile Lernziele darstellen.
+Besonders wichtig ist die Verwendung von `.detach()`, wodurch der Gradientenfluss in die Teachervorhersagen verhindert wird. Dies stellt sicher, dass die Teacher stabile Lernziele darstellen.
 
 ### Selektive Anwendung durch Modalitätsmasken
 
@@ -129,9 +129,9 @@ masks_test = [[False, False, False, True], [False, True, False, False], ...]
 # [FLAIR, T1ce, T1, T2] - False bedeutet Modalität ist verfügbar
 ```
 
-### Normalisierung der Lehrervorhersagen
+### Normalisierung der Teachervorhersagen
 
-Nach der Generierung werden die Lehrervorhersagen normalisiert, um gültige Wahrscheinlichkeitsverteilungen zu gewährleisten:
+Nach der Generierung werden die Teachervorhersagen normalisiert, um gültige Wahrscheinlichkeitsverteilungen zu gewährleisten:
 
 ```python
 teacher_pred = torch.clamp(teacher_pred, min=0.005, max=1)

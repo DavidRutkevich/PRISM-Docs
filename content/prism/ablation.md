@@ -726,7 +726,7 @@ Bemerkenswert ist, dass PRISM in der Bewältigung des UTD-Szenarios teilweise so
   </tbody>
 </table>
 
-Ein zentrales Element des PRISM-Ansatzes ist die Distanz $D^m_n$ (siehe Abschnitt 2.2). Diese wird als L2-basierte Prototyp-Distanz über alle Klassen definiert und repräsentiert die relative Präferenz des multimodalen Lehrers für den jeweiligen unimodalen Pfad $m$. In der obenstehenden Tabelle wurden verschiedene Methoden zur Berechnung von $D^m_n$ evaluiert – darunter der Dice Loss, der KL Loss und der Proto Loss.
+Ein zentrales Element des PRISM-Ansatzes ist die Distanz $D^m_n$ (siehe Abschnitt 2.2). Diese wird als L2-basierte Prototyp-Distanz über alle Klassen definiert und repräsentiert die relative Präferenz des multimodalen Teachers für den jeweiligen unimodalen Pfad $m$. In der obenstehenden Tabelle wurden verschiedene Methoden zur Berechnung von $D^m_n$ evaluiert – darunter der Dice Loss, der KL Loss und der Proto Loss.
 
 ---
 ## Temperatur

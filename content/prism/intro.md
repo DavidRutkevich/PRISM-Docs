@@ -17,10 +17,10 @@ Um diese Problematik zu adressieren, unterscheide ich zwei Trainingsszenarien:
 - **UTD (Unvollständiges Training):**  
   In diesem realitätsnahen Szenario fehlen in einzelnen Proben einige Modalitäten. Das Training erfolgt nur mit den tatsächlich verfügbaren Modalitäten, was zu einem Ungleichgewicht führen kann – Modalitäten mit hohen Fehlraten werden seltener aktualisiert und können dadurch im Training benachteiligt sein.
 
-Um diesen Herausforderungen zu begegnen, habe ich **PRISM** entwickelt. Das Framework nutzt ein einzelnes Netzwerk, das gleichzeitig als Lehrer und Schüler fungiert. Dabei wird das in den vorhandenen Modalitäten enthaltene Wissen auf zwei Ebenen weitergegeben:
+Um diesen Herausforderungen zu begegnen, habe ich **PRISM** entwickelt. Das Framework nutzt ein einzelnes Netzwerk, das gleichzeitig als Teacher und Student fungiert. Dabei wird das in den vorhandenen Modalitäten enthaltene Wissen auf zwei Ebenen weitergegeben:
 
 1. **Pixelbasierte Distillation:**  
-   Lokale (pixelweise) Informationen werden zwischen dem multimodalen Lehrer und den unimodalen Schülern abgeglichen, sodass selbst bei fehlenden Modalitäten konsistente Vorhersagen möglich sind.
+   Lokale (pixelweise) Informationen werden zwischen dem multimodalen Teacher und den unimodalen Studentn abgeglichen, sodass selbst bei fehlenden Modalitäten konsistente Vorhersagen möglich sind.
 
 2. **Semantische Distillation:**  
    Globale (klassenbasierte) Informationen werden über Prototypen übertragen. Hierbei wird für jede Klasse ein Prototyp (eine typische Repräsentation) berechnet, der das in den Daten enthaltene Wissen bündelt.
@@ -33,7 +33,7 @@ Die zentralen Vorteile von PRISM lassen sich wie folgt zusammenfassen:
   Durch die explizite Unterscheidung zwischen VTD und UTD spiegelt PRISM die tatsächlichen Bedingungen in Anwendungen wider, in denen Daten unvollständig vorliegen.
 
 - **Integrierte Self-Distillation:**  
-  Ein einzelnes Netzwerk teilt effizient sowohl lokales als auch globales Wissen zwischen den Modalitäten, ohne dass ein separater vollmodaler Lehrer benötigt wird.
+  Ein einzelnes Netzwerk teilt effizient sowohl lokales als auch globales Wissen zwischen den Modalitäten, ohne dass ein separater vollmodaler Teacher benötigt wird.
 
 - **Ausgewogene Regularisierung:**  
   Durch adaptive Anpassung der Lernraten wird verhindert, dass Modalitäten mit hohen Fehlraten im UTD-Szenario benachteiligt werden.

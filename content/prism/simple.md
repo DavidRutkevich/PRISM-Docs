@@ -16,7 +16,7 @@ PRISM ist ein Modul, das speziell entwickelt wurde, um multimodale Segmentierung
 ### Die Kernelemente von PRISM:
 
 - **Self-Distillation:**  
-  Ähnlich wie ein Dirigent, der sich selbst ständig verbessert, indem er seine eigene Aufführung analysiert, lernt das Netzwerk mithilfe von Self-Distillation. Dabei übernimmt es gleichzeitig die Rolle des Lehrers (der das volle, multimodale Wissen beherrscht) und des Schülers (der aus den verfügbaren, unimodalen Daten lernt). Diese Methode überträgt sowohl lokale (pixelweise) als auch globale (klassenbasierte) Informationen zwischen den Modalitäten.
+  Ähnlich wie ein Dirigent, der sich selbst ständig verbessert, indem er seine eigene Aufführung analysiert, lernt das Netzwerk mithilfe von Self-Distillation. Dabei übernimmt es gleichzeitig die Rolle des Teachers (der das volle, multimodale Wissen beherrscht) und des Students (der aus den verfügbaren, unimodalen Daten lernt). Diese Methode überträgt sowohl lokale (pixelweise) als auch globale (klassenbasierte) Informationen zwischen den Modalitäten.
 
 - **Präferenzbasierte Regularisierung:**  
   Stellen Sie sich vor, manche Instrumente im Orchester sind von Natur aus leiser oder werden seltener gespielt. Der Dirigent passt dann gezielt deren Lautstärke an, damit sie im Gesamtklang nicht untergehen. Analog dazu passt PRISM die Lernraten der einzelnen Modalitäten dynamisch an – Modalitäten, die in den Daten seltener vertreten oder schlechter optimiert sind, werden verstärkt, sodass alle Modalitäten gleichwertig in den Trainingsprozess einfließen.

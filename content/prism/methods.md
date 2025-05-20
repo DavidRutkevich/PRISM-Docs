@@ -65,11 +65,11 @@ Ein Problem hierbei ist, dass Modalitäten mit hohen Fehlraten $\textit{FR}^m \a
 
 ## Multi-Uni Self-Distillation (PRISM)
 
-Angelehnt an die Prinzipien der Wissensdistillation [1] – bei der das „dunkle Wissen“ eines großen Modells an ein kleineres Modell weitergegeben wird – wird hier eine Self-Distillation innerhalb eines einheitlichen Netzwerks durchgeführt. Unser Ansatz, den wir **PRISM** nennen, transferiert multimodales Wissen direkt auf die uni-modalen Teilmodelle. Dies erlaubt es, das in der gesamten Modalität enthaltene Wissen zu nutzen, ohne einen separaten vollmodalen Lehrer trainieren zu müssen.
+Angelehnt an die Prinzipien der Wissensdistillation [1] – bei der das „dunkle Wissen“ eines großen Modells an ein kleineres Modell weitergegeben wird – wird hier eine Self-Distillation innerhalb eines einheitlichen Netzwerks durchgeführt. Unser Ansatz, den wir **PRISM** nennen, transferiert multimodales Wissen direkt auf die uni-modalen Teilmodelle. Dies erlaubt es, das in der gesamten Modalität enthaltene Wissen zu nutzen, ohne einen separaten vollmodalen Teacher trainieren zu müssen.
 
 ### Pixelweise Self-Distillation
 
-Da die Segmentierung als Pixelklassifikationsaufgabe formuliert werden kann, zielen wir darauf ab, die Vorhersagen einzelner Pixel zwischen dem multimodalen (Lehrer-) und dem uni-modalen (Schüler-) Zweig anzugleichen. Dabei wird die Logit-Ausrichtung mittels der Kullback-Leibler-Divergenz verfolgt:
+Da die Segmentierung als Pixelklassifikationsaufgabe formuliert werden kann, zielen wir darauf ab, die Vorhersagen einzelner Pixel zwischen dem multimodalen (Teacher-) und dem uni-modalen (Student-) Zweig anzugleichen. Dabei wird die Logit-Ausrichtung mittels der Kullback-Leibler-Divergenz verfolgt:
 
 $$
 \mathcal{L}_{pixel}^m = \sum_{l=0}^{L} KL\!\Bigl[\sigma\!\Bigl(\frac{z_n^{m,l}}{\mu}\Bigr)\,\Big\|\, \sigma\!\Bigl(\frac{z^l_n}{\mu}\Bigr)\Bigr],
@@ -79,7 +79,7 @@ wobei $\sigma$ die Softmax-Funktion, $\mu$ der Temperaturparameter und $KL$ die 
 
 ### Semantische Self-Distillation
 
-Neben der lokalen, pixelweisen Information soll auch das globale, klassenbezogene Wissen übertragen werden. Hierzu wird für jede Probe und Klasse ein Prototyp berechnet. Konkret definieren wir für Klasse $k$ und Probe $n$ den multimodalen Lehrer-Prototyp $c_{n,k}^t$ und den uni-modalen Schüler-Prototyp $c_{n,k}^{m,s}$ als
+Neben der lokalen, pixelweisen Information soll auch das globale, klassenbezogene Wissen übertragen werden. Hierzu wird für jede Probe und Klasse ein Prototyp berechnet. Konkret definieren wir für Klasse $k$ und Probe $n$ den multimodalen Teacher-Prototyp $c_{n,k}^t$ und den uni-modalen Student-Prototyp $c_{n,k}^{m,s}$ als
 
 $$
 c_{n,k}^t = \frac{\sum_{i} z^0_{n,i}\,\mathbf{1}[y_{n,i}=k]}{\sum_{i} \mathbf{1}[y_{n,i}=k]}, \quad
@@ -93,7 +93,7 @@ S^t_{n,k} = \sum_i \text{Cos}\bigl(z^0_{n,i},\, c^t_{n,k}\bigr), \quad
 S^{m,s}_{n,k} = \sum_i \text{Cos}\bigl(z^{m,0}_{n,i},\, c^{m,s}_{n,k}\bigr).
 $$
 
-Diese Maßzahlen erfassen die semantische Übereinstimmung zwischen den Features und den Prototypen. Anschließend wird die „semantische Wissenslücke“ zwischen dem Schüler und dem Lehrer quantifiziert als
+Diese Maßzahlen erfassen die semantische Übereinstimmung zwischen den Features und den Prototypen. Anschließend wird die „semantische Wissenslücke“ zwischen dem Student und dem Teacher quantifiziert als
 
 $$
 D^m_n = \sum_i \sum_{k\in[K]} \left\| S^{m,s}_{n,k}(i)-S^t_{n,k}(i) \right\|_2.

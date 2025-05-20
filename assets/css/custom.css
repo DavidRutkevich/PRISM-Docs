@@ -22,3 +22,40 @@
     --tw-bg-opacity: 1;
     background-color: #a7b209;
 }
+
+/* Mermaid Diagram Styling */
+.mermaid-container {
+  overflow-x: auto; /* Enable horizontal scrolling for wide diagrams */
+  margin-bottom: 1.5rem; /* Add some space below the diagram */
+}
+
+.mermaid svg {
+  max-width: 100%; /* Allow SVG to scale down to container width on larger screens */
+  min-width: 800px;  /* Ensure a minimum width, making it appear larger and scrollable on small screens */
+  height: auto;    /* Maintain aspect ratio */
+  display: block;  /* Remove extra space below SVG */
+  margin: 0 auto;  /* Center the diagram within its scrollable container */
+}
+
+/* Optional: Add some basic animation to the diagrams */
+.mermaid .edgePath, .mermaid .arrowheadPath {
+  transition: stroke-width 0.3s ease, opacity 0.3s ease;
+}
+
+.mermaid:hover .edgePath, .mermaid:hover .arrowheadPath {
+  stroke-width: 2.5px;
+  opacity: 0.8;
+}
+
+.mermaid .node rect, .mermaid .node circle, .mermaid .node polygon, .mermaid .node ellipse {
+  transition: transform 0.3s ease, fill 0.3s ease;
+}
+
+.mermaid .node:hover rect, .mermaid .node:hover circle, .mermaid .node:hover polygon, .mermaid .node:hover ellipse {
+  transform: scale(1.03);
+  fill: hsl(
+    var(--nextra-primary-hue),
+    var(--nextra-primary-saturation),
+    calc(var(--nextra-primary-lightness) * 1.1) /* Slightly lighten on hover */
+  );
+}

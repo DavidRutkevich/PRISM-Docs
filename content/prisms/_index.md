@@ -46,6 +46,14 @@ layout: wide
 
 
       {{< card
+            title="Mermaid Charts Overview"
+            subtitle="An overview of the Mermaid charts used in the PRISMS project."
+            image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/new_figures/Prism%20%7C%20Modul/title.png"
+            imageClass="hx-h-48 hx-w-full hx-object-cover"
+            link="/prisms/mermaid_charts_overview/"
+      >}}
+
+      {{< card
             title="Ablation"
             subtitle="Ablation Studie von PRISM. Hier wird die Methodik von PRISM in ihren Einzelteilen betrachtet und analysiert."
             image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/new_figures/Prism%20%7C%20Modul/title-prism-ablation.svg"
