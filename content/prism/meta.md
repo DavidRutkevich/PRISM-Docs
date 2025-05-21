@@ -1,16 +1,14 @@
-# PRISM (Meta-Drop): Bi-Level Meta-Learning für robuste multimodale Segmentierung
+---
+title: "Bi-Level-Meta-Learning multimodale Segmentierung"
+date: 2025-05-21
+description: "Eine Untersuchung des Bi-Level-Meta-Learning-Ansatzes für robuste multimodale medizinische Bildsegmentierung bei fehlenden Modalitäten"
+---
 
-## 1. Einleitung: Die Herausforderung unvollständiger Daten und das Ziel von Meta-Drop
-
-Multimodale MRT-Datensätze (z.B. FLAIR, T1, T1ce, T2) sind in der klinischen Praxis oft unvollständig, d.h. einzelne Sequenzen fehlen. Standard-Trainingsansätze stoßen hier an ihre Grenzen, da sie Schwierigkeiten haben, mit diesen variierenden und oft unbekannten Kombinationen fehlender Modalitäten umzugehen.
-
-Die **PRISM (Meta-Drop)** Methode, implementiert in `train_meta_drop.py`, erweitert das ursprüngliche PRISM-Framework um eine **Bi-Level Meta-Learning Strategie**. Das Hauptziel ist es, die **Robustheit** und **Generalisierungsfähigkeit** von Segmentierungsmodellen signifikant zu verbessern, insbesondere wenn sie mit inhärent unvollständigen Trainingsdaten oder unvollständigen Testdaten konfrontiert werden, bei denen die Verteilung der fehlenden Modalitäten während des Tests unbekannt ist (`utd_drop`).
-
-## 2. Kernkonzept: Bi-Level Meta-Learning
+## Kernkonzept: Bi-Level Meta-Learning
 
 Meta-Drop nutzt eine zweistufige Optimierungsstrategie, um das Modell gleichzeitig an spezifische Aufgaben anzupassen und seine Fähigkeit zur Generalisierung auf neue, unbekannte Datenverteilungen zu verbessern.
 
-### 2.1 Inner Loop: Task-spezifische Anpassung
+### Inner Loop: Task-spezifische Anpassung
 
 Im inneren Loop wird das Modell an einen spezifischen Trainings-Batch \(D_{\text{train}}\) angepasst. Dies ist vergleichbar mit einem Standard-Trainingsschritt.
 
@@ -38,7 +36,7 @@ optimizer.step() # Aktualisiert phi zu phi_tilde
 phi_tilde = {k: p.clone() for k, p in model.named_parameters()} 
 ```
 
-### 2.2 Outer Loop: Meta-Level Anpassung für Generalisierung
+### Outer Loop: Meta-Level Anpassung für Generalisierung
 
 Der äußere Loop dient dazu, die Generalisierungsfähigkeit des Modells zu verbessern. Er bewertet, wie gut die im inneren Loop angepassten Parameter \(\phi_{\text{tilde}}\) auf einem *anderen*, unabhängigen Daten-Batch \(D_{\text{meta}}\) funktionieren. Dieser Meta-Batch kann eine andere Verteilung fehlender Modalitäten aufweisen, was das Modell zwingt, robustere Repräsentationen zu lernen.
 
@@ -86,7 +84,7 @@ with torch.no_grad():
 ```
 *Anmerkung: Die genaue Implementierung von Meta-Learning-Updates kann variieren (z.B. MAML, Reptile). Die hier gezeigte Formel und der Code repräsentieren eine spezifische Variante.*
 
-## 3. Verlustfunktionen im Meta-Drop Setting
+## Verlustfunktionen im Meta-Drop Setting
 
 Die im Meta-Drop-Training verwendeten Verlustfunktionen sind identisch mit denen des Basis-PRISM-Frameworks, werden aber sowohl im inneren als auch im äußeren Loop berechnet:
 
@@ -102,11 +100,11 @@ Der **Gesamtverlust \(\mathcal{L}_{\text{total}}\)**, der sowohl für \(\mathcal
 \]
 Die Gewichtungsfaktoren \(\beta_m\) und \(\delta_m\) steuern den Einfluss der PRISM-Regularisierungsterme.
 
-## 4. Dynamische Modalitätsmaskierung (`utd_drop`)
+## Dynamische Modalitätsmaskierung (`utd_drop`)
 
 Ein wesentlicher Aspekt, der oft mit Meta-Drop verwendet wird, ist die dynamische Maskierung (`utd_drop`). Im Gegensatz zu statischer Maskierung (`utd`), bei der für jeden Trainings-Epoch dieselben Modalitäten fehlen, werden bei `utd_drop` die fehlenden Modalitäten für jeden Batch (oder sogar jedes Sample) zufällig neu ausgewählt. Dies, kombiniert mit der Meta-Validierung auf Batches mit potenziell *anderen* fehlenden Modalitäten, zwingt das Modell, extrem robust gegenüber beliebigen Kombinationen fehlender Daten zu werden.
 
-## 5. Fazit und Nutzen der Meta-Drop Methode
+## Fazit und Nutzen der Meta-Drop Methode
 
 PRISM (Meta-Drop) stellt eine signifikante Erweiterung des PRISM-Frameworks dar, indem es Bi-Level Meta-Learning einführt. Diese Strategie ermöglicht es dem Modell:
 

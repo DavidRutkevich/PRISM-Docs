@@ -60,11 +60,5 @@ PRISM ist ein neuartiges Plug-and-Play-Framework, das mittels Selbstdistillation
             link="/prism/gss/"
       >}}
 
-      {{< card
-            title="Gradient Merging Descent"
-            subtitle="Gradient Merging Descent (GMD) ist eine neuartige Methode zur Lösung von Gradientenkonflikten in Multi-Task-Learning-Szenarien."
-            image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/new_figures/Prism%20%7C%20Modul/equation(4).png"
-            imageClass="hx-h-48 hx-w-full hx-object-cover"
-            link="/prism/gmd/"
-      >}}
+
 {{< /cards >}}
