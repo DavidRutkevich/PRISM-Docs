@@ -1,22 +1,9 @@
-# PRISM-IDT: Gruppenspezifischer Selbst-Überwachter Trainingsprozess
-
-## Zusammenfassung
-
-Diese Forschungsarbeit stellt PRISM-IDT vor, einen neuartigen Ansatz zur multimodalen Segmentierung von medizinischen Bildern bei fehlenden Modalitäten. Unser Verfahren kombiniert gruppenspezifische Selbstüberwachung (GSS) mit einem Gradient-Manipulations-Verfahren für Deep Learning (GMD), um robuste Segmentierungsmodelle zu trainieren, die auch bei unvollständigen Daten zuverlässige Ergebnisse liefern.
-
-## Problemstellung
-
-Die multimodale MRT-Segmentierung von Hirntumoren stellt in der klinischen Praxis eine besondere Herausforderung dar:
-
-- Häufig fehlen eine oder mehrere Modalitäten (FLAIR, T1, T1ce, T2) aufgrund verschiedener klinischer Einschränkungen
-- Herkömmliche Segmentierungsmethoden versagen oder zeigen deutliche Leistungseinbußen bei unvollständigen Daten
-- Jede Modalität liefert einzigartige diagnostische Informationen, die nicht einfach ersetzt werden können
-
-## Unsere Lösung: PRISM-IDT mit gruppenspezifischer Selbstüberwachung
-
-PRISM-IDT nutzt einen adaptiven, regionsspezifischen Fusionsansatz mit Selbstüberwachung, um die oben genannten Herausforderungen zu bewältigen.
-
-### Architektur und Methodik
+---
+title: "GSS"
+description: "Guided Self-Supervision für robuste multimodale Hirntumorsegmentierung"
+date: 2025-02-05
+math: true
+---
 
 ```mermaid
 flowchart TD
@@ -133,15 +120,3 @@ pred_mask_s = (all_one - pred_mask_l - pred_mask_m) == all_one
 teacher_pred = pred_mask_l*flair_pred + pred_mask_m*weighted_average + pred_mask_s*minimum_pred
 ```
 
-## Experimentelle Ergebnisse
-
-Unsere Experimente auf dem BraTS-Datensatz zeigen, dass PRISM-IDT konsequent bessere Segmentierungsergebnisse als bestehende Methoden liefert, insbesondere bei Szenarien mit fehlenden Modalitäten:
-
-- **Vollständige Daten**: Vergleichbare Leistung mit State-of-the-Art-Methoden
-- **Eine fehlende Modalität**: Durchschnittlich 8% höherer Dice-Score als Baseline-Methoden
-- **Zwei fehlende Modalitäten**: Durchschnittlich 15% höherer Dice-Score als Baseline-Methoden
-- **Drei fehlende Modalitäten**: Behält bemerkenswerte Segmentierungsleistung bei, während die meisten Methoden versagen
-
-## Schlussfolgerung
-
-PRISM-IDT mit gruppenspezifischer Selbstüberwachung stellt einen bedeutenden Fortschritt für die multimodale medizinische Bildsegmentierung dar, insbesondere unter realistischen klinischen Bedingungen mit unvollständigen Daten. Durch die Kombination von konfidenzbasierter regionaler Fusion, Wissensdestillation und Gradientenkonfliktlösung bietet unser Ansatz robuste Segmentierungsleistung über verschiedene Szenarien hinweg.
