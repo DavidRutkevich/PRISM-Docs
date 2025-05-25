@@ -73,6 +73,17 @@ menu:
       params:
         icon: linkedin
 
+  sidebar:
+    - identifier: more
+      name: mehr
+      params:
+        type: separator
+      weight: 1
+    - identifier: about
+      name: "Über mich"
+      url: "https://david-rutkevich.me"
+      weight: 2
+
 params:
   description: Begleitwebsite zum Jugend forscht Projekt PRISM
 
