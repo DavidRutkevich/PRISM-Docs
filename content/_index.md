@@ -27,6 +27,12 @@ layout: hextra-home
 
 <div class="hx-mt-6 hx-mb-6">
 
+
+<div class="hx:mt-6 hx:mb-6">
+{{< hextra/hero-headline >}}
+  Robuste&nbsp;<br class="hx:sm:block hx:hidden" />multimodale Bildsegmentierung
+{{< /hextra/hero-headline >}}
+</div>
 <div class="hx-mb-12">
 {{< hextra/hero-subtitle >}}
   Von der Konzeptübersicht bis zur detaillierten Ablationsanalyse – hier finden Sie die komplette Dokumentation aller Experimente und Ergebnisse.
