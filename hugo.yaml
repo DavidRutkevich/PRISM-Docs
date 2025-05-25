@@ -75,7 +75,7 @@ menu:
 
   sidebar:
     - identifier: more
-      name: mehr
+      name: 
       params:
         type: separator
       weight: 1
