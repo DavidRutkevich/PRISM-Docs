@@ -1,11 +1,10 @@
 ---
-title: "Ergebnisse"
+title: "Ablation"
 description: "Quantitative und qualitative Auswertung von PRISMS"
 date: 2025-02-05
 math: true
 ---
 
-### Komponenten‑Ablation
 
 Um den Beitrag einzelner Bausteine zu verstehen, wurde eine schrittweise Ablation durchgeführt:
 
