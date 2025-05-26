@@ -2,6 +2,7 @@
 title: "Bi-Level-Meta-Learning multimodale Segmentierung"
 date: 2025-05-21
 description: "Eine Untersuchung des Bi-Level-Meta-Learning-Ansatzes für robuste multimodale medizinische Bildsegmentierung bei fehlenden Modalitäten"
+math:true
 ---
 
 ## Kernkonzept: Bi-Level Meta-Learning
