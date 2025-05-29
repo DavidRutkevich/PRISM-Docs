@@ -100,20 +100,16 @@ Die modality-masked attention wird konkret folgendermaßen berechnet:
 }{
   \displaystyle
   \sum_{\substaWT
-\[
-\begin{aligned}
+\[ \begin{aligned}
 Z'_0 &\leftarrow \text{MA}(Q,K)\cdot V, \\
 Z_1 &\leftarrow \text{MHMA}(Z'_0) + Z_0, \\
 Z_1 &\leftarrow \text{FFN}(\text{LN}(Z_1)) + Z_1.
-\end{aligned}
-\]
+\end{aligned} \]
 
 Nach \(L_1\) aufeinanderfolgenden AFT-Layern wird der Satz Fusionstokens aktualisiert und in die ursprüngliche 3D-Struktur zurückgeführt:
 
 - Die Fusionstokens werden zu \(\hat{F} \in \mathbb{R}^{c \times h \times w \times d}\) reshaped, sodass sie cross-modale Informationen enthalten.
 - Gleichzeitig werden die modalitätsspezifischen Feature-Tokens \(F_m \in \mathbb{R}^{N \times c}\) in \(\hat{F}_m \in \mathbb{R}^{c \times h \times w \times d}\) zurücküberführt, um mehr globalen Kontext innerhalb der jeweiligen Modalität abzubilden.
-
-Hier ist eine erweiterte Version des Absatzes, die die Details zu den \(L\) Schichten sowie Verweise auf "Going Deeper" beibehält:
 
 ![PRISMS im Detail](https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/new_figures/Prisms%20%7C%20Framework/PRISMS_attn.png)
 
