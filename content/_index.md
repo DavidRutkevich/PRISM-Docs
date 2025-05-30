@@ -3,9 +3,9 @@ title: "PRISM"
 layout: hextra-home
 ---
 
-{{< hextra/hero-badge link="https://www.adlershof.de/termin/25-02-2025-jugend-forscht-regionalwettbewerb-berlin-sued">}}
+{{< hextra/hero-badge >}}
   <div class="hx-w-2 hx-h-2 hx-rounded-full hx-bg-primary-400"></div>
-  <span>Jugend forscht – Berlin Süd</span>
+  <spanEinige Artikel können KI generiert sei.</span>
   {{< icon name="arrow-circle-right" attributes="height=14" >}}
 {{< /hextra/hero-badge >}}
 
