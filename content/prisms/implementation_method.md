@@ -40,7 +40,7 @@ class Encoder(nn.Module):
         return x1, x2, x3, x4, x5
 ```
 
-*Dieser Code demonstriert die initialen Faltungsschichten und eine Residualverknüpfung.*
+*Dieser Code demonstriert die initialen Convschichten und eine Residualverknüpfung.*
 
 ---
 
