@@ -87,13 +87,13 @@ layout: hextra-home
 
 {{< hextra/feature-grid >}}
   {{< hextra/feature-card
-      title="Implementierung & Code"
-      subtitle="Ausgewählte PRISMS‑Quellcodeabschnitte mit erläuternden Kommentaren."
+      title="Funktion"
+      subtitle="Wie funktioniert das Framework?"
       class="hx-aspect-auto md:hx-aspect-[1.1/1] max-md:hx-min-h-[340px]"
       image="images/title-impl-prisms.webp"
       imageClass="hx-top-[40%] hx-left-[24px] hx-w-[180%] sm:hx-w-[110%] dark:hx-opacity-80"
       style="background: radial-gradient(ellipse at 50% 80%,rgba(255,209,99,0.15),hsla(0,0%,100%,0));"
-      link="/prisms/implementation_method/"
+      link="/prisms/math_method/"
   >}}
 
   {{< hextra/feature-card
