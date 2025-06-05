@@ -20,15 +20,7 @@ layout: wide
             imageClass="hx-h-48 hx-w-full hx-object-cover"
             link="/prisms/intro/"
       >}}
-
-      {{< card
-            title="PRISMS Implementierung"
-            subtitle="Integration von Transformer-basierter Fusion, räumlicher Relevanz und kanalbezogener Attention zur Kompensation unvollständiger Daten"
-            image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/new_figures/Prisms%20%7C%20Framework/title-implementation.png"
-            imageClass="hx-h-48 hx-w-full hx-object-cover"
-            link="/prisms/implementation_method/"
-      >}}
-
+      
       {{< card
             title="Theorie"
             subtitle="Eine detaillierte Herleitung von Modalitätsencoder, Adaptive Fusion Transformer und den Attentionmechaniismen zur präzisen medizinischen Bildsegmentierung"
@@ -43,15 +35,6 @@ layout: wide
             image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/new_figures/Prisms%20%7C%20Framework/prisms_result_title.png"
             imageClass="hx-h-48 hx-w-full hx-object-cover"
             link="/prisms/result/">}}
-
-
-      {{< card
-            title="Mermaid Charts"
-            subtitle="PRISMS Bestandteile in Form von Mermaid-Diagrammen."
-            image="https://raw.githubusercontent.com/DavidRutkevich/PRISM-Docs/refs/heads/new_figures/Prisms%20%7C%20Framework/title_merm.png"
-            imageClass="hx-h-48 hx-w-full hx-object-cover"
-            link="/prisms/mermaid_charts_overview/"
-      >}}
 
       {{< card
             title="Ablation"
