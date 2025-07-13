@@ -1,6 +1,6 @@
 ---
 title: "AIMS Lecture"  
-description: ""  
+description: "Accompaning File for the AIMS Lecture"  
 date: 2025-02-05  
 math: true
 ---
